@@ -1,0 +1,71 @@
+.timeline__section {
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); margin: 1.6rem 0 1.2rem; display: flex; align-items: baseline; gap: 0.7rem;
+}
+.timeline__section::before { content: '# '; color: #565c66; font-weight: 400; }
+.timeline__range-inline { color: var(--accent); letter-spacing: 0.02em; font-weight: 600; }
+.timeline__group { border-left: 2px dotted rgba(201, 205, 211, 0.28); margin-left: 4px; padding-left: 1.5rem; }
+.timeline__entry { position: relative; padding-bottom: 1.6rem; }
+.timeline__entry:last-child { padding-bottom: 0; }
+.timeline__dot { position: absolute; left: -1.56rem; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px var(--bg); }
+.timeline__row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.45rem; }
+.timeline__title { margin: 0; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; text-wrap: balance; }
+.timeline__title svg { flex: none; color: var(--muted); }
+.timeline__date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.02em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.timeline__desc { margin: 0 0 0.75rem; font-size: 0.85rem; color: var(--muted); line-height: 1.6; max-width: 52ch; }
+.timeline__entry .stack-chips { gap: 0.4rem; }
+
+/* "ver más" — una parada hueca más sobre la misma ruta punteada, en vez de un botón aparte,
+   para que la ruta se sienta continua */
+.timeline__more { position: relative; padding-bottom: 0.2rem; }
+.timeline__more-dot {
+  position: absolute; left: -1.53rem; top: 3px; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--bg); border: 1.5px solid var(--accent);
+}
+.timeline__more-btn { display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); }
+.timeline__more-btn:hover { text-decoration: underline; text-underline-offset: 2px; }
+.timeline__more-btn svg { transition: transform 0.15s ease; }
+.timeline__more-btn.is-open svg { transform: rotate(180deg); }
+@media (prefers-reduced-motion: reduce) { .timeline__more-btn svg { transition: none; } }
+
+.resume-block { margin-top: 2.6rem; }
+.resume-block h3 { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.7rem; }
+.resume-block h3::before { content: '# '; }
+
+/* barra divisoria entre secciones (2026-08-08 en el mockup) — con el selector de hermano
+   adyacente en vez de aplicarlo a todas las .timeline__section/.resume-block por igual:
+   ahora mismo Experience/Education/Certifications están vacíos (sin contenido real
+   todavía), así que Languages puede terminar siendo la PRIMERA sección visible — si el
+   borde fuera incondicional, quedaría una línea suelta arriba de todo, sin nada que
+   separar. Con este selector el borde solo aparece cuando de verdad hay algo antes. */
+.timeline__group + .timeline__section,
+.timeline__group + .resume-block,
+.resume-block + .resume-block {
+  padding-top: 2.2rem;
+  border-top: var(--divider);
+}
+
+.lang-stats { display: flex; flex-direction: column; gap: 0.35rem; max-width: 340px; }
+.lang-stat { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0.6rem; }
+.lang-stat__flag { flex: none; border-radius: 2px; }
+.lang-stat__name { flex: 1; font-size: 0.87rem; }
+.lang-stat__level { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
+
+.tech-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.35rem 2.25rem; max-width: 480px; }
+@media (max-width: 460px) { .tech-stats { grid-template-columns: 1fr; } }
+.tech-stat {
+  display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0.6rem; width: 100%; min-width: 0; text-align: left;
+  border-radius: var(--radius); border: 1px solid transparent; transition: background 0.15s ease, border-color 0.15s ease;
+}
+.tech-stat:hover { background: var(--card-bg); border-color: var(--card-border); }
+@media (prefers-reduced-motion: reduce) { .tech-stat { transition: none; } }
+.tech-stat__name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.87rem; }
+.tech-stat__count { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
+
+@media (max-width: 720px) {
+  .timeline__section, .timeline__row { justify-content: center; }
+  .lang-stats, .tech-stats { justify-content: center; margin-left: auto; margin-right: auto; }
+  /* la ruta punteada es una metáfora de "camino" alineada a la izquierda a propósito — se
+     centra como bloque completo, no dot por dot (ver ROADMAP-portfolio.md punto 19) */
+  .timeline__group { text-align: left; max-width: 420px; margin: 0 auto; }
+}

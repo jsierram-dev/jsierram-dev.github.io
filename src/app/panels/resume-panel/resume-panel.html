@@ -1,0 +1,96 @@
+<div class="panel">
+  <h3 class="panel-heading">{{ strings().resumeHeading }}</h3>
+
+  @for (key of timelineKeys; track key) {
+    @if (rowsFor(key).length > 0) {
+      <div class="timeline__section">
+        <span>{{
+          key === 'experience' ? strings().sectionExperience : key === 'education' ? strings().sectionEducation : strings().sectionCertifications
+        }}</span>
+        <span class="timeline__range-inline">{{ yearRange(key) }}</span>
+      </div>
+      <div class="timeline__group">
+        @for (row of visibleRows(key); track row.titleText + row.dateText) {
+          <div class="timeline__entry">
+            <span class="timeline__dot"></span>
+            <div class="timeline__row">
+              <h4 class="timeline__title">
+                {{ row.titleText }}
+                @if (row.link) {
+                  <a [href]="row.link" aria-hidden="true" tabindex="-1">
+                    <svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  </a>
+                }
+              </h4>
+              <span class="timeline__date">{{ row.dateText }}</span>
+            </div>
+            @if (row.desc) {
+              <p class="timeline__desc">{{ row.desc }}</p>
+            }
+            @if (row.techs.length > 0) {
+              <div class="stack-chips">
+                @for (tech of row.techs; track tech) {
+                  <span class="chip">{{ tech }}</span>
+                }
+              </div>
+            }
+          </div>
+        }
+        @if (hiddenCount(key) > 0 || isExpanded(key)) {
+          <div class="timeline__more">
+            <span class="timeline__more-dot"></span>
+            <button type="button" class="timeline__more-btn" [class.is-open]="isExpanded(key)" (click)="toggle(key)">
+              <svg width="10" height="10" viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"></path></svg>
+              <span>{{ isExpanded(key) ? strings().showLess : strings().showMore.replace('{n}', hiddenCount(key).toString()) }}</span>
+            </button>
+          </div>
+        }
+      </div>
+    }
+  }
+
+  @if (content().languages.length > 0) {
+    <div class="resume-block">
+      <h3>{{ strings().sectionLanguages }}</h3>
+      <div class="lang-stats">
+        @for (lang of content().languages; track lang.code + lang.language) {
+          <div class="lang-stat">
+            @if (lang.code === 'es') {
+              <svg class="lang-stat__flag" viewBox="0 0 24 16" width="20" height="14" aria-hidden="true">
+                <rect width="24" height="16" fill="#AA151B"></rect>
+                <rect y="4" width="24" height="8" fill="#F1BF00"></rect>
+              </svg>
+            } @else {
+              <svg class="lang-stat__flag" viewBox="0 0 24 16" width="20" height="14" aria-hidden="true">
+                <rect width="24" height="16" fill="#012169"></rect>
+                <path d="M0 0L24 16M24 0L0 16" stroke="#FFFFFF" stroke-width="3.2"></path>
+                <path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.1"></path>
+                <rect x="9.5" width="5" height="16" fill="#FFFFFF"></rect>
+                <rect y="6" width="24" height="4" fill="#FFFFFF"></rect>
+                <rect x="10.6" width="2.8" height="16" fill="#C8102E"></rect>
+                <rect y="6.9" width="24" height="2.2" fill="#C8102E"></rect>
+              </svg>
+            }
+            <span class="lang-stat__name">{{ lang.language }}</span>
+            <span class="lang-stat__level">{{ lang.level }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  @if (stackRows().length > 0) {
+    <div class="resume-block">
+      <h3>Stack</h3>
+      <div class="tech-stats">
+        @for (row of stackRows(); track row.name) {
+          <button type="button" class="tech-stat" (click)="goToStack(row.name, row.layer)">
+            <app-tech-icon [name]="row.name" />
+            <span class="tech-stat__name">{{ row.name }}</span>
+            <span class="tech-stat__count">{{ row.count }} {{ row.count === 1 ? strings().projectSingular : strings().projectPlural }}</span>
+          </button>
+        }
+      </div>
+    </div>
+  }
+</div>
