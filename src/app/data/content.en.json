@@ -3,6 +3,7 @@
     "role": "full-stack developer",
     "location": "Alicante, Spain",
     "timezone": "Europe/Madrid",
+    "photo": null,
     "about": [
       "Full-stack developer focused on building complete products end to end: data model, backend, and the interface that connects them. My most recent project, similart, is a real-time multiplayer drawing game — the same stack that powers this site.",
       "I'm particularly interested in work where backend and frontend are designed together from the start, not separately."

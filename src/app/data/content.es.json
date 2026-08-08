@@ -3,6 +3,7 @@
     "role": "desarrollador full-stack",
     "location": "Alicante, España",
     "timezone": "Europe/Madrid",
+    "photo": null,
     "about": [
       "Desarrollador full-stack enfocado en construir productos completos de punta a punta: modelo de datos, backend y la interfaz que los conecta. Mi proyecto más reciente, similart, es un juego de dibujo multijugador en tiempo real — el mismo stack que sostiene este sitio.",
       "Me interesa particularmente el trabajo donde backend y frontend se diseñan juntos desde el principio, no por separado."

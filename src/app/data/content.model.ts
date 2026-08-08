@@ -26,6 +26,9 @@ export interface Profile {
   location: string;
   /** IANA zone, e.g. "Europe/Madrid" — feeds the sidebar's real local-time clock. */
   timezone: string;
+  /** Path/URL to a real headshot once one exists (e.g. "/photo.jpg", placed in public/); null
+   *  falls back to the "JP" initials avatar — same null-until-real pattern as Project.screenshot. */
+  photo: string | null;
   about: string[];
   cv: {
     role: string;

@@ -14,7 +14,10 @@
 }
 
 .sidebar__identity { padding: 1.6rem 1.4rem 1.4rem; display: flex; flex-direction: column; align-items: center; gap: 0.9rem; }
-.avatar { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; background: var(--accent); color: var(--avatar-text); border-radius: var(--radius); }
+.avatar { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; background: var(--accent); color: var(--avatar-text); border-radius: var(--radius); overflow: hidden; }
+/* con foto real (profile.photo, ver content.model.ts): llena el mismo cuadrado que las
+   iniciales, recortada — sin foto, .avatar sigue mostrando "JP" como hasta ahora */
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .identity h2 { font-family: var(--font-display); margin: 0 0 0.15rem; font-size: 1.15rem; text-wrap: balance; }
 .identity .role { margin: 0; font-size: 0.8rem; color: var(--muted); font-family: var(--font-mono); letter-spacing: 0.03em; }
 
