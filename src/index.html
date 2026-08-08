@@ -3,9 +3,41 @@
 <head>
   <meta charset="utf-8">
   <title>Juan Pablo Sierra — Full-Stack Developer</title>
+  <meta name="description" content="Juan Pablo Sierra — full-stack developer portfolio. Angular, Node.js &amp; PostgreSQL projects, resume, and downloadable CV.">
+  <meta name="theme-color" content="#1e2126">
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- SVG primero (nítido a cualquier tamaño, soportado por navegadores modernos), PNG/ICO
+       como fallback para navegadores/plataformas que todavía no leen favicons SVG. Mismo
+       trazo que .avatar en el sidebar (mismo accent/radius/fuente) — ver sidebar.css. -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- URLs absolutas: usan el dominio ya confirmado (ROADMAP-portfolio.md, "el repo se va a
+       llamar jsierram.github.io") aunque el repo remoto todavía no exista — no es un valor
+       inventado, es la decisión ya tomada. Repasar esta sección si el dominio final cambia
+       (dominio propio vía CNAME, por ejemplo). -->
+  <link rel="canonical" href="https://jsierram.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Juan Pablo Sierra">
+  <meta property="og:title" content="Juan Pablo Sierra — Full-Stack Developer">
+  <meta property="og:description" content="Full-stack developer portfolio. Angular, Node.js &amp; PostgreSQL projects, resume, and downloadable CV.">
+  <meta property="og:url" content="https://jsierram.github.io/">
+  <meta property="og:image" content="https://jsierram.github.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- prerender fija inglés (trade-off ya aceptado, ver ROADMAP-portfolio.md "Idioma / i18n") -->
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Juan Pablo Sierra — Full-Stack Developer">
+  <meta name="twitter:description" content="Full-stack developer portfolio. Angular, Node.js & PostgreSQL projects, resume, and downloadable CV.">
+  <meta name="twitter:image" content="https://jsierram.github.io/og-image.png">
 </head>
 <body>
   <app-root></app-root>
