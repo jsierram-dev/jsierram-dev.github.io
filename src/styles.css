@@ -104,8 +104,9 @@ app-root {
    Global (not component-scoped) on purpose: this is a genuine cross-cutting concern, not
    something that should silently drift between 4 copy-pasted component stylesheets. Unlike
    the design mockup — one file, so every panel toggled visibility via .panel.active — each
-   panel here is its own component and Angular's @switch in app.html only ever renders the
-   active one, so there's no .active class to manage: display:block is unconditional. */
+   panel here is its own component, always rendered and toggled via [hidden] in app.html (not
+   @switch — see the "paneles no se destruyen al cambiar de pestaña" fix), so there's no .active
+   class to manage: display:block is unconditional here, [hidden] on the host handles show/hide. */
 .panel { display: block; max-width: 720px; }
 .panel-heading { font-family: var(--font-display); font-size: 1.4rem; margin: 0 0 1.1rem; text-wrap: balance; }
 .panel-heading::before { content: "# "; color: #565c66; font-weight: 400; }
@@ -116,4 +117,15 @@ app-root {
 @media (max-width: 720px) {
   .panel { text-align: center; }
   .panel p { margin-left: auto; margin-right: auto; }
+}
+
+/* impresión del CV (botón "Download PDF" aparte, esto cubre Ctrl+P directo desde el navegador
+   como red de seguridad) — global porque necesita ocultar TODO lo demás (sidebar, tabstrip,
+   otros paneles), no solo contenido dentro de app-cv-panel; .cv-page en sí es un selector de
+   clase normal, sin el atributo de scope de Angular, así que sigue encontrando el elemento
+   aunque viva dentro de un componente con estilos propios. */
+@media print {
+  body * { visibility: hidden; }
+  .cv-page, .cv-page * { visibility: visible; }
+  .cv-page { position: absolute; top: 0; left: 0; width: 100%; box-shadow: none; }
 }

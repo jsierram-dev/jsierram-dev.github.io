@@ -1,0 +1,39 @@
+.cv-header-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.3rem; flex-wrap: wrap; }
+.cv-header-row .panel-heading { margin: 0; }
+
+.cv-download-group { display: flex; align-items: center; gap: 0.6rem; }
+.cv-filename-hint { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); }
+.btn-download {
+  font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; color: #17191d; background: var(--accent);
+  padding: 0.55rem 1rem; border-radius: var(--radius); display: inline-flex; align-items: center; gap: 0.45rem;
+  text-decoration: none;
+}
+.btn-download:hover { filter: brightness(1.08); }
+
+/* documento blanco/negro a propósito, no el chrome oscuro del resto del sitio — es literalmente
+   lo que se sube a un portal de empleo o se manda por email (ver ROADMAP-portfolio.md "CV") */
+.cv-page {
+  background: #fdfdfb; color: #1a1a1a; padding: 2.3rem 2.5rem; border-radius: 2px;
+  max-width: 640px; margin: 0 auto; font-family: "Segoe UI", system-ui, sans-serif;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+.cv-name { font-size: 1.4rem; font-weight: 800; margin: 0 0 0.15rem; }
+.cv-role { font-weight: 700; color: var(--accent); margin: 0 0 0.5rem; font-size: 0.92rem; }
+.cv-contact { font-size: 0.76rem; color: #444; margin: 0 0 0.15rem; }
+.cv-section {
+  font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700;
+  color: var(--accent); border-bottom: 1px solid rgba(0, 0, 0, 0.12); padding-bottom: 0.2rem; margin: 1.2rem 0 0.5rem;
+}
+.cv-section:first-of-type { margin-top: 1.3rem; }
+.cv-text { font-size: 0.8rem; color: #2b2b2b; margin: 0 0 0.35rem; line-height: 1.5; }
+.cv-entry-title { font-size: 0.83rem; font-weight: 700; margin: 0.55rem 0 0.1rem; color: #1a1a1a; }
+.cv-entry-date { font-size: 0.73rem; font-style: italic; color: #555; margin: 0 0 0.3rem; }
+/* sin marcador de lista (hereda list-style:none del reset global) — a propósito, ver el
+   .cv-page del mockup original: bullets como párrafos cortos, no una lista con puntos */
+.cv-bullets { margin: 0 0 0.3rem; padding-left: 1.1rem; }
+.cv-bullets li { font-size: 0.79rem; color: #2b2b2b; line-height: 1.5; margin-bottom: 0.2rem; }
+
+@media (max-width: 720px) {
+  .cv-header-row, .cv-download-group { justify-content: center; }
+  .cv-page { padding: 1.5rem 1.3rem; margin: 0 auto; }
+}

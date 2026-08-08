@@ -1,0 +1,74 @@
+<div class="panel">
+  <div class="cv-header-row">
+    <h3 class="panel-heading">CV</h3>
+    <div class="cv-download-group">
+      <a class="btn-download" [href]="cvHref()" download>
+        <svg width="13" height="13" viewBox="0 0 512 512" aria-hidden="true"><path fill="currentColor" d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 242.7-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7 288 32zM64 352c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-101.5 0-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352 64 352zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"></path></svg>
+        <span>{{ strings().downloadPdf }}</span>
+      </a>
+      <span class="cv-filename-hint">{{ cvFilename() }}</span>
+    </div>
+  </div>
+
+  <div class="cv-page">
+    <h1 class="cv-name">Juan Pablo Sierra</h1>
+    <p class="cv-role">{{ content().profile.cv.role }}</p>
+    <p class="cv-contact">{{ content().profile.location }} &nbsp;|&nbsp; juanpablosierra36&#64;gmail.com</p>
+
+    @if (content().profile.cv.summary) {
+      <h2 class="cv-section">{{ strings().cvSections.summary }}</h2>
+      <p class="cv-text">{{ content().profile.cv.summary }}</p>
+    }
+
+    <h2 class="cv-section">{{ strings().cvSections.skills }}</h2>
+    <p class="cv-text"><strong>{{ strings().cvSkillLabels.languages }}</strong> {{ content().profile.cv.skills.languages }}</p>
+    <p class="cv-text"><strong>{{ strings().cvSkillLabels.frontend }}</strong> {{ content().profile.cv.skills.frontend }}</p>
+    <p class="cv-text"><strong>{{ strings().cvSkillLabels.backend }}</strong> {{ content().profile.cv.skills.backend }}</p>
+    <p class="cv-text"><strong>{{ strings().cvSkillLabels.databases }}</strong> {{ content().profile.cv.skills.databases }}</p>
+    <p class="cv-text"><strong>{{ strings().cvSkillLabels.tools }}</strong> {{ content().profile.cv.skills.tools }}</p>
+
+    @if (content().experience.length > 0) {
+      <h2 class="cv-section">{{ strings().cvSections.work }}</h2>
+      @for (e of content().experience; track e.company + e.startYear) {
+        <p class="cv-entry-title">{{ e.role }} — {{ e.company }}, {{ strings().cvCityPlaceholder }}</p>
+        <p class="cv-entry-date">{{ expDate(e) }}</p>
+        <ul class="cv-bullets">
+          @for (a of e.achievements; track a) {
+            <li>{{ a }}</li>
+          }
+        </ul>
+      }
+    }
+
+    @if (featuredProjects().length > 0) {
+      <h2 class="cv-section">{{ strings().cvSections.projects }}</h2>
+      @for (p of featuredProjects(); track p.key) {
+        <p class="cv-entry-title">{{ p.title }}</p>
+        <p class="cv-entry-date">{{ p.date.slice(0, 4) }}</p>
+        <ul class="cv-bullets"><li>{{ p.cvBullet }}</li></ul>
+      }
+    }
+
+    @if (content().education.length > 0) {
+      <h2 class="cv-section">{{ strings().cvSections.education }}</h2>
+      @for (ed of content().education; track ed.org + ed.year) {
+        <p class="cv-entry-title">{{ ed.title }} — {{ ed.org }}, {{ strings().cvCityPlaceholder }}</p>
+        <p class="cv-entry-date">{{ ed.year }}</p>
+      }
+    }
+
+    @if (content().certifications.length > 0) {
+      <h2 class="cv-section">{{ strings().cvSections.certifications }}</h2>
+      <ul class="cv-bullets">
+        @for (c of content().certifications; track c.name + c.year) {
+          <li>{{ c.name }} — {{ c.issuer }}, {{ c.year }}</li>
+        }
+      </ul>
+    }
+
+    @if (content().languages.length > 0) {
+      <h2 class="cv-section">{{ strings().cvSections.languages }}</h2>
+      <p class="cv-text">{{ languagesText() }}</p>
+    }
+  </div>
+</div>
