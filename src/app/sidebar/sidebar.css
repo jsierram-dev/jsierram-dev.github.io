@@ -51,6 +51,10 @@
 .github-activity__week { display: flex; flex-direction: column; gap: 2.5px; }
 .github-activity__week span { width: 9px; height: 9px; border-radius: 2px; display: block; }
 
+/* oculta por defecto acá afuera — el media query de abajo es lo único que la muestra
+   (convención del proyecto: nunca al revés, ver .mobile-only en app.css) */
+.sidebar__about-inline { display: none; }
+
 .social-row { display: flex; gap: 0.5rem; padding: 1.2rem 1.4rem 1.5rem; margin-top: auto; justify-content: center; }
 .social-row a {
   width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
@@ -64,4 +68,8 @@
    ahí, así que se cambia a un simple espaciado fijo */
 @media (max-width: 720px) {
   .social-row { margin-top: 1.3rem; }
+
+  .sidebar__about-inline { display: block; max-width: 280px; margin: 0 auto; }
+  .sidebar__about-inline h3 { font-family: var(--font-display); font-size: 0.95rem; margin: 0 0 0.5rem; }
+  .sidebar__about-inline p { font-size: 0.82rem; color: var(--text); line-height: 1.55; margin: 0 0 0.6rem; }
 }

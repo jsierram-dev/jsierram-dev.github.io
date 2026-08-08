@@ -96,4 +96,10 @@
 
   .panels { flex: 1; min-height: 0; overflow-y: auto; padding: 1.5rem 1.3rem 1.8rem; }
   :host([data-active-tab='about']) .panels { padding: 0; }
+  /* el panel About real queda redundante en móvil una vez fusionado en el sidebar
+     (sidebar.html, .sidebar__about-inline) — sin esto se veía duplicado, la pestaña
+     about.md mostraba el sidebar Y este panel apilados. Estilando el host del
+     componente hijo por su nombre de tag desde el padre, mismo patrón que ya usa
+     "app-sidebar { ... }" un poco más arriba en este mismo archivo. */
+  :host([data-active-tab='about']) app-about-panel { display: none; }
 }
