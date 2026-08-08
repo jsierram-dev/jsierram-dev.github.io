@@ -1,0 +1,74 @@
+{
+  "profile": {
+    "role": "full-stack developer",
+    "location": "Alicante, Spain",
+    "timezone": "Europe/Madrid",
+    "about": [
+      "Full-stack developer focused on building complete products end to end: data model, backend, and the interface that connects them. My most recent project, similart, is a real-time multiplayer drawing game — the same stack that powers this site.",
+      "I'm particularly interested in work where backend and frontend are designed together from the start, not separately."
+    ],
+    "cv": {
+      "role": "Full Stack Developer",
+      "summary": "",
+      "skills": {
+        "languages": "TypeScript, JavaScript",
+        "frontend": "Angular, HTML5, CSS3",
+        "backend": "Node.js, Express, Socket.IO, REST APIs",
+        "databases": "PostgreSQL, Neon",
+        "tools": "Git, CI/CD, Agile/Scrum"
+      }
+    }
+  },
+
+  "projects": [
+    {
+      "key": "similart",
+      "title": "similart",
+      "category": "Full-Stack",
+      "date": "2026-07-27",
+      "featured": true,
+      "screenshot": null,
+      "liveUrl": "#",
+      "repoUrl": "#",
+      "techs": [
+        { "name": "Angular", "layer": "fe", "primary": true },
+        { "name": "TypeScript", "layer": "fe" },
+        { "name": "Express", "layer": "be", "primary": true },
+        { "name": "Socket.IO", "layer": "be" },
+        { "name": "PostgreSQL", "layer": "db", "primary": true },
+        { "name": "Google OAuth", "layer": "tp", "primary": true }
+      ],
+      "problem": "I wanted a project that combined real-time synchronization, image processing, and a game mechanic simple to explain but interesting to build.",
+      "role": "Solo full-stack design and development: architecture for the three backend services, real-time synchronization logic, and the full drawing interface in Angular.",
+      "outcome": "Fully playable end to end for 1 to 12 players, with reconnection, an admin panel, and a timed voting phase with a real countdown.",
+      "cvBullet": "Real-time multiplayer drawing game with % similarity scoring, for 1 to 12 players — Angular, Express, Socket.IO, PostgreSQL."
+    },
+    {
+      "key": "portfolio",
+      "title": "This portfolio",
+      "category": "Tools",
+      "date": "2026-08-05",
+      "featured": false,
+      "screenshot": null,
+      "liveUrl": "#",
+      "repoUrl": "#",
+      "techs": [
+        { "name": "Angular", "layer": "fe", "primary": true },
+        { "name": "TypeScript", "layer": "fe" }
+      ],
+      "problem": "I needed a portfolio built to get interviews, not just to look good — most developer portfolios are designed backwards.",
+      "role": "Full planning before writing any code: research into what recruiters actually look at, and performance decisions documented from day one.",
+      "outcome": "A 100% static site (Angular + JSON, no backend or database), prerendered and hosted on GitHub Pages — a complete, shareable technical roadmap, with every decision traceable to a concrete reason.",
+      "cvBullet": null
+    }
+  ],
+
+  "experience": [],
+  "education": [],
+  "certifications": [],
+
+  "languages": [
+    { "code": "es", "language": "Spanish", "level": "Native" },
+    { "code": "en", "language": "English", "level": "B1" }
+  ]
+}

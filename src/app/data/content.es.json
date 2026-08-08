@@ -1,0 +1,74 @@
+{
+  "profile": {
+    "role": "desarrollador full-stack",
+    "location": "Alicante, España",
+    "timezone": "Europe/Madrid",
+    "about": [
+      "Desarrollador full-stack enfocado en construir productos completos de punta a punta: modelo de datos, backend y la interfaz que los conecta. Mi proyecto más reciente, similart, es un juego de dibujo multijugador en tiempo real — el mismo stack que sostiene este sitio.",
+      "Me interesa particularmente el trabajo donde backend y frontend se diseñan juntos desde el principio, no por separado."
+    ],
+    "cv": {
+      "role": "Desarrollador Full Stack",
+      "summary": "",
+      "skills": {
+        "languages": "TypeScript, JavaScript",
+        "frontend": "Angular, HTML5, CSS3",
+        "backend": "Node.js, Express, Socket.IO, REST APIs",
+        "databases": "PostgreSQL, Neon",
+        "tools": "Git, CI/CD, Agile/Scrum"
+      }
+    }
+  },
+
+  "projects": [
+    {
+      "key": "similart",
+      "title": "similart",
+      "category": "Full-Stack",
+      "date": "2026-07-27",
+      "featured": true,
+      "screenshot": null,
+      "liveUrl": "#",
+      "repoUrl": "#",
+      "techs": [
+        { "name": "Angular", "layer": "fe", "primary": true },
+        { "name": "TypeScript", "layer": "fe" },
+        { "name": "Express", "layer": "be", "primary": true },
+        { "name": "Socket.IO", "layer": "be" },
+        { "name": "PostgreSQL", "layer": "db", "primary": true },
+        { "name": "Google OAuth", "layer": "tp", "primary": true }
+      ],
+      "problem": "Quería un proyecto que combinara sincronización en tiempo real, procesamiento de imágenes y una mecánica de juego simple de explicar pero interesante de construir.",
+      "role": "Diseño y desarrollo full-stack en solitario: arquitectura de los tres servicios backend, lógica de sincronización en tiempo real, e interfaz de dibujo completa en Angular.",
+      "outcome": "Jugable de punta a punta para 1 a 12 jugadores, con reconexión, panel de administración y una fase de votación de duración de ronda con temporizador real.",
+      "cvBullet": "Juego de dibujo multijugador en tiempo real con puntuación por % de similitud, para 1 a 12 jugadores — Angular, Express, Socket.IO, PostgreSQL."
+    },
+    {
+      "key": "portfolio",
+      "title": "Este portfolio",
+      "category": "Herramientas",
+      "date": "2026-08-05",
+      "featured": false,
+      "screenshot": null,
+      "liveUrl": "#",
+      "repoUrl": "#",
+      "techs": [
+        { "name": "Angular", "layer": "fe", "primary": true },
+        { "name": "TypeScript", "layer": "fe" }
+      ],
+      "problem": "Necesitaba un portfolio pensado para conseguir entrevistas, no solo para verse bien — la mayoría de los portfolios de developer se diseñan al revés.",
+      "role": "Planificación completa antes de escribir código: research sobre qué mira un reclutador, y decisiones de performance documentadas desde el día uno.",
+      "outcome": "Sitio 100% estático (Angular + JSON, sin backend ni base de datos), prerenderizado y hosteado en GitHub Pages — un roadmap técnico completo y compartible, con cada decisión trazable a un motivo concreto.",
+      "cvBullet": null
+    }
+  ],
+
+  "experience": [],
+  "education": [],
+  "certifications": [],
+
+  "languages": [
+    { "code": "es", "language": "Español", "level": "Nativo" },
+    { "code": "en", "language": "Inglés", "level": "B1" }
+  ]
+}
