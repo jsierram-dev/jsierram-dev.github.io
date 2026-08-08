@@ -70,12 +70,15 @@
     </div>
   </nav>
 
+  <!-- las 4 quedan siempre en el DOM, [hidden] alterna cuál se ve -- con @switch cada
+       panel se destruye y recrea al cambiar de pestaña, perdiendo su propio estado
+       (filtros de Portfolio, "ver más" de Resume, detalle de proyecto abierto) cada vez
+       que se vuelve a esa pestaña; en el mockup ese estado persistía porque todo vivía
+       siempre en el mismo DOM, solo oculto -->
   <div class="panels">
-    @switch (nav.activeTab()) {
-      @case ('about') { <app-about-panel /> }
-      @case ('resume') { <app-resume-panel /> }
-      @case ('portfolio') { <app-portfolio-panel /> }
-      @case ('cv') { <app-cv-panel /> }
-    }
+    <app-about-panel [hidden]="nav.activeTab() !== 'about'" />
+    <app-resume-panel [hidden]="nav.activeTab() !== 'resume'" />
+    <app-portfolio-panel [hidden]="nav.activeTab() !== 'portfolio'" />
+    <app-cv-panel [hidden]="nav.activeTab() !== 'cv'" />
   </div>
 </section>
