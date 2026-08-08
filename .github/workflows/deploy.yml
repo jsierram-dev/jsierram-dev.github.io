@@ -1,12 +1,14 @@
 # Build + deploy a GitHub Pages, sitio 100% estático (ver ROADMAP-portfolio.md, "Hosting" y
-# "Estado actual en disco"). Sin efecto hasta que exista el remoto `jsierram.github.io` y se
-# habilite "Settings → Pages → Source: GitHub Actions" en el repo — este archivo queda listo
-# de antemano, no depende de ningún paso previo para poder commitearse.
+# "Estado actual en disco"). Repo real: jsierram-dev/jsierram-dev.github.io (cuenta renombrada
+# a "jsierram-dev" el 2026-08-08 antes de publicar). Sin efecto hasta habilitar "Settings →
+# Pages → Source: GitHub Actions" en el repo.
 name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    # master, no main: mismo nombre de rama por defecto que el resto de los repos del usuario
+    # (similart-app, etc.) — ver el commit del push inicial para el porqué.
+    branches: [master]
   workflow_dispatch:
 
 permissions:

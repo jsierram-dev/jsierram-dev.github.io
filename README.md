@@ -36,7 +36,7 @@ No backend, no request-time rendering — everything below happens at build time
 flowchart LR
     JSON["content.en.json<br/>content.es.json"] --> APP["Angular 22<br/>standalone components, signals, zoneless"]
     APP -->|"ng build<br/>outputMode: static"| STATIC["Prerendered HTML/CSS/JS"]
-    STATIC --> PAGES["GitHub Pages<br/>jsierram.github.io"]
+    STATIC --> PAGES["GitHub Pages<br/>jsierram-dev.github.io"]
 ```
 
 ### Stack
@@ -99,7 +99,7 @@ Sin backend, sin renderizado en tiempo de request — todo lo de abajo ocurre en
 flowchart LR
     JSON["content.en.json<br/>content.es.json"] --> APP["Angular 22<br/>componentes standalone, signals, zoneless"]
     APP -->|"ng build<br/>outputMode: static"| STATIC["HTML/CSS/JS prerenderizado"]
-    STATIC --> PAGES["GitHub Pages<br/>jsierram.github.io"]
+    STATIC --> PAGES["GitHub Pages<br/>jsierram-dev.github.io"]
 ```
 
 ### Stack
