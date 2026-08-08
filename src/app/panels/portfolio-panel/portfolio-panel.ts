@@ -77,14 +77,27 @@ export class PortfolioPanelComponent {
     // (no dos separados) para no depender del orden de ejecución entre "resetear" y
     // "aplicar un salto pendiente desde Resume -> Stack" cuando ambos podrían dispararse
     // juntos al recrearse el panel.
+    //
+    // nav.activeTab() se agregó como dependencia más (2026-08-08, pedido explícito del
+    // usuario): al volver de una pestaña visitada, esa pestaña debe quedar en su estado
+    // por defecto, no como se dejó la última vez (antes, con [hidden] persistiendo el
+    // componente, un detalle de proyecto abierto seguía abierto al volver desde otra
+    // pestaña). Se suma acá, en el MISMO effect, en vez de uno nuevo aparte, por la misma
+    // razón que ya evitaba dos effects: si el usuario entra desde Resume→Stack, activeTab
+    // Y portfolioFilterRequest cambian juntos en la misma función — un effect separado que
+    // solo mirara activeTab podría correr y resetear el filtro ANTES o DESPUÉS del que
+    // aplica la solicitud pendiente, según el orden, pisándolo. Con un solo effect no hay
+    // ambigüedad de orden posible.
     effect(() => {
       this.content(); // dependencia: re-correr en cada cambio de idioma
+      this.nav.activeTab(); // dependencia: re-correr también al entrar/salir de esta pestaña
       const request = this.nav.portfolioFilterRequest();
       this.categoryState.set('__all__');
       this.layerFilters.set(
         request ? { fe: '', be: '', db: '', tp: '', [request.layer]: request.tech } : { fe: '', be: '', db: '', tp: '' }
       );
       this.sortOrder.set('featured');
+      this.openProjectKey.set(null);
       if (request) this.nav.portfolioFilterRequest.set(null);
     });
   }

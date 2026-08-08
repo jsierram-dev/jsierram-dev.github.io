@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { LanguageService } from '../../core/language.service';
 import { NavigationService } from '../../core/navigation.service';
 import { TechIconComponent } from '../../shared/tech-icon/tech-icon';
@@ -49,6 +49,18 @@ export class ResumePanelComponent {
     education: false,
     certifications: false,
   });
+
+  constructor() {
+    // al volver a esta pestaña después de haber estado en otra, "ver más" arranca
+    // colapsado de nuevo — mismo pedido explícito del usuario que el reset del detalle
+    // de proyecto en Portfolio (ver el effect equivalente ahí para el razonamiento
+    // completo). Sin estado propio que dependa de un pedido externo (a diferencia de
+    // Portfolio con portfolioFilterRequest), acá alcanza con un effect simple.
+    effect(() => {
+      this.nav.activeTab();
+      this.expanded.set({ experience: false, education: false, certifications: false });
+    });
+  }
 
   protected readonly experienceRows = computed<TimelineRow[]>(() =>
     this.content().experience.map((e) => ({
