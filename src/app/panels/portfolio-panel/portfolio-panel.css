@@ -1,0 +1,112 @@
+/* Portfolio es una grilla de tarjetas, no texto de lectura — el límite compartido de 720px
+   (.panel, styles.css) pensado para prosa la dejaba en solo 2 columnas sin importar cuánto
+   ancho hubiera; con más entran 4 cómodas sin perder legibilidad de cada tarjeta. El
+   encapsulamiento de Angular hace que esta regla, más específica por el atributo de scope
+   que Angular le agrega, le gane a la global de 720px sin necesitar !important. */
+.panel { max-width: 1160px; }
+
+.portfolio-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.9rem; margin-bottom: 1.3rem; }
+.category-tabs { display: flex; flex-wrap: wrap; gap: 1.3rem; }
+.category-tabs button { font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); padding-bottom: 0.3rem; border-bottom: 2px solid transparent; }
+.category-tabs button.active { color: var(--accent); border-bottom-color: var(--accent); }
+.portfolio-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.portfolio-filters select {
+  background: var(--card-bg); border: var(--card-border); color: var(--text);
+  font-family: var(--font-mono); font-size: 0.72rem; padding: 0.4rem 0.55rem; border-radius: var(--radius);
+}
+.portfolio-filters select:not([data-empty='true']) { border-color: var(--accent); color: var(--accent); }
+.portfolio-filters .sep { align-self: center; color: var(--muted); font-family: var(--font-mono); font-size: 0.7rem; }
+
+/* auto-fit, no auto-fill — con pocos proyectos, auto-fill reserva columnas vacías invisibles
+   en vez de estirar las tarjetas que sí hay (bug real encontrado en el mockup, ver
+   ROADMAP-portfolio.md punto 32) */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.project-card {
+  text-align: left; background: var(--card-bg); border: var(--card-border); border-radius: var(--radius);
+  overflow: hidden; display: flex; flex-direction: column; transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) { .project-card { transition: none; } .project-card:hover { transform: none; } }
+.project-card__visual {
+  height: 108px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(201, 205, 211, 0.1);
+  background: linear-gradient(135deg, rgba(217, 154, 78, 0.1), rgba(127, 163, 122, 0.06));
+  display: flex; align-items: center; justify-content: center;
+}
+.project-card__visual::before {
+  content: ''; position: absolute; top: 10px; left: 10px; width: 6px; height: 6px; border-radius: 50%;
+  background: #7fa37a; box-shadow: 13px 0 0 #d99a4e, 26px 0 0 #4b5058; z-index: 1;
+}
+.project-card__visual span { font-family: var(--font-display); font-size: 1.9rem; color: rgba(201, 205, 211, 0.28); letter-spacing: 0.05em; }
+.project-card__visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* flex:1 en el body (2026-08-08 en el mockup) — las tarjetas de una fila ya se estiran a la
+   misma altura por defecto (CSS Grid), esto hace que el body aproveche esa altura extra en
+   vez de dejarla como espacio muerto debajo de la tarjeta */
+.project-card__body { padding: 0.95rem 1.05rem 1.1rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+.project-card .badge {
+  align-self: flex-start; font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--accent); background: var(--badge-bg); padding: 0.15rem 0.45rem; border-radius: var(--radius);
+}
+.project-card h4 { font-family: var(--font-display); margin: 0; font-size: 1.02rem; }
+.project-card__category { margin: 0; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
+
+/* margin-top:auto (2026-08-08 en el mockup, pedido explícito) — con .project-card__body ya
+   en flex:1, empuja los tags al fondo del contenedor sin importar cuánto título/categoría
+   haya antes; con tarjetas de distinta longitud en la misma fila, quedan alineados */
+.stack-layers { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: auto; }
+.stack-layers .layer {
+  font-family: var(--font-mono); font-size: 0.66rem; color: var(--chip-text);
+  background: var(--chip-bg); border: var(--chip-border); border-radius: var(--radius); padding: 0.2rem 0.55rem;
+}
+.stack-layers .layer i { font-style: normal; font-weight: 700; color: var(--accent); margin-right: 0.28rem; }
+
+/* ---- vista de detalle ---- */
+.project-detail__back {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); margin-bottom: 1.4rem; text-decoration: underline; background: none;
+}
+.project-detail__body h3 { font-family: var(--font-display); font-size: 1.45rem; margin: 0 0 0.35rem; text-wrap: balance; }
+
+/* chips con ícono real (2026-08-08 en el mockup) en vez de una línea de texto plano — mejora
+   el "ritmo visual" de la vista, mismo hallazgo que llevó a rediseñar esta sección entera
+   (ver ROADMAP-portfolio.md punto 36: llevar problema y resultado antes que proceso, y cuidar
+   el ritmo visual en vez de bloques de texto sin jerarquía) */
+.project-detail__stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.5rem; }
+.project-detail__chip {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-mono); font-size: 0.78rem; color: var(--text);
+  background: var(--card-bg); border: var(--card-border); border-radius: var(--radius); padding: 0.3rem 0.65rem 0.3rem 0.35rem;
+}
+
+/* imagen "hero" — mismo criterio que .project-card__visual: placeholder de iniciales+gradiente
+   hasta que exista una captura real (proj.screenshot), listo para usarla sin tocar CSS/JS */
+.project-detail__hero {
+  position: relative; height: 260px; overflow: hidden; border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(217, 154, 78, 0.1), rgba(127, 163, 122, 0.06));
+  border: var(--card-border); margin: 1rem 0 1.5rem; display: flex; align-items: center; justify-content: center;
+}
+.project-detail__hero::before {
+  content: ''; position: absolute; top: 14px; left: 14px; width: 8px; height: 8px; border-radius: 50%;
+  background: #7fa37a; box-shadow: 17px 0 0 #d99a4e, 34px 0 0 #4b5058;
+}
+.project-detail__hero span { font-family: var(--font-display); font-size: 3.6rem; color: rgba(201, 205, 211, 0.28); letter-spacing: 0.05em; }
+.project-detail__hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.project-detail__section dt { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 1.1rem 0 0.35rem; }
+.project-detail__section dt:first-child { margin-top: 0; }
+.project-detail__section dd { margin: 0; font-size: 0.92rem; line-height: 1.65; max-width: 62ch; }
+
+/* Outcome destacado en su propio bloque, no un dt/dd más — llevar el resultado antes que el
+   proceso es justamente el punto del rediseño (ver comentario más arriba) */
+.project-detail__outcome { margin: 1.3rem 0; padding: 1rem 1.2rem; background: var(--badge-bg); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; }
+.project-detail__outcome-label { margin: 0 0 0.35rem; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+.project-detail__outcome-text { margin: 0; font-size: 0.94rem; font-weight: 500; line-height: 1.65; color: var(--text); max-width: 62ch; }
+
+.project-detail__links { display: flex; gap: 1.2rem; margin-top: 1.6rem; }
+.project-detail__links a { display: inline-flex; align-items: center; gap: 0.3rem; font-family: var(--font-mono); font-size: 0.82rem; text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 720px) {
+  .portfolio-controls, .category-tabs, .portfolio-filters, .project-grid,
+  .project-detail__links, .project-detail__stack {
+    justify-content: center;
+  }
+}

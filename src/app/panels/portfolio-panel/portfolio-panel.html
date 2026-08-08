@@ -1,0 +1,119 @@
+@if (!openProject()) {
+  <div class="panel">
+    <h3 class="panel-heading">{{ strings().portfolioHeading }}</h3>
+
+    <div class="portfolio-controls">
+      <nav class="category-tabs">
+        @for (cat of categories(); track cat) {
+          <button type="button" [class.active]="categoryState() === cat" (click)="setCategory(cat)">
+            {{ cat === '__all__' ? strings().categoryAll : cat }}
+          </button>
+        }
+      </nav>
+      <div class="portfolio-filters">
+        @for (layer of layers; track layer) {
+          <select [attr.data-empty]="!layerFilters()[layer]" (change)="onLayerChange(layer, $event)">
+            <option value="">{{ strings().layerLabels[layer] }}</option>
+            @for (opt of layerOptions()[layer]; track opt) {
+              <option [value]="opt" [selected]="layerFilters()[layer] === opt">{{ opt }}</option>
+            }
+          </select>
+        }
+        <span class="sep">|</span>
+        <select (change)="onSortChange($event)">
+          <option value="featured" [selected]="sortOrder() === 'featured'">{{ strings().sortFeatured }}</option>
+          <option value="newest" [selected]="sortOrder() === 'newest'">{{ strings().sortNewest }}</option>
+          <option value="oldest" [selected]="sortOrder() === 'oldest'">{{ strings().sortOldest }}</option>
+        </select>
+      </div>
+    </div>
+
+    @if (filteredProjects().length > 0) {
+      <div class="project-grid">
+        @for (project of filteredProjects(); track project.key) {
+          <button type="button" class="project-card" (click)="openDetail(project.key)">
+            <div class="project-card__visual">
+              @if (project.screenshot) {
+                <img [src]="project.screenshot" [alt]="project.title" loading="lazy" />
+              } @else {
+                <span>{{ project.title.slice(0, 2).toUpperCase() }}</span>
+              }
+            </div>
+            <div class="project-card__body">
+              @if (project.featured) {
+                <span class="badge">{{ strings().featuredBadge }}</span>
+              }
+              <h4>{{ project.title }}</h4>
+              <p class="project-card__category">{{ project.category }}</p>
+              <div class="stack-layers">
+                @for (layer of layers; track layer) {
+                  @if (primaryTech(project, layer); as tech) {
+                    <span class="layer"><i>{{ layerShortLabels[layer] }}</i>{{ tech }}</span>
+                  }
+                }
+              </div>
+            </div>
+          </button>
+        }
+      </div>
+    } @else {
+      <p class="muted-text">{{ strings().noMatch }}</p>
+    }
+  </div>
+} @else {
+  <div class="panel project-detail">
+    <button type="button" class="project-detail__back" (click)="closeDetail()">
+      <svg width="12" height="12" viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+      <span>{{ strings().backToProjects }}</span>
+    </button>
+
+    @if (openProject(); as project) {
+      <div class="project-detail__body">
+        <h3>{{ project.title }}</h3>
+
+        <div class="project-detail__hero">
+          @if (project.screenshot) {
+            <img [src]="project.screenshot" [alt]="project.title" loading="lazy" />
+          } @else {
+            <span>{{ project.title.slice(0, 2).toUpperCase() }}</span>
+          }
+        </div>
+
+        <div class="project-detail__stack">
+          @for (tech of project.techs; track tech.name) {
+            <span class="project-detail__chip">
+              <app-tech-icon [name]="tech.name" [size]="22" />
+              <span>{{ tech.name }}</span>
+            </span>
+          }
+        </div>
+
+        <dl class="project-detail__section">
+          <dt>{{ strings().problem }}</dt>
+          <dd>{{ project.problem }}</dd>
+        </dl>
+
+        <div class="project-detail__outcome">
+          <p class="project-detail__outcome-label">{{ strings().outcome }}</p>
+          <p class="project-detail__outcome-text">{{ project.outcome }}</p>
+        </div>
+
+        <dl class="project-detail__section">
+          <dt>{{ strings().role }}</dt>
+          <dd>{{ project.role }}</dd>
+        </dl>
+
+        <div class="project-detail__links">
+          <a [href]="project.liveUrl">
+            <span>{{ strings().liveDemo }}</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </a>
+          <a [href]="project.repoUrl">
+            <span>{{ strings().repo }}</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </a>
+        </div>
+      </div>
+    }
+  </div>
+}
