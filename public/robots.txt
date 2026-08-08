@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jsierram.github.io/sitemap.xml
