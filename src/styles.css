@@ -39,7 +39,12 @@ a { color: inherit; }
   --bg: #1e2126;
   --sidebar-bg: #17191d;
   --text: #c9cdd3;
-  --muted: #6b7280;
+  /* auditoría de Lighthouse (2026-08-08): el valor original (#6b7280) daba 3.64:1 contra
+     --bg (#1e2126), por debajo del mínimo WCAG AA de 4.5:1 para texto normal — afectaba
+     rol/ubicación/heatmap del sidebar y las etiquetas de pestaña en móvil. Este tono
+     conserva el mismo matiz azul-grisáceo, solo más claro (5.15:1 contra --bg, 5.61:1
+     contra --sidebar-bg, ambos con margen real, no al límite). */
+  --muted: #8a92a0;
   --accent: #d99a4e;
   --accent-strong: #7fa37a;
   --avatar-text: #17191d;

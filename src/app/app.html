@@ -74,11 +74,14 @@
        panel se destruye y recrea al cambiar de pestaña, perdiendo su propio estado
        (filtros de Portfolio, "ver más" de Resume, detalle de proyecto abierto) cada vez
        que se vuelve a esa pestaña; en el mockup ese estado persistía porque todo vivía
-       siempre en el mismo DOM, solo oculto -->
-  <div class="panels">
+       siempre en el mismo DOM, solo oculto.
+       <main>, no <div>: auditoría de Lighthouse (2026-08-08) encontró que el documento no
+       tenía ningún landmark "main" — este es el contenido real de cada pestaña, el resto
+       (sidebar, tabstrip) es navegación/metadata alrededor de él. -->
+  <main class="panels">
     <app-about-panel [hidden]="nav.activeTab() !== 'about'" />
     <app-resume-panel [hidden]="nav.activeTab() !== 'resume'" />
     <app-portfolio-panel [hidden]="nav.activeTab() !== 'portfolio'" />
     <app-cv-panel [hidden]="nav.activeTab() !== 'cv'" />
-  </div>
+  </main>
 </section>
