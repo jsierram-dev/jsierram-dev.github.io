@@ -1,0 +1,67 @@
+/* :host = lo que en el mockup era .sidebar. Centrado (align-items/justify-content) sin
+   necesitar el prefijo ".sidebar X" que usaba el mockup para no filtrarse a otras partes
+   del sitio — acá ni hace falta: el encapsulamiento de Angular ya garantiza que estas
+   reglas no le llegan a ningún otro componente (por ejemplo, el timeline de Resume
+   reutiliza la clase .stack-chips para sus propios tags, y no se ve afectado). */
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  background: var(--sidebar-bg);
+  border-right: var(--divider);
+  overflow-y: auto;
+}
+
+.sidebar__identity { padding: 1.6rem 1.4rem 1.4rem; display: flex; flex-direction: column; align-items: center; gap: 0.9rem; }
+.avatar { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; background: var(--accent); color: var(--avatar-text); border-radius: var(--radius); }
+.identity h2 { font-family: var(--font-display); margin: 0 0 0.15rem; font-size: 1.15rem; text-wrap: balance; }
+.identity .role { margin: 0; font-size: 0.8rem; color: var(--muted); font-family: var(--font-mono); letter-spacing: 0.03em; }
+
+/* badge de disponibilidad — mismo verde ya existente en la paleta (--accent-strong) en vez
+   de un color nuevo, mismo lenguaje visual que el punto verde "open to work" de LinkedIn */
+.availability { display: inline-flex; align-items: center; gap: 0.5rem; margin: 0; font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-strong); }
+.availability__dot { position: relative; width: 7px; height: 7px; border-radius: 50%; background: var(--accent-strong); flex: none; }
+.availability__dot::after {
+  content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--accent-strong);
+  opacity: 0.5; animation: availability-pulse 2s ease-out infinite;
+}
+@keyframes availability-pulse { 0% { transform: scale(0.6); opacity: 0.6; } 100% { transform: scale(1.7); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .availability__dot::after { animation: none; opacity: 0.3; } }
+
+.stack-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; }
+.chip { font-family: var(--font-mono); font-size: 0.7rem; padding: 0.22rem 0.5rem; border-radius: var(--radius); background: var(--chip-bg); color: var(--chip-text); border: var(--chip-border); }
+
+.location-time { display: flex; align-items: center; justify-content: center; gap: 0.4rem; margin: 0; padding: 0 1.4rem 1.5rem; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
+.location-time svg { flex: none; }
+.location-time__sep { opacity: 0.5; }
+.local-time { color: var(--text); font-variant-numeric: tabular-nums; }
+
+/* actividad de GitHub — ilustrativa por ahora, generada client-side solo (ver sidebar.ts) —
+   el build real la reemplaza con datos reales de la API GraphQL de GitHub, obtenidos en
+   build time (ver ROADMAP-portfolio.md, "Investigación..."), horneados en el HTML
+   prerenderizado, sin este guard client-only */
+.github-activity { padding: 0 1.4rem 1.5rem; }
+.github-activity__label { display: flex; align-items: center; justify-content: center; gap: 0.4rem; margin: 0 0 0.55rem; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
+.github-activity__label svg { flex: none; }
+/* fila de columnas (semanas) en vez de CSS grid con grid-auto-flow:column — mismo resultado
+   visual (18 columnas × 7 filas), pero la forma de los datos (GithubCell[][], semana por
+   semana) calza mejor con un @for anidado que con una lista plana de 126 celdas */
+.github-activity__grid { display: flex; gap: 2.5px; margin: 0 auto; width: fit-content; }
+.github-activity__week { display: flex; flex-direction: column; gap: 2.5px; }
+.github-activity__week span { width: 9px; height: 9px; border-radius: 2px; display: block; }
+
+.social-row { display: flex; gap: 0.5rem; padding: 1.2rem 1.4rem 1.5rem; margin-top: auto; justify-content: center; }
+.social-row a {
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius); color: #7d838d; background: rgba(201, 205, 211, 0.05); transition: color 0.15s ease, background 0.15s ease;
+}
+.social-row a:hover { color: var(--accent); background: rgba(217, 154, 78, 0.1); }
+@media (prefers-reduced-motion: reduce) { .social-row a { transition: none; } }
+
+/* en móvil el sidebar vive dentro de un contenedor flex:1 (ver app.css) en vez de una
+   columna de altura completa fija — margin-top:auto empujaría el contacto demasiado abajo
+   ahí, así que se cambia a un simple espaciado fijo */
+@media (max-width: 720px) {
+  .social-row { margin-top: 1.3rem; }
+}
