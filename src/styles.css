@@ -99,3 +99,21 @@ app-root {
 .sidebar::-webkit-scrollbar-thumb:hover, .panels::-webkit-scrollbar-thumb:hover, .tabstrip::-webkit-scrollbar-thumb:hover {
   background-color: rgba(217, 154, 78, 0.6);
 }
+
+/* ---------- .panel: shared shell every About/Resume/Portfolio/CV panel component uses ----------
+   Global (not component-scoped) on purpose: this is a genuine cross-cutting concern, not
+   something that should silently drift between 4 copy-pasted component stylesheets. Unlike
+   the design mockup — one file, so every panel toggled visibility via .panel.active — each
+   panel here is its own component and Angular's @switch in app.html only ever renders the
+   active one, so there's no .active class to manage: display:block is unconditional. */
+.panel { display: block; max-width: 720px; }
+.panel-heading { font-family: var(--font-display); font-size: 1.4rem; margin: 0 0 1.1rem; text-wrap: balance; }
+.panel-heading::before { content: "# "; color: #565c66; font-weight: 400; }
+.panel p { font-size: 0.93rem; line-height: 1.65; color: var(--text); max-width: 62ch; }
+
+/* contenido centrado en móvil (2026-08-08 en el mockup) — decisión ya tomada, no algo nuevo:
+   todas las pestañas se leen como una columna centrada consistente, sidebar incluido */
+@media (max-width: 720px) {
+  .panel { text-align: center; }
+  .panel p { margin-left: auto; margin-right: auto; }
+}

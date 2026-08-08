@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { LanguageService } from '../../core/language.service';
 
-/** Stub — real content wired up in its own dedicated commit. */
 @Component({
   selector: 'app-about-panel',
-  template: `<div class="panel"><p>About — pendiente</p></div>`,
+  templateUrl: './about-panel.html',
 })
-export class AboutPanelComponent {}
+export class AboutPanelComponent {
+  private readonly lang = inject(LanguageService);
+  protected readonly heading = computed(() => this.lang.strings().aboutHeading);
+  protected readonly paragraphs = computed(() => this.lang.content().profile.about);
+}
