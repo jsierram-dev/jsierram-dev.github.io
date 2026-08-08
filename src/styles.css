@@ -1,1 +1,101 @@
-/* You can add global styles to this file, and also import other style files */
+/* ---------- reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+button, select { font: inherit; color: inherit; }
+button { background: none; border: none; cursor: pointer; padding: 0; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+
+/* Cascadia Code, self-hosted as real .woff2 files in public/fonts/ (served as normal static
+   assets, not base64 data URIs — the mockup this was ported from had to embed it as base64
+   because Artifacts can't load external font files at runtime; a real deployed site has no such
+   restriction, so the plain file avoids inflating the CSS bundle by ~33% for nothing). Real
+   Cascadia Code from Microsoft, redistributed via the @fontsource/cascadia-code npm package
+   (MIT), 'latin' subset (covers Spanish diacritics — all within Latin-1 Supplement, ≤U+00FF).
+   Two static weights (400/700) instead of the full variable font, to keep it small; bold beyond
+   700 falls back to the browser's own synthetic bold. */
+@font-face {
+  font-family: "Cascadia Code";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/cascadia-code-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Cascadia Code";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/cascadia-code-700.woff2") format("woff2");
+}
+
+/* ---------- design tokens ----------
+   Single fixed dark palette, not theme-aware (no prefers-color-scheme / [data-theme] toggle) —
+   this is a deliberate carry-over from the design mockup, not an oversight: the "IDE" look was
+   chosen to always render dark regardless of the visitor's OS theme, the same way a real code
+   editor's own dark theme doesn't follow the OS light/dark setting unless you tell it to. */
+:root {
+  --bg: #1e2126;
+  --sidebar-bg: #17191d;
+  --text: #c9cdd3;
+  --muted: #6b7280;
+  --accent: #d99a4e;
+  --accent-strong: #7fa37a;
+  --avatar-text: #17191d;
+  --font-display: "Cascadia Code", "Consolas", ui-monospace, monospace;
+  --font-body: "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Cascadia Code", "Consolas", ui-monospace, monospace;
+  --radius: 3px;
+  --divider: 1px solid rgba(201, 205, 211, 0.1);
+  --chip-bg: rgba(127, 163, 122, 0.12);
+  --chip-border: 1px solid rgba(127, 163, 122, 0.4);
+  --chip-text: #9dc298;
+  --card-bg: #1a1c21;
+  --card-border: 1px solid rgba(201, 205, 211, 0.12);
+  --badge-bg: rgba(217, 154, 78, 0.16);
+}
+
+/* the app fills the real viewport exactly and never scrolls itself — only .sidebar and .panels
+   (inside the app shell component) scroll internally when their own content overflows, same as
+   an installed app would behave rather than a long marketing page */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.5 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+app-root {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+/* custom scrollbar, shared by every internally-scrolling area (sidebar, panels, tabstrip on
+   mobile) — thin + dark track + amber-accent thumb so it reads as part of the IDE palette
+   instead of the browser default. Global (not component-scoped) because Angular's view
+   encapsulation would otherwise block ::-webkit-scrollbar from reaching into child components. */
+.sidebar, .panels, .tabstrip {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(217, 154, 78, 0.35) transparent;
+}
+.sidebar::-webkit-scrollbar, .panels::-webkit-scrollbar { width: 10px; }
+.tabstrip::-webkit-scrollbar { height: 6px; }
+.sidebar::-webkit-scrollbar-track, .panels::-webkit-scrollbar-track, .tabstrip::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar::-webkit-scrollbar-thumb, .panels::-webkit-scrollbar-thumb, .tabstrip::-webkit-scrollbar-thumb {
+  background-color: rgba(217, 154, 78, 0.35);
+  border-radius: 6px;
+  border: 2px solid var(--bg);
+  background-clip: padding-box;
+}
+.sidebar::-webkit-scrollbar-thumb:hover, .panels::-webkit-scrollbar-thumb:hover, .tabstrip::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(217, 154, 78, 0.6);
+}
