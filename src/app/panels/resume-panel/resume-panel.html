@@ -55,21 +55,45 @@
       <div class="lang-stats">
         @for (lang of content().languages; track lang.code + lang.language) {
           <div class="lang-stat">
-            @if (lang.code === 'es') {
-              <svg class="lang-stat__flag" viewBox="0 0 24 16" width="20" height="14" aria-hidden="true">
-                <rect width="24" height="16" fill="#AA151B"></rect>
-                <rect y="4" width="24" height="8" fill="#F1BF00"></rect>
-              </svg>
-            } @else {
-              <svg class="lang-stat__flag" viewBox="0 0 24 16" width="20" height="14" aria-hidden="true">
-                <rect width="24" height="16" fill="#012169"></rect>
-                <path d="M0 0L24 16M24 0L0 16" stroke="#FFFFFF" stroke-width="3.2"></path>
-                <path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.1"></path>
-                <rect x="9.5" width="5" height="16" fill="#FFFFFF"></rect>
-                <rect y="6" width="24" height="4" fill="#FFFFFF"></rect>
-                <rect x="10.6" width="2.8" height="16" fill="#C8102E"></rect>
-                <rect y="6.9" width="24" height="2.2" fill="#C8102E"></rect>
-              </svg>
+            @switch (lang.code) {
+              @case ('es') {
+                <svg class="lang-stat__flag" viewBox="0 0 24 16" width="20" height="14" aria-hidden="true">
+                  <rect width="24" height="16" fill="#AA151B"></rect>
+                  <rect y="4" width="24" height="8" fill="#F1BF00"></rect>
+                </svg>
+              }
+              @case ('en') {
+                <svg class="lang-stat__flag" viewBox="0 0 24 16" width="20" height="14" aria-hidden="true">
+                  <rect width="24" height="16" fill="#012169"></rect>
+                  <path d="M0 0L24 16M24 0L0 16" stroke="#FFFFFF" stroke-width="3.2"></path>
+                  <path d="M0 0L24 16M24 0L0 16" stroke="#C8102E" stroke-width="1.1"></path>
+                  <rect x="9.5" width="5" height="16" fill="#FFFFFF"></rect>
+                  <rect y="6" width="24" height="4" fill="#FFFFFF"></rect>
+                  <rect x="10.6" width="2.8" height="16" fill="#C8102E"></rect>
+                  <rect y="6.9" width="24" height="2.2" fill="#C8102E"></rect>
+                </svg>
+              }
+              @case ('no') {
+                <svg class="lang-stat__flag" viewBox="0 0 24 16" width="20" height="14" aria-hidden="true">
+                  <rect width="24" height="16" fill="#EF2B2D"></rect>
+                  <rect x="6" width="5" height="16" fill="#FFFFFF"></rect>
+                  <rect y="6" width="24" height="4" fill="#FFFFFF"></rect>
+                  <rect x="7.3" width="2.4" height="16" fill="#002868"></rect>
+                  <rect y="6.8" width="24" height="2.4" fill="#002868"></rect>
+                </svg>
+              }
+              @default {
+                <!-- code sin bandera dibujada todavía (ver SpokenLanguage.code en content.model.ts) —
+                     antes caía en el @else de arriba y mostraba la bandera de Reino Unido por error
+                     para cualquier idioma que no fuera "es"; un icono neutro de globo es honesto en
+                     vez de mostrar un país incorrecto. Agregar un @case nuevo cuando haya bandera real. -->
+                <svg class="lang-stat__flag" viewBox="0 0 24 16" width="20" height="14" aria-hidden="true">
+                  <rect width="24" height="16" fill="#3a3f47"></rect>
+                  <circle cx="12" cy="8" r="5" fill="none" stroke="#8a92a0" stroke-width="1"></circle>
+                  <ellipse cx="12" cy="8" rx="2" ry="5" fill="none" stroke="#8a92a0" stroke-width="1"></ellipse>
+                  <line x1="7" y1="8" x2="17" y2="8" stroke="#8a92a0" stroke-width="1"></line>
+                </svg>
+              }
             }
             <span class="lang-stat__name">{{ lang.language }}</span>
             <span class="lang-stat__level">{{ lang.level }}</span>
