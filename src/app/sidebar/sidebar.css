@@ -1,8 +1,7 @@
 /* :host = lo que en el mockup era .sidebar. Centrado (align-items/justify-content) sin
    necesitar el prefijo ".sidebar X" que usaba el mockup para no filtrarse a otras partes
-   del sitio — acá ni hace falta: el encapsulamiento de Angular ya garantiza que estas
-   reglas no le llegan a ningún otro componente (por ejemplo, el timeline de Resume
-   reutiliza la clase .stack-chips para sus propios tags, y no se ve afectado). */
+   del sitio. .chip/.stack-chips SÍ son compartidas de verdad (ver styles.css global) —
+   el timeline de Resume reutiliza esas mismas clases para sus propios tags. */
 :host {
   display: flex;
   flex-direction: column;
@@ -32,8 +31,7 @@
 @keyframes availability-pulse { 0% { transform: scale(0.6); opacity: 0.6; } 100% { transform: scale(1.7); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .availability__dot::after { animation: none; opacity: 0.3; } }
 
-.stack-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; }
-.chip { font-family: var(--font-mono); font-size: 0.7rem; padding: 0.22rem 0.5rem; border-radius: var(--radius); background: var(--chip-bg); color: var(--chip-text); border: var(--chip-border); }
+.stack-chips { justify-content: center; }
 
 .location-time { display: flex; align-items: center; justify-content: center; gap: 0.4rem; margin: 0; padding: 0 1.4rem 1.5rem; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
 .location-time svg { flex: none; }

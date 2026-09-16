@@ -30,7 +30,7 @@
     @if (content().experience.length > 0) {
       <h2 class="cv-section">{{ strings().cvSections.work }}</h2>
       @for (e of content().experience; track e.company + e.startYear) {
-        <p class="cv-entry-title">{{ e.role }} — {{ e.company }}, {{ strings().cvCityPlaceholder }}</p>
+        <p class="cv-entry-title">{{ e.role }} — {{ e.company }}{{ e.city ? ', ' + e.city : '' }}</p>
         <p class="cv-entry-date">{{ expDate(e) }}</p>
         <ul class="cv-bullets">
           @for (a of e.achievements; track a) {
@@ -52,7 +52,7 @@
     @if (content().education.length > 0) {
       <h2 class="cv-section">{{ strings().cvSections.education }}</h2>
       @for (ed of content().education; track ed.org + ed.year) {
-        <p class="cv-entry-title">{{ ed.title }} — {{ ed.org }}, {{ strings().cvCityPlaceholder }}</p>
+        <p class="cv-entry-title">{{ ed.title }} — {{ ed.org }}{{ ed.city ? ', ' + ed.city : '' }}</p>
         <p class="cv-entry-date">{{ ed.year }}</p>
       }
     }

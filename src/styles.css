@@ -61,6 +61,13 @@ a { color: inherit; }
   --badge-bg: rgba(217, 154, 78, 0.16);
 }
 
+/* Global porque .chip/.stack-chips lo usan Sidebar y Resume, dos componentes distintos —
+   una regla definida solo en el CSS de un componente (como estaba antes, solo en
+   sidebar.css) no le llega al otro por el encapsulamiento de Angular, así que quedaba
+   sin estilo real (sin padding/fondo/gap) hasta que hubiera techs reales que renderizar. */
+.stack-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.chip { font-family: var(--font-mono); font-size: 0.7rem; padding: 0.22rem 0.5rem; border-radius: var(--radius); background: var(--chip-bg); color: var(--chip-text); border: var(--chip-border); }
+
 /* the app fills the real viewport exactly and never scrolls itself — only .sidebar and .panels
    (inside the app shell component) scroll internally when their own content overflows, same as
    an installed app would behave rather than a long marketing page */

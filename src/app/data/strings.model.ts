@@ -55,8 +55,6 @@ export interface Strings {
     databases: string;
     tools: string;
   };
-  cvContactPlaceholder: string;
-  cvCityPlaceholder: string;
   emailTitle: string;
   githubTitle: string;
   linkedinTitle: string;

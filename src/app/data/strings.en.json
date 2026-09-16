@@ -49,8 +49,6 @@
     "databases": "Databases:",
     "tools": "Tools & Practices:"
   },
-  "cvContactPlaceholder": "[City, Country]",
-  "cvCityPlaceholder": "[City]",
   "emailTitle": "Email",
   "githubTitle": "GitHub",
   "linkedinTitle": "LinkedIn",

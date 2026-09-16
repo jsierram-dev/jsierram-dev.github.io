@@ -61,6 +61,8 @@ export interface Project {
 export interface ExperienceEntry {
   role: string;
   company: string;
+  /** Shown on the CV as "Company, City"; empty string omits it instead of showing a placeholder. */
+  city: string;
   link: string;
   startMonth: string;
   startYear: string;
@@ -76,6 +78,8 @@ export interface ExperienceEntry {
 export interface EducationEntry {
   title: string;
   org: string;
+  /** Shown on the CV as "Org, City"; empty string omits it instead of showing a placeholder. */
+  city: string;
   month: string;
   year: string;
   desc: string;

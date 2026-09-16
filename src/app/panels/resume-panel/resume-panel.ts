@@ -122,13 +122,21 @@ export class ResumePanelComponent {
   }
 
   /** Encabezado "# EXPERIENCE 2026 – 2018" — año más reciente y más antiguo de TODA la
-   *  lista (no solo la parte visible), a partir del propio dateText (el año son los
-   *  últimos 4 caracteres siempre, tanto "JAN 2024 – PRESENT" como "2023" a secas). */
+   *  lista (no solo la parte visible), a partir del propio dateText. Los últimos 4
+   *  caracteres son el año salvo cuando termina en "PRESENT"/"PRESENTE" (entrada
+   *  "current"), caso que hay que detectar aparte — slice(-4) a ciegas cortaba
+   *  "PRESENT" en "SENT", bug invisible mientras experience/education estuvieron
+   *  vacíos y nunca se ejercitó una entrada "current" real. */
+  private yearLabel(dateText: string): string {
+    const present = this.strings().present;
+    return dateText.endsWith(present) ? present : dateText.slice(-4);
+  }
+
   yearRange(key: TimelineKey): string {
     const rows = this.rowsFor(key);
     if (rows.length === 0) return '';
-    const firstYear = rows[0].dateText.slice(-4);
-    const lastYear = rows[rows.length - 1].dateText.slice(-4);
+    const firstYear = this.yearLabel(rows[0].dateText);
+    const lastYear = this.yearLabel(rows[rows.length - 1].dateText);
     return firstYear === lastYear ? firstYear : `${firstYear} – ${lastYear}`;
   }
 

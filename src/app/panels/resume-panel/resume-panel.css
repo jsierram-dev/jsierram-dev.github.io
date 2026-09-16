@@ -13,7 +13,6 @@
 .timeline__title svg { flex: none; color: var(--muted); }
 .timeline__date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.02em; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .timeline__desc { margin: 0 0 0.75rem; font-size: 0.85rem; color: var(--muted); line-height: 1.6; max-width: 52ch; }
-.timeline__entry .stack-chips { gap: 0.4rem; }
 
 /* "ver más" — una parada hueca más sobre la misma ruta punteada, en vez de un botón aparte,
    para que la ruta se sienta continua */
