@@ -30,6 +30,10 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # trae el heatmap de contribuciones real (github.com/users/<login>/contributions, público,
+      # sin token) justo antes de buildear — ver scripts/fetch-github-activity.mjs. No falla el
+      # deploy si GitHub no responde: ese script deja el JSON ya commiteado tal cual.
+      - run: npm run fetch:github
       - run: npm run build
       # `outputMode: "static"` en angular.json ya prerenderiza todo en dist/portfolio-app/browser
       # — no hace falta un paso de export/render aparte.

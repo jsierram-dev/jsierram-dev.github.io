@@ -32,7 +32,7 @@
     <span>{{ githubActivityLabel() }}</span>
   </p>
   <div class="github-activity__grid">
-    @for (week of githubGrid(); track $index) {
+    @for (week of githubGrid; track $index) {
       <div class="github-activity__week">
         @for (day of week; track $index) {
           <span [style.background]="levelColors[day.level]"></span>
