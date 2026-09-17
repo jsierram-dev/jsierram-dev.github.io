@@ -2,6 +2,7 @@ import { Component, computed, effect, inject, signal } from '@angular/core';
 import { LanguageService } from '../../core/language.service';
 import { NavigationService } from '../../core/navigation.service';
 import { TechIconComponent } from '../../shared/tech-icon/tech-icon';
+import { ClampedTextComponent } from '../../shared/clamped-text/clamped-text';
 import type { StackLayer } from '../../data/content.model';
 
 type TimelineKey = 'experience' | 'education' | 'certifications';
@@ -31,7 +32,7 @@ interface StackRow {
  */
 @Component({
   selector: 'app-resume-panel',
-  imports: [TechIconComponent],
+  imports: [TechIconComponent, ClampedTextComponent],
   templateUrl: './resume-panel.html',
   styleUrl: './resume-panel.css',
 })

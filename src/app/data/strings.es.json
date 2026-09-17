@@ -10,6 +10,8 @@
   "sectionLanguages": "Idiomas",
   "showMore": "Ver {n} más",
   "showLess": "Ver menos",
+  "readMore": "Leer más",
+  "readLess": "Leer menos",
   "categoryAll": "Todos",
   "layerLabels": {
     "fe": "Frontend",

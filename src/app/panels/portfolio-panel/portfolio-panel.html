@@ -90,7 +90,14 @@
 
         <dl class="project-detail__section">
           <dt>{{ strings().problem }}</dt>
-          <dd>{{ project.problem }}</dd>
+          <dd>
+            <app-clamped-text
+              variant="detail"
+              [text]="project.problem"
+              [expandLabel]="strings().readMore"
+              [collapseLabel]="strings().readLess"
+            />
+          </dd>
         </dl>
 
         <div class="project-detail__outcome">
@@ -100,7 +107,14 @@
 
         <dl class="project-detail__section">
           <dt>{{ strings().role }}</dt>
-          <dd>{{ project.role }}</dd>
+          <dd>
+            <app-clamped-text
+              variant="detail"
+              [text]="project.role"
+              [expandLabel]="strings().readMore"
+              [collapseLabel]="strings().readLess"
+            />
+          </dd>
         </dl>
 
         <div class="project-detail__links">

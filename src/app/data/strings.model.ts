@@ -16,6 +16,10 @@ export interface Strings {
   /** Has a "{n}" placeholder, replaced with the hidden-entry count at render time. */
   showMore: string;
   showLess: string;
+  /** Toggle label for a single clamped text block (app-clamped-text) — distinct from
+   *  showMore/showLess, which page through a *list* of hidden entries instead. */
+  readMore: string;
+  readLess: string;
   categoryAll: string;
   layerLabels: {
     fe: string;

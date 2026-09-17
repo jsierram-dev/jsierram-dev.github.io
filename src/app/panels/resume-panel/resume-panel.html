@@ -25,7 +25,12 @@
               <span class="timeline__date">{{ row.dateText }}</span>
             </div>
             @if (row.desc) {
-              <p class="timeline__desc">{{ row.desc }}</p>
+              <app-clamped-text
+                variant="timeline"
+                [text]="row.desc"
+                [expandLabel]="strings().readMore"
+                [collapseLabel]="strings().readLess"
+              />
             }
             @if (row.techs.length > 0) {
               <div class="stack-chips">
