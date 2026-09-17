@@ -85,6 +85,11 @@ app-clamped-text { margin-bottom: 0.75rem; }
 @media (max-width: 720px) {
   .timeline__section, .timeline__row { justify-content: center; }
   .lang-stats, .tech-stats { justify-content: center; margin-left: auto; margin-right: auto; }
+  /* pedido explícito (2026-09-18): en móvil, cada fila de idioma vuelve a alinearse a la
+     izquierda en vez de centrada — con "English / B1 (working towards B2)" el bloque
+     centrado quedaba descentrado visualmente respecto a las filas más cortas. El bloque
+     .lang-stats en sí sigue centrado (regla de arriba), solo el contenido de cada fila. */
+  .lang-stat { justify-content: flex-start; }
   /* la ruta punteada es una metáfora de "camino" alineada a la izquierda a propósito — se
      centra como bloque completo, no dot por dot (ver ROADMAP-portfolio.md punto 19) */
   .timeline__group { text-align: left; max-width: 420px; margin: 0 auto; }
