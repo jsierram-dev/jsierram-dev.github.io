@@ -1,3 +1,9 @@
+/* el límite global de 720px (.panel, styles.css) es para prosa suelta (About) — acá el
+   propio texto ya se autolimita en ch (.timeline/.detail en clamped-text.ts, 52/62ch),
+   así que el contenedor no necesita ese tope: solo achica la timeline en pantallas anchas
+   dejando un hueco vacío al lado, sin ganar nada en legibilidad. */
+.panel { max-width: none; }
+
 .timeline__section {
   font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--muted); margin: 1.6rem 0 1.2rem; display: flex; align-items: baseline; gap: 0.7rem;
@@ -12,7 +18,11 @@
 .timeline__title { margin: 0; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; text-wrap: balance; }
 .timeline__title svg { flex: none; color: var(--muted); }
 .timeline__date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.02em; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.timeline__desc { margin: 0 0 0.75rem; font-size: 0.85rem; color: var(--muted); line-height: 1.6; max-width: 52ch; }
+/* app-clamped-text es un componente propio (ver shared/clamped-text) — su :host recibe
+   el margen desde acá afuera, mismo patrón que "app-sidebar { ... }" en app.css: un padre
+   sí puede estilar el host de un hijo por su nombre de tag, aunque no pueda tocar lo que
+   hay DENTRO de la plantilla encapsulada de ese hijo. */
+app-clamped-text { margin-bottom: 0.75rem; }
 
 /* "ver más" — una parada hueca más sobre la misma ruta punteada, en vez de un botón aparte,
    para que la ruta se sienta continua */
@@ -50,7 +60,9 @@
 .lang-stat__name { flex: 1; font-size: 0.87rem; }
 .lang-stat__level { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
 
-.tech-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.35rem 2.25rem; max-width: 480px; }
+/* auto-fit en vez de 2 columnas fijas — con el panel ya sin límite de ancho, 2 columnas
+   fijas solo hubieran quedado más separadas entre sí sin aprovechar el espacio nuevo */
+.tech-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.35rem 2.25rem; max-width: 900px; }
 @media (max-width: 460px) { .tech-stats { grid-template-columns: 1fr; } }
 .tech-stat {
   display: flex; align-items: center; gap: 0.6rem; padding: 0.5rem 0.6rem; width: 100%; min-width: 0; text-align: left;

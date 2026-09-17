@@ -1,3 +1,8 @@
+/* mismo criterio que resume-panel.css: el límite global de 720px es para prosa suelta,
+   acá .cv-page ya tiene su propio ancho de "página" (ver abajo) — el panel de fondo puede
+   usar todo el espacio disponible sin que la página en sí se estire. */
+.panel { max-width: none; }
+
 .cv-header-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.3rem; flex-wrap: wrap; }
 .cv-header-row .panel-heading { margin: 0; }
 
@@ -13,8 +18,8 @@
 /* documento blanco/negro a propósito, no el chrome oscuro del resto del sitio — es literalmente
    lo que se sube a un portal de empleo o se manda por email (ver ROADMAP-portfolio.md "CV") */
 .cv-page {
-  background: #fdfdfb; color: #1a1a1a; padding: 2.3rem 2.5rem; border-radius: 2px;
-  max-width: 640px; margin: 0 auto; font-family: "Segoe UI", system-ui, sans-serif;
+  background: #fdfdfb; color: #1a1a1a; padding: 2.6rem 3.2rem; border-radius: 2px;
+  max-width: 900px; margin: 0 auto; font-family: "Segoe UI", system-ui, sans-serif;
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
 }
 .cv-name { font-size: 1.4rem; font-weight: 800; margin: 0 0 0.15rem; }

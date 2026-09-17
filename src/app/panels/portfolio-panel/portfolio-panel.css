@@ -1,9 +1,10 @@
 /* Portfolio es una grilla de tarjetas, no texto de lectura — el límite compartido de 720px
    (.panel, styles.css) pensado para prosa la dejaba en solo 2 columnas sin importar cuánto
-   ancho hubiera; con más entran 4 cómodas sin perder legibilidad de cada tarjeta. El
-   encapsulamiento de Angular hace que esta regla, más específica por el atributo de scope
-   que Angular le agrega, le gane a la global de 720px sin necesitar !important. */
-.panel { max-width: 1160px; }
+   ancho hubiera. 1400px iguala el ancho real que ya usan Resume/CV (ambos sin tope propio)
+   para que el contenido no "salte" de ancho al cambiar de pestaña. El encapsulamiento de
+   Angular hace que esta regla, más específica por el atributo de scope que Angular le
+   agrega, le gane a la global de 720px sin necesitar !important. */
+.panel { max-width: 1400px; }
 
 .portfolio-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.9rem; margin-bottom: 1.3rem; }
 .category-tabs { display: flex; flex-wrap: wrap; gap: 1.3rem; }
@@ -20,7 +21,13 @@
 /* auto-fit, no auto-fill — con pocos proyectos, auto-fill reserva columnas vacías invisibles
    en vez de estirar las tarjetas que sí hay (bug real encontrado en el mockup, ver
    ROADMAP-portfolio.md punto 32) */
-.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+/* minmax(240px, 340px) en vez de (240px, 1fr): con .panel ahora ancho (1400px) y pocos
+   proyectos (hoy 2), un tope de 1fr por columna estira cada tarjeta a la mitad del panel
+   entero, dejando un hueco enorme y vacío DENTRO de cada una en vez de simplemente no
+   llenar la fila. Con un tope superior fijo, las columnas usadas se quedan al tamaño del
+   mockup sin importar el ancho del panel, y el espacio sobrante de la fila queda afuera
+   (normal en cualquier grid con pocos elementos) en vez de deformar cada tarjeta. */
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 340px)); gap: 1rem; }
 .project-card {
   text-align: left; background: var(--card-bg); border: var(--card-border); border-radius: var(--radius);
   overflow: hidden; display: flex; flex-direction: column; transition: transform 0.15s ease, border-color 0.15s ease;
@@ -93,7 +100,9 @@
 
 .project-detail__section dt { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 1.1rem 0 0.35rem; }
 .project-detail__section dt:first-child { margin-top: 0; }
-.project-detail__section dd { margin: 0; font-size: 0.92rem; line-height: 1.65; max-width: 62ch; }
+/* tipografía real (font-size/line-height/max-width) vive en app-clamped-text ahora
+   (shared/clamped-text, variant="detail") — dd solo resetea su margen de <dl> */
+.project-detail__section dd { margin: 0; }
 
 /* Outcome destacado en su propio bloque, no un dt/dd más — llevar el resultado antes que el
    proceso es justamente el punto del rediseño (ver comentario más arriba) */
