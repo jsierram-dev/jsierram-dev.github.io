@@ -1,9 +1,9 @@
 {
   "profile": {
-    "role": "full-stack developer",
+    "role": "Full-Stack Developer",
     "location": "Alicante, Spain",
     "timezone": "Europe/Madrid",
-    "photo": null,
+    "photo": "/photo.jpeg",
     "about": [
       "Full-stack developer focused on building complete products end to end: data model, backend, and the interface that connects them. My most recent project, similart, is a real-time multiplayer drawing game — the same stack that powers this site.",
       "I'm particularly interested in work where backend and frontend are designed together from the start, not separately."
@@ -13,9 +13,9 @@
       "summary": "",
       "skills": {
         "languages": "TypeScript, JavaScript",
-        "frontend": "Angular, HTML5, CSS3",
-        "backend": "Node.js, Express, Socket.IO, REST APIs",
-        "databases": "PostgreSQL, Neon",
+        "frontend": "Angular, HTML5, CSS3, React",
+        "backend": "Node.js, Express, Socket.IO, Spring Boot, Java",
+        "databases": "Oracle, SQLite, PostgreSQL",
         "tools": "Git, CI/CD, Agile/Scrum"
       }
     }
@@ -24,7 +24,7 @@
   "projects": [
     {
       "key": "similart",
-      "title": "similart",
+      "title": "Similart",
       "category": "Full-Stack",
       "date": "2026-07-27",
       "featured": true,
@@ -57,19 +57,165 @@
         { "name": "Angular", "layer": "fe", "primary": true },
         { "name": "TypeScript", "layer": "fe" }
       ],
-      "problem": "I needed a portfolio built to get interviews, not just to look good — most developer portfolios are designed backwards.",
+      "problem": "I needed a portfolio built to get interviews, not just to look good.",
       "role": "Full planning before writing any code: research into what recruiters actually look at, and performance decisions documented from day one.",
       "outcome": "A 100% static site (Angular + JSON, no backend or database), prerendered and hosted on GitHub Pages — a complete, shareable technical roadmap, with every decision traceable to a concrete reason.",
       "cvBullet": null
     }
   ],
 
-  "experience": [],
-  "education": [],
-  "certifications": [],
+  "experience": [
+    {
+      "role": "Full Stack Developer",
+      "company": "NTT DATA",
+      "city": "San Juan Beach Alicante",
+      "link": "https://es.nttdata.com/",
+      "startMonth": "Jun",
+      "startYear": "2024",
+      "current": true,
+      "desc": "Development and management of business tools for employees, and creation of professional documentation for our projects.",
+      "achievements": [
+        "Gained hands-on experience with Spring Boot, Socket.IO and Angular.",
+        "Learned how to work in a teleworking environment."
+      ],
+      "techs": ["Java", "Spring Boot", "Angular", "Socket.IO", "GitLab", "Microsoft Azure", "Oracle SQL", "PostgreSQL", "MongoDB"]
+    },
+    {
+      "role": "Shop Assistant",
+      "company": "Todo Hogar Express Comercial Pasmer SLU",
+      "city": "Petrer",
+      "link": "https://www.facebook.com/TodoHogarExpressEldaPetrer/?locale=es_ES",
+      "startMonth": "Mar",
+      "startYear": "2022",
+      "endMonth": "Sep",
+      "endYear": "2023",
+      "current": false,
+      "desc": "Store assistant, food stocker, food handler and store management",
+      "achievements": [
+        "Gained confidence in customer service, speaking with customers and offering solutions for any challenge.",
+        "Gained the trust of colleagues to handle difficult tasks."
+      ],
+      "techs": ["Food Stocker", "Store Management"]
+    },
+    {
+      "role": "IT Support",
+      "company": "IVS Computer Solutions",
+      "city": "Sax",
+      "link": "https://infovillesax.com/",
+      "startMonth": "Mar",
+      "startYear": "2021",
+      "endMonth": "Jun",
+      "endYear": "2021",
+      "current": false,
+      "desc": "Repair and installation of devices, management of invoices and orders from the store database, and IT-related customer support.",
+      "achievements": [
+        "Provided IT support and repaired devices for retail customers.",
+        "Managed invoices and orders through the store's database system."
+      ],
+      "techs": ["IT Support", "Computer management"]
+    }
+  ],
+  "education": [
+    {
+      "title": "Higher Vocational Training Certificate in Web Application Development (DAW)",
+      "org": "IES Poeta Paco Mollá",
+      "city": "Petrer",
+      "month": "Jun",
+      "year": "2024",
+      "desc": "Covered programming, client-server development, databases, application environments, English (B2 level), and business and entrepreneurial initiative.",
+      "techs": ["Java", "PHP", "JavaScript", "React", "Docker", "Oracle SQL Developer", "NoSQL", "MongoDB", "GitHub"]
+    },
+    {
+      "title": "Vocational Training Certificate in Microcomputer Systems and Networks (SMR)",
+      "org": "IES Poeta Paco Mollá",
+      "city": "Petrer",
+      "month": "Jun",
+      "year": "2021",
+      "desc": "Covered computer management, computer life cycle, and terminal use for creating and managing servers, databases, and markup/styling languages.",
+      "techs": ["Computer Management", "Computer solutions", "SQL Server", "HTML5", "CSS3", "CMD", "Powershell", "Linux environment", "Windows environment"]
+    },
+    {
+      "title": "(ESO) Compulsory Secondary Education",
+      "org": "IES Azorín",
+      "city": "Petrer",
+      "month": "Jun",
+      "year": "2019",
+      "desc": "Education stage for students aged 12 to 16, developing academic skills and preparing for higher education.",
+      "techs": ["English", "Valencian (language)", "Biology", "Technology", "Humanities", "IT", "Teamwork", "Maths"]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Introduction to AI Development",
+      "issuer": "Big School",
+      "year": "2026",
+      "url": "https://www.linkedin.com/in/juan-pablo-sierra-amariles-aa6b85209/overlay/Certifications/1730789373/treasury?profileId=ACoAADUIg94B8e6iO9L8XllSS6eNqdDFNxybD9Y"
+    },
+    {
+      "name": "Deploy your Spring Boot application with Docker",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/cWZf"
+    },
+    {
+      "name": "MongoDB Course: Creating and Managing NoSQL Databases",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/8PEg"
+    },
+    {
+      "name": "Angular Fundamentals",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/bcuw"
+    },
+    {
+      "name": "Spring Core 5 Course",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/CZ5T"
+    },
+    {
+      "name": "Java from 0: Introduction",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/RlvM"
+    },
+    {
+      "name": "PHP Fundamentals",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/Bymp"
+    },
+    {
+      "name": "Introduction to the Spring Framework",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/T74h"
+    },
+    {
+      "name": "Cisco Certified Network Associate Routing and Switching (CCNA)",
+      "issuer": "Cisco",
+      "year": "2020",
+      "url": "https://www.linkedin.com/in/juan-pablo-sierra-amariles-aa6b85209/overlay/Certifications/2035564578/treasury?profileId=ACoAADUIg94B8e6iO9L8XllSS6eNqdDFNxybD9Y"
+    },
+    {
+      "name": "AWS Academy Graduate - AWS Academy Cloud Foundations",
+      "issuer": "Amazon Web Services (AWS)",
+      "year": "2023",
+      "url": "https://www.linkedin.com/in/juan-pablo-sierra-amariles-aa6b85209/overlay/Certifications/2032661357/treasury?profileId=ACoAADUIg94B8e6iO9L8XllSS6eNqdDFNxybD9Y"
+    },
+    {
+      "name": "PostgreSQL Course: Installation, Configuration, and Optimization",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/99zK"
+    }
+  ],
 
   "languages": [
     { "code": "es", "language": "Spanish", "level": "Native" },
-    { "code": "en", "language": "English", "level": "B1" }
+    { "code": "en", "language": "English", "level": "B1 (working towards B2)" },
+    { "code": "no", "language": "Norwegian", "level": "Studying" }
   ]
 }
