@@ -102,7 +102,7 @@
       "current": true,
       "desc": "Desarrollo y mantenimiento de herramientas internas para los empleados, además de creación de documentación técnica de nuestros proyectos.",
       "achievements": [
-        "Adquirí experiencia práctica con Spring Boot, Socket.IO y Angular.",
+        "Desarrollé una aplicación interna en tiempo real (Angular, Socket.IO) junto a un equipo de 3 compañeros, adoptada por toda la empresa.",
         "Aprendí a trabajar en un entorno de teletrabajo."
       ],
       "techs": [

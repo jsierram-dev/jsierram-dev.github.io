@@ -75,7 +75,7 @@
       "current": true,
       "desc": "Development and management of business tools for employees, and creation of professional documentation for our projects.",
       "achievements": [
-        "Gained hands-on experience with Spring Boot, Socket.IO and Angular.",
+        "Built a real-time internal application (Angular, Socket.IO) together with a team of 3 colleagues, adopted company-wide.",
         "Learned how to work in a teleworking environment."
       ],
       "techs": ["Java", "Spring Boot", "Angular", "Socket.IO", "GitLab", "Microsoft Azure", "Oracle SQL", "PostgreSQL", "MongoDB"]
