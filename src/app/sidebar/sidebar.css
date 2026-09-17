@@ -13,13 +13,16 @@
 }
 
 .sidebar__identity { padding: 1.8rem 1.4rem 1.4rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-/* 52px -> 88px (2026-09-17, pedido explícito): apenas se veía a zoom 100% */
-.avatar { width: 88px; height: 88px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 1.8rem; background: var(--accent); color: var(--avatar-text); border-radius: var(--radius); overflow: hidden; }
+/* 52px -> 88px -> 130px (2026-09-17/18, pedido explícito): apenas se veía a zoom 100% */
+.avatar { width: 130px; height: 130px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: 2.6rem; background: var(--accent); color: var(--avatar-text); border-radius: var(--radius); overflow: hidden; }
 /* con foto real (profile.photo, ver content.model.ts): llena el mismo cuadrado que las
    iniciales, recortada — sin foto, .avatar sigue mostrando "JP" como hasta ahora */
 .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.identity h2 { font-family: var(--font-display); margin: 0 0 0.15rem; font-size: 1.15rem; text-wrap: balance; }
-.identity .role { margin: 0; font-size: 0.8rem; color: var(--muted); font-family: var(--font-mono); letter-spacing: 0.03em; }
+/* text-align:center además de align-items:center del contenedor: el nombre completo
+   "Juan Pablo Sierra Amariles" envuelve a 2 líneas acá, y sin esto cada línea quedaba
+   pegada a la izquierda dentro del bloque centrado en vez de centrada ella misma. */
+.identity h2 { font-family: var(--font-display); margin: 0 0 0.15rem; font-size: 1.15rem; text-align: center; text-wrap: balance; }
+.identity .role { margin: 0; font-size: 0.8rem; color: var(--muted); font-family: var(--font-mono); letter-spacing: 0.03em; text-align: center; }
 
 /* badge de disponibilidad — mismo verde ya existente en la paleta (--accent-strong) en vez
    de un color nuevo, mismo lenguaje visual que el punto verde "open to work" de LinkedIn */
