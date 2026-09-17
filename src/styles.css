@@ -30,6 +30,15 @@ a { color: inherit; }
   src: url("/fonts/cascadia-code-700.woff2") format("woff2");
 }
 
+/* Root font-size 112.5% = 18px (was the 16px browser default) — the whole site is built in
+   rem, so this one lever scales nearly everything else with it (spacing included, most
+   paddings/gaps are rem too), keeping every existing ratio/hierarchy intact instead of
+   hand-editing dozens of individual font-size rules. Bumped 2026-09-18: at 100% browser
+   zoom the actual rendered body prose (.panel p) was 0.93rem = 14.9px, under the ~16px
+   floor every mainstream guideline (Apple HIG, Material, Lighthouse's own minimum-font-size
+   audit) gives for comfortable reading — the user had to zoom in to read comfortably. */
+html { font-size: 112.5%; }
+
 /* ---------- design tokens ----------
    Single fixed dark palette, not theme-aware (no prefers-color-scheme / [data-theme] toggle) —
    this is a deliberate carry-over from the design mockup, not an oversight: the "IDE" look was
