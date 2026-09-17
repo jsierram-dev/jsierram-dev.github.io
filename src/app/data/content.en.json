@@ -5,12 +5,12 @@
     "timezone": "Europe/Madrid",
     "photo": "/photo.jpeg",
     "about": [
-      "Full-stack developer focused on building complete products end to end: data model, backend, and the interface that connects them. My most recent project, similart, is a real-time multiplayer drawing game — the same stack that powers this site.",
-      "I'm particularly interested in work where backend and frontend are designed together from the start, not separately."
+      "I'm a full-stack developer based in Alicante, Spain, currently working at NTT DATA. I build and maintain business tools for employees using Angular, Spring Boot and Java, and I also write technical documentation for our projects.",
+      "I like projects where the backend and the frontend are designed together, not separately. My most recent personal project, similart, is a real-time multiplayer drawing game built with Angular, Express and Socket.IO — the same stack that powers this site."
     ],
     "cv": {
       "role": "Full Stack Developer",
-      "summary": "",
+      "summary": "Full-stack developer with professional experience at NTT DATA, working with Angular, Spring Boot and Java. I have a Higher Vocational Training Certificate in Web Application Development, and I also build personal full-stack projects like similart, a real-time multiplayer game. I enjoy working on both backend and frontend, and I am always learning new technologies.",
       "skills": {
         "languages": "TypeScript, JavaScript",
         "frontend": "Angular, HTML5, CSS3, React",
@@ -39,10 +39,10 @@
         { "name": "PostgreSQL", "layer": "db", "primary": true },
         { "name": "Google OAuth", "layer": "tp", "primary": true }
       ],
-      "problem": "I wanted a project that combined real-time synchronization, image processing, and a game mechanic simple to explain but interesting to build.",
-      "role": "Solo full-stack design and development: architecture for the three backend services, real-time synchronization logic, and the full drawing interface in Angular.",
-      "outcome": "Fully playable end to end for 1 to 12 players, with reconnection, an admin panel, and a timed voting phase with a real countdown.",
-      "cvBullet": "Real-time multiplayer drawing game with % similarity scoring, for 1 to 12 players — Angular, Express, Socket.IO, PostgreSQL."
+      "problem": "I wanted to build a project with real-time features, image processing, and a game that is easy to explain but fun to build.",
+      "role": "I designed and developed the full project alone: the three backend services, the real-time logic, and the drawing interface in Angular.",
+      "outcome": "The game works from start to end for 1 to 12 players, with reconnection, an admin panel, and a voting phase with a real countdown.",
+      "cvBullet": "Real-time multiplayer drawing game with % similarity score, for 1 to 12 players. Built with Angular, Express, Socket.IO and PostgreSQL."
     },
     {
       "key": "portfolio",
@@ -57,9 +57,9 @@
         { "name": "Angular", "layer": "fe", "primary": true },
         { "name": "TypeScript", "layer": "fe" }
       ],
-      "problem": "I needed a portfolio built to get interviews, not just to look good.",
-      "role": "Full planning before writing any code: research into what recruiters actually look at, and performance decisions documented from day one.",
-      "outcome": "A 100% static site (Angular + JSON, no backend or database), prerendered and hosted on GitHub Pages — a complete, shareable technical roadmap, with every decision traceable to a concrete reason.",
+      "problem": "I wanted a portfolio that helps me get interviews, not just a website that looks nice. Most developer portfolios are not built with that goal.",
+      "role": "I planned everything before writing any code: I researched what recruiters really look at, and I wrote down every performance decision from day one.",
+      "outcome": "A 100% static website (Angular and JSON only, no backend or database), pre-rendered and hosted on GitHub Pages. It works as a technical roadmap I can share, with a clear reason behind every decision.",
       "cvBullet": null
     }
   ],
