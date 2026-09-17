@@ -15,11 +15,13 @@
             <span class="timeline__dot"></span>
             <div class="timeline__row">
               <h4 class="timeline__title">
-                {{ row.titleText }}
                 @if (row.link) {
-                  <a [href]="row.link" aria-hidden="true" tabindex="-1">
-                    <svg width="12" height="12" viewBox="0 0 12 12"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  <a [href]="row.link">
+                    {{ row.titleText }}
+                    <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                   </a>
+                } @else {
+                  {{ row.titleText }}
                 }
               </h4>
               <span class="timeline__date">{{ row.dateText }}</span>

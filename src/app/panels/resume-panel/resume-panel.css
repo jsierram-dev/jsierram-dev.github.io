@@ -16,6 +16,10 @@
 .timeline__dot { position: absolute; left: -1.56rem; top: 4px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px var(--bg); }
 .timeline__row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.45rem; }
 .timeline__title { margin: 0; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; text-wrap: balance; }
+/* antes solo el ícono de flecha era el <a>, con el título como texto suelto al lado —
+   pedido explícito: que todo el título sea pulsable, no solo un ícono de 12px. */
+.timeline__title a { display: inline-flex; align-items: center; gap: 0.4rem; color: inherit; text-decoration: none; }
+.timeline__title a:hover { text-decoration: underline; }
 .timeline__title svg { flex: none; color: var(--muted); }
 .timeline__date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.02em; white-space: nowrap; font-variant-numeric: tabular-nums; }
 /* app-clamped-text es un componente propio (ver shared/clamped-text) — su :host recibe
@@ -55,9 +59,14 @@ app-clamped-text { margin-bottom: 0.75rem; }
 }
 
 .lang-stats { display: flex; flex-direction: column; gap: 0.35rem; max-width: 340px; }
-.lang-stat { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0.6rem; }
+/* .lang-stat__name tenía flex:1, empujando el nivel siempre al borde derecho del bloque —
+   con "B1 (working towards B2)" eso dejaba un hueco enorme entre nombre y nivel en fila
+   corta como "Spanish ... Native", y se notaba más en móvil. Ahora bandera+nombre+nivel
+   quedan agrupados y ese grupo se centra como un solo bloque, sin importar cuánto mida
+   el nivel de cada idioma. */
+.lang-stat { display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.5rem 0.6rem; }
 .lang-stat__flag { flex: none; border-radius: 2px; }
-.lang-stat__name { flex: 1; font-size: 0.87rem; }
+.lang-stat__name { font-size: 0.87rem; }
 .lang-stat__level { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); white-space: nowrap; }
 
 /* auto-fit en vez de 2 columnas fijas — con el panel ya sin límite de ancho, 2 columnas
