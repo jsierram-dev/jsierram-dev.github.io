@@ -3,28 +3,27 @@
     "role": "desarrollador full-stack",
     "location": "Alicante, España",
     "timezone": "Europe/Madrid",
-    "photo": null,
+    "photo": "/photo.jpeg",
     "about": [
-      "Desarrollador full-stack enfocado en construir productos completos de punta a punta: modelo de datos, backend y la interfaz que los conecta. Mi proyecto más reciente, similart, es un juego de dibujo multijugador en tiempo real — el mismo stack que sostiene este sitio.",
-      "Me interesa particularmente el trabajo donde backend y frontend se diseñan juntos desde el principio, no por separado."
+      "Soy desarrollador full-stack y vivo en Alicante. Actualmente trabajo en NTT DATA, donde desarrollo y mantengo herramientas internas para los empleados con Angular, Spring Boot y Java, además de redactar documentación técnica de nuestros proyectos.",
+      "Me gustan los proyectos donde el backend y el frontend se piensan juntos desde el principio, no por separado. Mi proyecto personal más reciente, similart, es un juego de dibujo multijugador en tiempo real hecho con Angular, Express y Socket.IO — el mismo stack que sostiene esta web."
     ],
     "cv": {
       "role": "Desarrollador Full Stack",
-      "summary": "",
+      "summary": "Desarrollador full-stack con experiencia profesional en NTT DATA, trabajando con Angular, Spring Boot y Java. Tengo el Grado Superior en Desarrollo de Aplicaciones Web (DAW) y también desarrollo proyectos full-stack por mi cuenta, como similart, un juego multijugador en tiempo real. Me gusta trabajar tanto en el backend como en el frontend, y sigo aprendiendo tecnologías nuevas.",
       "skills": {
         "languages": "TypeScript, JavaScript",
-        "frontend": "Angular, HTML5, CSS3",
-        "backend": "Node.js, Express, Socket.IO, REST APIs",
-        "databases": "PostgreSQL, Neon",
+        "frontend": "Angular, HTML5, CSS3, React",
+        "backend": "Node.js, Express, Socket.IO, Spring Boot, Java",
+        "databases": "Oracle, SQLite, PostgreSQL",
         "tools": "Git, CI/CD, Agile/Scrum"
       }
     }
   },
-
   "projects": [
     {
       "key": "similart",
-      "title": "similart",
+      "title": "Similart",
       "category": "Full-Stack",
       "date": "2026-07-27",
       "featured": true,
@@ -32,17 +31,39 @@
       "liveUrl": "#",
       "repoUrl": "#",
       "techs": [
-        { "name": "Angular", "layer": "fe", "primary": true },
-        { "name": "TypeScript", "layer": "fe" },
-        { "name": "Express", "layer": "be", "primary": true },
-        { "name": "Socket.IO", "layer": "be" },
-        { "name": "PostgreSQL", "layer": "db", "primary": true },
-        { "name": "Google OAuth", "layer": "tp", "primary": true }
+        {
+          "name": "Angular",
+          "layer": "fe",
+          "primary": true
+        },
+        {
+          "name": "TypeScript",
+          "layer": "fe"
+        },
+        {
+          "name": "Express",
+          "layer": "be",
+          "primary": true
+        },
+        {
+          "name": "Socket.IO",
+          "layer": "be"
+        },
+        {
+          "name": "PostgreSQL",
+          "layer": "db",
+          "primary": true
+        },
+        {
+          "name": "Google OAuth",
+          "layer": "tp",
+          "primary": true
+        }
       ],
-      "problem": "Quería un proyecto que combinara sincronización en tiempo real, procesamiento de imágenes y una mecánica de juego simple de explicar pero interesante de construir.",
-      "role": "Diseño y desarrollo full-stack en solitario: arquitectura de los tres servicios backend, lógica de sincronización en tiempo real, e interfaz de dibujo completa en Angular.",
-      "outcome": "Jugable de punta a punta para 1 a 12 jugadores, con reconexión, panel de administración y una fase de votación de duración de ronda con temporizador real.",
-      "cvBullet": "Juego de dibujo multijugador en tiempo real con puntuación por % de similitud, para 1 a 12 jugadores — Angular, Express, Socket.IO, PostgreSQL."
+      "problem": "Quería construir un proyecto con funcionalidades en tiempo real, procesamiento de imágenes y una mecánica de juego fácil de explicar pero interesante de construir.",
+      "role": "Diseñé y desarrollé todo el proyecto en solitario: los tres servicios de backend, la lógica en tiempo real y la interfaz de dibujo en Angular.",
+      "outcome": "El juego funciona de principio a fin para entre 1 y 12 jugadores, con reconexión, un panel de administración y una fase de votación con cuenta atrás real.",
+      "cvBullet": "Juego de dibujo multijugador en tiempo real con puntuación por % de similitud, para 1 a 12 jugadores. Hecho con Angular, Express, Socket.IO y PostgreSQL."
     },
     {
       "key": "portfolio",
@@ -54,22 +75,230 @@
       "liveUrl": "#",
       "repoUrl": "#",
       "techs": [
-        { "name": "Angular", "layer": "fe", "primary": true },
-        { "name": "TypeScript", "layer": "fe" }
+        {
+          "name": "Angular",
+          "layer": "fe",
+          "primary": true
+        },
+        {
+          "name": "TypeScript",
+          "layer": "fe"
+        }
       ],
-      "problem": "Necesitaba un portfolio pensado para conseguir entrevistas, no solo para verse bien — la mayoría de los portfolios de developer se diseñan al revés.",
-      "role": "Planificación completa antes de escribir código: research sobre qué mira un reclutador, y decisiones de performance documentadas desde el día uno.",
-      "outcome": "Sitio 100% estático (Angular + JSON, sin backend ni base de datos), prerenderizado y hosteado en GitHub Pages — un roadmap técnico completo y compartible, con cada decisión trazable a un motivo concreto.",
+      "problem": "Quería un portfolio que me ayudara a conseguir entrevistas, no solo una web bonita.",
+      "role": "Planifiqué todo antes de escribir código: investigué qué mira de verdad un reclutador, y documenté cada decisión de rendimiento desde el primer día.",
+      "outcome": "Un sitio 100% estático (Angular y JSON, sin backend ni base de datos), prerenderizado y alojado en GitHub Pages. Funciona como un roadmap técnico que puedo compartir, con un motivo concreto detrás de cada decisión.",
       "cvBullet": null
     }
   ],
-
-  "experience": [],
-  "education": [],
-  "certifications": [],
-
+  "experience": [
+    {
+      "role": "Desarrollador Full Stack",
+      "company": "NTT DATA",
+      "city": "Playa San Juan Alicante",
+      "link": "https://es.nttdata.com/",
+      "startMonth": "Jun",
+      "startYear": "2024",
+      "current": true,
+      "desc": "Desarrollo y mantenimiento de herramientas internas para los empleados, además de creación de documentación técnica de nuestros proyectos.",
+      "achievements": [
+        "Adquirí experiencia práctica con Spring Boot, Socket.IO y Angular.",
+        "Aprendí a trabajar en un entorno de teletrabajo."
+      ],
+      "techs": [
+        "Java",
+        "Spring Boot",
+        "Angular",
+        "Socket.IO",
+        "GitLab",
+        "Microsoft Azure",
+        "Oracle SQL",
+        "PostgreSQL",
+        "MongoDB"
+      ]
+    },
+    {
+      "role": "Dependiente",
+      "company": "Todo Hogar Express Comercial Pasmer SLU",
+      "city": "",
+      "link": "https://www.facebook.com/TodoHogarExpressEldaPetrer/?locale=es_ES",
+      "startMonth": "Mar",
+      "startYear": "2022",
+      "endMonth": "Sep",
+      "endYear": "2023",
+      "current": false,
+      "desc": "Atención en tienda, reposición y manipulación de alimentos, y gestión del punto de venta.",
+      "achievements": [
+        "Gané confianza de cara al cliente, atendiendo dudas y ofreciendo soluciones ante cualquier problema.",
+        "Gané la confianza de mis compañeros para encargarme de las tareas más complicadas."
+      ],
+      "techs": [
+        "Reposición de alimentos",
+        "Gestión de tienda"
+      ]
+    },
+    {
+      "role": "Técnico de Soporte Informático",
+      "company": "IVS Computer Solutions",
+      "city": "Sax",
+      "link": "https://infovillesax.com/",
+      "startMonth": "Mar",
+      "startYear": "2021",
+      "endMonth": "Jun",
+      "endYear": "2021",
+      "current": false,
+      "desc": "Reparación e instalación de equipos, gestión de facturas y pedidos a través de la base de datos de la tienda, y atención al cliente en temas informáticos.",
+      "achievements": [
+        "Di soporte informático y reparé equipos para clientes de la tienda.",
+        "Gestioné facturas y pedidos a través del sistema de base de datos de la tienda."
+      ],
+      "techs": [
+        "Soporte informático",
+        "Gestión de equipos"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "title": "Grado Superior en Desarrollo de Aplicaciones Web (DAW)",
+      "org": "IES Poeta Paco Mollá",
+      "city": "Petrer",
+      "month": "Jun",
+      "year": "2024",
+      "desc": "Programación, desarrollo cliente-servidor, bases de datos, entornos de aplicaciones, inglés (nivel B2), e iniciativa emprendedora y empresarial.",
+      "techs": [
+        "Java",
+        "PHP",
+        "JavaScript",
+        "React",
+        "Docker",
+        "Oracle SQL Developer",
+        "NoSQL",
+        "MongoDB",
+        "GitHub"
+      ]
+    },
+    {
+      "title": "Grado Medio en Sistemas Microinformáticos y Redes (SMR)",
+      "org": "IES Poeta Paco Mollá",
+      "city": "Petrer",
+      "month": "Jun",
+      "year": "2021",
+      "desc": "Gestión informática, ciclo de vida del ordenador, y uso de terminal para crear y administrar servidores, bases de datos y lenguajes de marcado y estilos.",
+      "techs": [
+        "Gestión informática",
+        "Soluciones informáticas",
+        "SQL Server",
+        "HTML5",
+        "CSS3",
+        "CMD",
+        "Powershell",
+        "Entorno Linux",
+        "Entorno Windows"
+      ]
+    },
+    {
+      "title": "Educación Secundaria Obligatoria (ESO)",
+      "org": "IES Azorín",
+      "city": "Petrer",
+      "month": "Jun",
+      "year": "2019",
+      "desc": "Etapa educativa para estudiantes de 12 a 16 años, centrada en desarrollar habilidades académicas y preparar el paso a estudios superiores.",
+      "techs": [
+        "Inglés",
+        "Valenciano",
+        "Biología",
+        "Tecnología",
+        "Humanidades",
+        "Informática",
+        "Trabajo en equipo",
+        "Matemáticas"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Introducción al Desarrollo de IA",
+      "issuer": "Big School",
+      "year": "2026",
+      "url": "https://www.linkedin.com/in/juan-pablo-sierra-amariles-aa6b85209/overlay/Certifications/1730789373/treasury?profileId=ACoAADUIg94B8e6iO9L8XllSS6eNqdDFNxybD9Y"
+    },
+    {
+      "name": "Desplegar app Spring Boot con Docker",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/cWZf"
+    },
+    {
+      "name": "Curso de MongoDB",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/8PEg"
+    },
+    {
+      "name": "Fundamentos de Angular",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/bcuw"
+    },
+    {
+      "name": "Curso de Spring Core",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/CZ5T"
+    },
+    {
+      "name": "Java desde 0: Introducción",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/RlvM"
+    },
+    {
+      "name": "PHP: Fundamentos",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/Bymp"
+    },
+    {
+      "name": "Introducción a Spring Framework",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/T74h"
+    },
+    {
+      "name": "Cisco Certified Network Associate Routing and Switching (CCNA)",
+      "issuer": "Cisco",
+      "year": "2020",
+      "url": "https://www.linkedin.com/in/juan-pablo-sierra-amariles-aa6b85209/overlay/Certifications/2035564578/treasury?profileId=ACoAADUIg94B8e6iO9L8XllSS6eNqdDFNxybD9Y"
+    },
+    {
+      "name": "AWS Academy Graduate - AWS Academy Cloud Foundations",
+      "issuer": "Amazon Web Services (AWS)",
+      "year": "2023",
+      "url": "https://www.linkedin.com/in/juan-pablo-sierra-amariles-aa6b85209/overlay/Certifications/2032661357/treasury?profileId=ACoAADUIg94B8e6iO9L8XllSS6eNqdDFNxybD9Y"
+    },
+    {
+      "name": "Curso de PostgreSQL",
+      "issuer": "OpenWebinars",
+      "year": "2024",
+      "url": "https://openwebinars.net/cert/99zK"
+    }
+  ],
   "languages": [
-    { "code": "es", "language": "Español", "level": "Nativo" },
-    { "code": "en", "language": "Inglés", "level": "B1" }
+    {
+      "code": "es",
+      "language": "Español",
+      "level": "Nativo"
+    },
+    {
+      "code": "en",
+      "language": "Inglés",
+      "level": "B1 (camino a B2)"
+    },
+    {
+      "code": "no",
+      "language": "Noruego",
+      "level": "Aprendiendo"
+    }
   ]
 }
