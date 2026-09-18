@@ -49,6 +49,17 @@
 
 .panels { padding: 2.1rem 2.2rem 2.6rem; flex: 1; min-height: 0; overflow-y: auto; background-image: radial-gradient(circle, rgba(217, 154, 78, 0.05) 1px, transparent 1px); background-size: 20px 20px; }
 
+/* ---------- tablet / narrow-desktop-window (721–1000px) ----------
+   Found 2026-09-18 during a full QA pass: at these widths (portrait tablets, a non-
+   maximized browser window) the sidebar (min 260px) + 4 full tab labels overflowed the
+   tabstrip with no visual hint that it scrolls — "cv.pdf" got cut off at the viewport
+   edge. Dropping the file extension (kept for :hover/title and the mobile icon view)
+   and tightening padding closes the gap without needing the mobile bottom-bar layout. */
+@media (min-width: 721px) and (max-width: 1000px) {
+  .tabstrip button { gap: 0.25rem; padding: 0.7rem 0.4rem; font-size: 0.72rem; }
+  .label-ext { display: none; }
+}
+
 /* ===========================================================================
    MOBILE (<=720px) — app-shell real: el shell no scrollea como un solo bloque,
    reparte su altura fija entre sidebar/contenido, cada uno scrollea puertas adentro.
