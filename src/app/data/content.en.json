@@ -28,7 +28,7 @@
       "category": "Full-Stack",
       "date": "2026-07-27",
       "featured": true,
-      "screenshot": null,
+      "screenshot": "/screenshot-similart.png",
       "liveUrl": "#",
       "repoUrl": "#",
       "techs": [
@@ -50,7 +50,7 @@
       "category": "Tools",
       "date": "2026-08-05",
       "featured": false,
-      "screenshot": null,
+      "screenshot": "/screenshot-portfolio.png",
       "liveUrl": "#",
       "repoUrl": "#",
       "techs": [
