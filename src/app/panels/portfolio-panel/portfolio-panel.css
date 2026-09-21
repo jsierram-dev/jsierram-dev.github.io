@@ -67,9 +67,14 @@
 .stack-layers .layer i { font-style: normal; font-weight: 700; color: var(--accent); margin-right: 0.28rem; }
 
 /* ---- vista de detalle ---- */
+/* padding + matching negative margin: grows the real tap target to ~44px tall (was ~21px,
+   just the text's own line-height — found during a mobile QA pass, well under the ~40-44px
+   touch-target guidance) without shifting where the text visually sits relative to the
+   heading below it. */
 .project-detail__back {
   display: inline-flex; align-items: center; gap: 0.4rem;
-  font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); margin-bottom: 1.4rem; text-decoration: underline; background: none;
+  font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); text-decoration: underline; background: none;
+  padding: 0.75rem 0.6rem; margin: -0.75rem -0.6rem 0.65rem;
 }
 .project-detail__body h3 { font-family: var(--font-display); font-size: 1.45rem; margin: 0 0 0.35rem; text-wrap: balance; }
 
@@ -110,8 +115,10 @@
 .project-detail__outcome-label { margin: 0 0 0.35rem; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
 .project-detail__outcome-text { margin: 0; font-size: 0.94rem; font-weight: 500; line-height: 1.65; color: var(--text); max-width: 62ch; }
 
-.project-detail__links { display: flex; gap: 1.2rem; margin-top: 1.6rem; }
-.project-detail__links a { display: inline-flex; align-items: center; gap: 0.3rem; font-family: var(--font-mono); font-size: 0.82rem; text-decoration: underline; text-underline-offset: 3px; }
+.project-detail__links { display: flex; gap: 0.6rem; margin-top: 1.6rem; margin-left: -0.55rem; }
+/* padding + matching negative margin on the container above: same tap-target fix as
+   .project-detail__back (found during a mobile QA pass, was ~22px tall) */
+.project-detail__links a { display: inline-flex; align-items: center; gap: 0.3rem; font-family: var(--font-mono); font-size: 0.82rem; text-decoration: underline; text-underline-offset: 3px; padding: 0.55rem; }
 
 @media (max-width: 720px) {
   .portfolio-controls, .category-tabs, .portfolio-filters, .project-grid,

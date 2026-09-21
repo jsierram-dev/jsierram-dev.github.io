@@ -35,7 +35,10 @@ app-clamped-text { margin-bottom: 0.75rem; }
   position: absolute; left: -1.53rem; top: 3px; width: 9px; height: 9px; border-radius: 50%;
   background: var(--bg); border: 1.5px solid var(--accent);
 }
-.timeline__more-btn { display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); }
+/* padding + matching negative top/left margin: same tap-target fix as .project-detail__back
+   (found during a mobile QA pass, was ~21px tall, just the text's own line-height) — keeps
+   the text's top-left corner exactly where .timeline__more-dot's absolute position expects it. */
+.timeline__more-btn { display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); padding: 0.55rem; margin: -0.55rem 0 -0.35rem -0.55rem; }
 .timeline__more-btn:hover { text-decoration: underline; text-underline-offset: 2px; }
 .timeline__more-btn svg { transition: transform 0.15s ease; }
 .timeline__more-btn.is-open svg { transform: rotate(180deg); }
