@@ -34,10 +34,6 @@ export class CvPanelComponent {
   protected readonly cvFilename = computed(() => `cv-${this.lang.currentLang()}.pdf`);
   protected readonly cvHref = computed(() => `/${this.cvFilename()}`);
 
-  protected readonly featuredProjects = computed(() =>
-    this.content().projects.filter((p) => p.featured && p.cvBullet)
-  );
-
   protected readonly languagesText = computed(() =>
     this.content()
       .languages.map((l) => `${l.language}: ${l.level}`)

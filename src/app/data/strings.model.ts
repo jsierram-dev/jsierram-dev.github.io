@@ -47,7 +47,6 @@ export interface Strings {
     summary: string;
     skills: string;
     work: string;
-    projects: string;
     education: string;
     certifications: string;
     languages: string;

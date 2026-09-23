@@ -40,15 +40,6 @@
       }
     }
 
-    @if (featuredProjects().length > 0) {
-      <h2 class="cv-section">{{ strings().cvSections.projects }}</h2>
-      @for (p of featuredProjects(); track p.key) {
-        <p class="cv-entry-title">{{ p.title }}</p>
-        <p class="cv-entry-date">{{ p.date.slice(0, 4) }}</p>
-        <ul class="cv-bullets"><li>{{ p.cvBullet }}</li></ul>
-      }
-    }
-
     @if (content().education.length > 0) {
       <h2 class="cv-section">{{ strings().cvSections.education }}</h2>
       @for (ed of content().education; track ed.org + ed.year) {
