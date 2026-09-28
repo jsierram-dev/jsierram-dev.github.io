@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal, untracked } from '@angular/core';
 import { LanguageService } from '../../core/language.service';
 import { NavigationService } from '../../core/navigation.service';
 import { TechIconComponent } from '../../shared/tech-icon/tech-icon';
@@ -92,7 +92,10 @@ export class PortfolioPanelComponent {
     effect(() => {
       this.content(); // dependencia: re-correr en cada cambio de idioma
       this.nav.activeTab(); // dependencia: re-correr también al entrar/salir de esta pestaña
-      const request = this.nav.portfolioFilterRequest();
+      // untracked: este mismo effect limpia la solicitud más abajo; si fuera dependencia, esa
+      // escritura lo volvía a disparar y el segundo pase (ya con null) borraba el filtro recién
+      // aplicado. No hace falta como disparador: goToPortfolioFilteredBy() cambia activeTab.
+      const request = untracked(() => this.nav.portfolioFilterRequest());
       this.categoryState.set('__all__');
       this.layerFilters.set(
         request ? { fe: '', be: '', db: '', tp: '', [request.layer]: request.tech } : { fe: '', be: '', db: '', tp: '' }
