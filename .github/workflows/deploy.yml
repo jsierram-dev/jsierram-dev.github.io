@@ -9,6 +9,12 @@ on:
     # master, no main: mismo nombre de rama por defecto que el resto de los repos del usuario
     # (similart-app, etc.) — ver el commit del push inicial para el porqué.
     branches: [master]
+  # Rebuild semanal para refrescar la actividad de GitHub del sidebar (scripts/fetch-github-activity.mjs):
+  # los datos se hornean en el build, así que sin esto la cifra se congela hasta el siguiente push.
+  # Lunes 04:17 UTC (≈06:17 en España en verano). Minuto no redondo: GitHub retrasa los crons en punto.
+  # Ojo: GitHub pausa los schedules tras 60 días sin commits en el repo; se reactiva con cualquier push.
+  schedule:
+    - cron: '17 4 * * 1'
   workflow_dispatch:
 
 permissions:
