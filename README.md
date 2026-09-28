@@ -1,4 +1,4 @@
-# Juan Pablo Sierra — `portfolio-app`
+# Juan Pablo Sierra Amariles — `portfolio-app`
 
 **[English](#english)** &nbsp;|&nbsp; **[Español](#español)**
 
@@ -16,7 +16,7 @@ A single-page site meant to get its owner hired: About, a Resume with a real tim
 
 | About + sidebar | Project case study | CV as a real document |
 |---|---|---|
-| ![About tab: IDE-style tabstrip, sidebar with avatar, availability, stack chips, local time and a GitHub contribution heatmap](docs/site-about.png) | ![similart project detail view: hero visual, real tech-stack icon chips, Problem/Outcome/Role case-study layout, live demo and repository links](docs/site-project-detail.png) | ![CV tab: white single-page document embedded in the dark chrome, Download PDF button, Technical Skills/Projects/Languages sections](docs/site-cv.png) |
+| ![About tab: IDE-style tabstrip, sidebar with avatar, availability, stack chips, local time and a GitHub contribution heatmap](docs/site-about.png) | ![similart project detail view: hero visual, real tech-stack icon chips, Problem/Outcome/Role case-study layout, live demo and repository links](docs/site-project-detail.png) | ![CV tab: white single-page document embedded in the dark chrome, Download PDF button, Summary/Experience/Education/Technical Skills/Languages sections](docs/site-cv.png) |
 
 ### What this repo does
 
@@ -79,7 +79,7 @@ Un sitio de una sola página pensado para conseguir empleo a quien lo publica: A
 
 | About + sidebar | Caso de estudio de un proyecto | CV como documento real |
 |---|---|---|
-| ![Pestaña About: tabstrip estilo IDE, sidebar con avatar, disponibilidad, chips de stack, hora local y mapa de calor de contribuciones de GitHub](docs/site-about.png) | ![Vista de detalle del proyecto similart: visual hero, chips reales con íconos de stack, estructura de caso de estudio Problema/Resultado/Rol, enlaces a demo en vivo y repositorio](docs/site-project-detail.png) | ![Pestaña CV: documento blanco de una sola página embebido en el chrome oscuro, botón Descargar PDF, secciones de Habilidades Técnicas/Proyectos/Idiomas](docs/site-cv.png) |
+| ![Pestaña About: tabstrip estilo IDE, sidebar con avatar, disponibilidad, chips de stack, hora local y mapa de calor de contribuciones de GitHub](docs/site-about.png) | ![Vista de detalle del proyecto similart: visual hero, chips reales con íconos de stack, estructura de caso de estudio Problema/Resultado/Rol, enlaces a demo en vivo y repositorio](docs/site-project-detail.png) | ![Pestaña CV: documento blanco de una sola página embebido en el chrome oscuro, botón Descargar PDF, secciones de Resumen/Experiencia/Formación/Habilidades Técnicas/Idiomas](docs/site-cv.png) |
 
 ### Qué hace este repo
 
