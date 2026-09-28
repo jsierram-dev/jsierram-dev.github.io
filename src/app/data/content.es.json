@@ -89,6 +89,30 @@
       "role": "Planifiqué todo antes de escribir código: investigué qué mira de verdad un reclutador, y documenté cada decisión de rendimiento desde el primer día.",
       "outcome": "Un sitio 100% estático (Angular y JSON, sin backend ni base de datos), prerenderizado y alojado en GitHub Pages. Funciona como un roadmap técnico que puedo compartir, con un motivo concreto detrás de cada decisión.",
       "cvBullet": null
+    },
+    {
+      "key": "paytowin",
+      "title": "PayToWin",
+      "category": "Full-Stack",
+      "date": "2023-09-02",
+      "featured": false,
+      "adminOnly": true,
+      "screenshot": "/screenshot-paytowin.jpg",
+      "liveUrl": "https://paytowin-wbdl.onrender.com",
+      "repoUrl": "https://github.com/jsierram-dev/PayToWin",
+      "techs": [
+        { "name": "JSP", "layer": "fe", "primary": true },
+        { "name": "Java", "layer": "be", "primary": true },
+        { "name": "Apache Tomcat", "layer": "be" },
+        { "name": "Docker", "layer": "be" },
+        { "name": "Oracle", "layer": "db", "primary": true },
+        { "name": "H2", "layer": "db" },
+        { "name": "Render", "layer": "tp", "primary": true }
+      ],
+      "problem": "Proyecto académico del ciclo de Desarrollo de Aplicaciones Web: una tienda online de videojuegos con usuarios, carrito, pedidos y facturas, hecha con Java y una base de datos real.",
+      "role": "Desarrollé la aplicación completa: el diseño y los scripts de la base de datos, el backend en Java con Servlets y DAOs, y las páginas JSP. Tiempo después corregí los fallos de seguridad y la desplegué con Docker.",
+      "outcome": "Una tienda que funciona con cuentas de cliente y de administrador: catálogo, carrito, pedidos, facturas exportables a PDF y XML, gestión de productos con subida de imágenes y estadísticas de ventas. Demo pública en Render.",
+      "cvBullet": null
     }
   ],
   "experience": [

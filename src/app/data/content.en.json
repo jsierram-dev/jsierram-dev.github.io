@@ -61,6 +61,30 @@
       "role": "I planned everything before writing any code: I researched what recruiters really look at, and I wrote down every performance decision from day one.",
       "outcome": "A 100% static website (Angular and JSON only, no backend or database), pre-rendered and hosted on GitHub Pages. It works as a technical roadmap I can share, with a clear reason behind every decision.",
       "cvBullet": null
+    },
+    {
+      "key": "paytowin",
+      "title": "PayToWin",
+      "category": "Full-Stack",
+      "date": "2023-09-02",
+      "featured": false,
+      "adminOnly": true,
+      "screenshot": "/screenshot-paytowin.jpg",
+      "liveUrl": "https://paytowin-wbdl.onrender.com",
+      "repoUrl": "https://github.com/jsierram-dev/PayToWin",
+      "techs": [
+        { "name": "JSP", "layer": "fe", "primary": true },
+        { "name": "Java", "layer": "be", "primary": true },
+        { "name": "Apache Tomcat", "layer": "be" },
+        { "name": "Docker", "layer": "be" },
+        { "name": "Oracle", "layer": "db", "primary": true },
+        { "name": "H2", "layer": "db" },
+        { "name": "Render", "layer": "tp", "primary": true }
+      ],
+      "problem": "An academic project from my Web Application Development studies: an online video game store with users, a shopping cart, orders and invoices, built with Java and a real database.",
+      "role": "I built the whole application: the database design and scripts, the Java backend with Servlets and DAOs, and the JSP pages. Later, I fixed the security problems and deployed it with Docker.",
+      "outcome": "A working store with client and admin accounts: catalog, shopping cart, orders, invoices you can export to PDF and XML, product management with image upload, and sales statistics. Public demo on Render.",
+      "cvBullet": null
     }
   ],
 
