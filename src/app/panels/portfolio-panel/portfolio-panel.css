@@ -53,6 +53,9 @@
   align-self: flex-start; font-family: var(--font-mono); font-size: 0.63rem; letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--accent); background: var(--badge-bg); padding: 0.15rem 0.45rem; border-radius: var(--radius);
 }
+.project-card .badges { align-self: flex-start; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+/* dashed + muted on purpose: reads as "not public", not as another highlight like Featured */
+.project-card .badge--admin { color: var(--muted); background: transparent; border: 1px dashed var(--muted); }
 .project-card h4 { font-family: var(--font-display); margin: 0; font-size: 1.02rem; }
 .project-card__category { margin: 0; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
 

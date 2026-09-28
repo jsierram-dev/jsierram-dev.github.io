@@ -7,6 +7,7 @@ import stringsEn from '../data/strings.en.json';
 import stringsEs from '../data/strings.es.json';
 import type { Content } from '../data/content.model';
 import type { Strings } from '../data/strings.model';
+import { AdminService } from './admin.service';
 
 export type Lang = 'en' | 'es';
 
@@ -35,7 +36,15 @@ export class LanguageService {
 
   readonly currentLang = signal<Lang>(this.readInitialLang());
 
-  readonly content = computed<Content>(() => CONTENT[this.currentLang()]);
+  private readonly admin = inject(AdminService);
+
+  // Filtered here, once, so every consumer (Portfolio list/filters/categories, Resume Stack)
+  // sees the same project set — an admin-only project never leaks into a count or filter.
+  readonly content = computed<Content>(() => {
+    const content = CONTENT[this.currentLang()];
+    if (this.admin.isAdmin()) return content;
+    return { ...content, projects: content.projects.filter((p) => !p.adminOnly) };
+  });
   readonly strings = computed<Strings>(() => STRINGS[this.currentLang()]);
 
   constructor() {

@@ -56,6 +56,9 @@ export interface Project {
   /** Short stack-focused CV bullet, distinct wording from `outcome` on purpose. Null if this
    *  project doesn't get its own CV line (e.g. the portfolio site itself). */
   cvBullet: string | null;
+  /** Only shown to the site owner (AdminService, `?admin=1`). Still shipped in the bundle —
+   *  it hides the project from the page, it doesn't make it private. */
+  adminOnly?: boolean;
 }
 
 export interface ExperienceEntry {

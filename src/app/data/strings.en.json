@@ -24,6 +24,7 @@
   "sortOldest": "Oldest",
   "noMatch": "No projects match that filter.",
   "featuredBadge": "Featured",
+  "adminBadge": "Admin only",
   "problem": "Problem",
   "role": "Role",
   "outcome": "Outcome",

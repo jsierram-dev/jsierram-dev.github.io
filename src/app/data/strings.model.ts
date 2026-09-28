@@ -32,6 +32,8 @@ export interface Strings {
   sortOldest: string;
   noMatch: string;
   featuredBadge: string;
+  /** Marks an adminOnly project, which only the site owner ever sees. */
+  adminBadge: string;
   problem: string;
   role: string;
   outcome: string;
