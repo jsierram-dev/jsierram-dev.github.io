@@ -26,6 +26,7 @@ A single-page site meant to get its owner hired: About, a Resume with a real tim
 - **Resume**: dotted timeline for experience/education/certifications with a "show N more" control, a spoken-languages section with flags, and a Stack section computed from the same project data — clicking a technology jumps to Portfolio pre-filtered to it.
 - **CV**: a real single-page document (deliberately not the dark IDE chrome — it's what actually gets uploaded to a job portal), built from the same JSON as Resume/Portfolio. "Download PDF" points at a file chosen by the active language.
 - **Sidebar**: the visitor's local time in the owner's own timezone and a GitHub contribution heatmap, both computed client-side only (Angular's `afterNextRender`) so the server-rendered and first-paint HTML never disagree with what JS fills in a moment later.
+- **Admin-only projects**: a project marked `adminOnly` is only shown after visiting the site once with `?admin=1` (stored in `localStorage`, `?admin=0` clears it) — for work that's deployed but not ready to be public yet. It hides, it doesn't protect: the static bundle still contains the data.
 - **Tab state resets on leaving a tab, persists while you're on it** — an open project detail or an expanded timeline row goes back to default the moment you navigate away, instead of staying stuck open indefinitely.
 
 ### Architecture
@@ -89,6 +90,7 @@ Un sitio de una sola página pensado para conseguir empleo a quien lo publica: A
 - **Resume**: timeline punteado para experiencia/educación/certificaciones con un control "ver N más", una sección de idiomas hablados con banderas, y una sección Stack calculada a partir de los mismos datos de proyectos — clic en una tecnología salta a Portfolio ya filtrado por ella.
 - **CV**: un documento real de una sola página (deliberadamente no el chrome oscuro del IDE — es lo que de verdad se sube a un portal de empleo), armado con el mismo JSON que Resume/Portfolio. "Descargar PDF" apunta a un archivo elegido según el idioma activo.
 - **Sidebar**: la hora local en el huso horario del dueño del sitio y un mapa de calor de contribuciones de GitHub, ambos calculados solo del lado del cliente (`afterNextRender` de Angular) para que el HTML renderizado en el servidor y el primer pintado nunca discrepen con lo que el JS completa un instante después.
+- **Proyectos solo para admin**: un proyecto marcado con `adminOnly` solo aparece después de entrar una vez con `?admin=1` (se guarda en `localStorage`; `?admin=0` lo quita) — para trabajo ya desplegado que todavía no está listo para ser público. Lo oculta, no lo protege: el bundle estático sigue conteniendo los datos.
 - **El estado de una pestaña vuelve a su default al salir de ella, se mantiene mientras se está en ella** — un detalle de proyecto abierto o una fila de timeline expandida vuelven a su estado por defecto en cuanto se navega a otra pestaña, en vez de quedar abiertos indefinidamente.
 
 ### Arquitectura
