@@ -25,7 +25,7 @@ A single-page site meant to get its owner hired: About, a Resume with a real tim
 - **Portfolio**: category tabs plus 4 independent single-select filters (Frontend / Backend / Databases / Third-party services) combined with AND logic, 3 sort orders, and a full-page case-study detail view per project with real tech-stack icon chips.
 - **Resume**: dotted timeline for experience/education/certifications with a "show N more" control, a spoken-languages section with flags, and a Stack section computed from the same project data — clicking a technology jumps to Portfolio pre-filtered to it.
 - **CV**: a real single-page document (deliberately not the dark IDE chrome — it's what actually gets uploaded to a job portal), built from the same JSON as Resume/Portfolio. "Download PDF" points at a file chosen by the active language.
-- **Sidebar**: the visitor's local time in the owner's own timezone and a GitHub contribution heatmap, both computed client-side only (Angular's `afterNextRender`) so the server-rendered and first-paint HTML never disagree with what JS fills in a moment later.
+- **Sidebar**: the visitor's local time in the owner's own timezone (computed client-side only, with Angular's `afterNextRender`, so the prerendered HTML never disagrees with what JS fills in a moment later) and a heatmap of real GitHub contributions. `scripts/fetch-github-activity.mjs` reads GitHub's public contributions page at build time (no token) and writes `src/app/data/github-activity.json`; the deploy workflow runs it on every push to `master` and again every Monday, so the numbers stay current without any request from the visitor's browser.
 - **Admin-only projects**: a project marked `adminOnly` is only shown after visiting the site once with `?admin=1` (stored in `localStorage`, `?admin=0` clears it) — for work that's deployed but not ready to be public yet. It hides, it doesn't protect: the static bundle still contains the data.
 - **Tab state resets on leaving a tab, persists while you're on it** — an open project detail or an expanded timeline row goes back to default the moment you navigate away, instead of staying stuck open indefinitely.
 
@@ -36,6 +36,7 @@ No backend, no request-time rendering — everything below happens at build time
 ```mermaid
 flowchart LR
     JSON["content.en.json<br/>content.es.json"] --> APP["Angular 22<br/>standalone components, signals, zoneless"]
+    GH["GitHub contributions<br/>(fetch:github, push + weekly)"] --> ACT["github-activity.json"] --> APP
     APP -->|"ng build<br/>outputMode: static"| STATIC["Prerendered HTML/CSS/JS"]
     STATIC --> PAGES["GitHub Pages<br/>jsierram-dev.github.io"]
 ```
@@ -64,7 +65,7 @@ No other services needed — this is the entire stack.
 
 `profile` / `projects` / `experience` / `education` / `certifications` / `languages` all live in `src/app/data/content.en.json` and `content.es.json` — two complete per-language files rather than one merged at runtime: some duplication (dates, links, tech names) in exchange for each file being a single, easy-to-hand-edit unit.
 
-**Real right now**: profile, both projects (including this site itself), spoken languages. **Still placeholder/pending, on purpose rather than invented**: career history (`experience`/`education`/`certifications` are empty arrays — those sections hide themselves entirely rather than show a heading over nothing), project screenshots, and the actual CV PDFs.
+Everything is real content: profile, projects with their screenshots, experience, education, certifications, spoken languages, and the downloadable CV PDFs. A project's `liveUrl`/`repoUrl` stays `"#"` until that project is deployed to production.
 
 ---
 
@@ -89,7 +90,7 @@ Un sitio de una sola página pensado para conseguir empleo a quien lo publica: A
 - **Portfolio**: tabs de categoría más 4 filtros independientes de una sola elección (Frontend / Backend / Bases de datos / Servicios de terceros) combinados con lógica AND, 3 órdenes de clasificación, y una vista de detalle a pantalla completa por proyecto con chips reales de íconos de stack.
 - **Resume**: timeline punteado para experiencia/educación/certificaciones con un control "ver N más", una sección de idiomas hablados con banderas, y una sección Stack calculada a partir de los mismos datos de proyectos — clic en una tecnología salta a Portfolio ya filtrado por ella.
 - **CV**: un documento real de una sola página (deliberadamente no el chrome oscuro del IDE — es lo que de verdad se sube a un portal de empleo), armado con el mismo JSON que Resume/Portfolio. "Descargar PDF" apunta a un archivo elegido según el idioma activo.
-- **Sidebar**: la hora local en el huso horario del dueño del sitio y un mapa de calor de contribuciones de GitHub, ambos calculados solo del lado del cliente (`afterNextRender` de Angular) para que el HTML renderizado en el servidor y el primer pintado nunca discrepen con lo que el JS completa un instante después.
+- **Sidebar**: la hora local en el huso horario del dueño del sitio (calculada solo en el cliente, con `afterNextRender` de Angular, para que el HTML prerenderizado nunca discrepe con lo que el JS completa un instante después) y un mapa de calor con las contribuciones reales de GitHub. `scripts/fetch-github-activity.mjs` lee la página pública de contribuciones de GitHub al construir la web (sin token) y escribe `src/app/data/github-activity.json`; el workflow de despliegue lo ejecuta en cada push a `master` y además cada lunes, así que las cifras se mantienen al día sin que el navegador del visitante haga ninguna petición.
 - **Proyectos solo para admin**: un proyecto marcado con `adminOnly` solo aparece después de entrar una vez con `?admin=1` (se guarda en `localStorage`; `?admin=0` lo quita) — para trabajo ya desplegado que todavía no está listo para ser público. Lo oculta, no lo protege: el bundle estático sigue conteniendo los datos.
 - **El estado de una pestaña vuelve a su default al salir de ella, se mantiene mientras se está en ella** — un detalle de proyecto abierto o una fila de timeline expandida vuelven a su estado por defecto en cuanto se navega a otra pestaña, en vez de quedar abiertos indefinidamente.
 
@@ -100,6 +101,7 @@ Sin backend, sin renderizado en tiempo de request — todo lo de abajo ocurre en
 ```mermaid
 flowchart LR
     JSON["content.en.json<br/>content.es.json"] --> APP["Angular 22<br/>componentes standalone, signals, zoneless"]
+    GH["Contribuciones de GitHub<br/>(fetch:github, push + semanal)"] --> ACT["github-activity.json"] --> APP
     APP -->|"ng build<br/>outputMode: static"| STATIC["HTML/CSS/JS prerenderizado"]
     STATIC --> PAGES["GitHub Pages<br/>jsierram-dev.github.io"]
 ```
@@ -128,4 +130,4 @@ No necesita ningún otro servicio corriendo — este es todo el stack.
 
 `profile` / `projects` / `experience` / `education` / `certifications` / `languages` viven todos en `src/app/data/content.en.json` y `content.es.json` — dos archivos completos por idioma en vez de uno solo fusionado en tiempo de ejecución: algo de duplicación (fechas, links, nombres de tecnologías) a cambio de que cada archivo sea una unidad simple de editar a mano.
 
-**Real ahora mismo**: perfil, los dos proyectos (incluido este mismo sitio), idiomas hablados. **Todavía placeholder/pendiente, a propósito y no inventado**: historial profesional (`experience`/`education`/`certifications` son arrays vacíos — esas secciones se ocultan por completo en vez de mostrar un encabezado sobre nada), capturas de los proyectos, y los PDFs reales del CV.
+Todo el contenido es real: perfil, proyectos con sus capturas, experiencia, formación, certificaciones, idiomas y los PDFs descargables del CV. El `liveUrl`/`repoUrl` de un proyecto se queda en `"#"` hasta que ese proyecto se despliega en producción.
