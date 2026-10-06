@@ -1,0 +1,37 @@
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad-paytowin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2A2A3E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1A1A2E;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="300" fill="url(#grad-paytowin)"/>
+  
+  <!-- Shopping cart -->
+  <g stroke="#FFD700" stroke-width="3" fill="none">
+    <rect x="60" y="130" width="80" height="60"/>
+    <circle cx="90" cy="200" r="15"/>
+    <circle cx="150" cy="200" r="15"/>
+    <path d="M 50 130 L 30 100"/>
+  </g>
+  
+  <!-- Game box 1 -->
+  <rect x="180" y="80" width="110" height="140" fill="#FF6B6B" stroke="#FFD700" stroke-width="2"/>
+  <text x="235" y="155" font-size="32" text-anchor="middle" fill="#FFD700">★</text>
+  <text x="235" y="250" font-size="16" text-anchor="middle" fill="#FFD700" font-weight="bold">$9.99</text>
+  
+  <!-- Game box 2 -->
+  <rect x="310" y="80" width="110" height="140" fill="#4ECDC4" stroke="#FFD700" stroke-width="2"/>
+  <text x="365" y="155" font-size="32" text-anchor="middle" fill="#FFD700">★</text>
+  <text x="365" y="250" font-size="16" text-anchor="middle" fill="#FFD700" font-weight="bold">$14.99</text>
+  
+  <!-- Game box 3 -->
+  <rect x="440" y="80" width="110" height="140" fill="#45B7D1" stroke="#FFD700" stroke-width="2"/>
+  <text x="495" y="155" font-size="32" text-anchor="middle" fill="#FFD700">★</text>
+  <text x="495" y="250" font-size="16" text-anchor="middle" fill="#FFD700" font-weight="bold">$19.99</text>
+  
+  <!-- Game box 4 -->
+  <rect x="570" y="80" width="110" height="140" fill="#FFA502" stroke="#FFD700" stroke-width="2"/>
+  <text x="625" y="155" font-size="32" text-anchor="middle" fill="#FFD700">★</text>
+  <text x="625" y="250" font-size="16" text-anchor="middle" fill="#FFD700" font-weight="bold">$24.99</text>
+</svg>

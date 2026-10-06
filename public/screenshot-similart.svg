@@ -1,0 +1,38 @@
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad-similart" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FDF8F3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8DCCF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="300" fill="url(#grad-similart)"/>
+  
+  <!-- Canvas grid -->
+  <g stroke="#CCCCCC" stroke-width="1" opacity="0.3">
+    <line x1="0" y1="60" x2="800" y2="60"/>
+    <line x1="0" y1="120" x2="800" y2="120"/>
+    <line x1="0" y1="180" x2="800" y2="180"/>
+    <line x1="0" y1="240" x2="800" y2="240"/>
+    <line x1="80" y1="0" x2="80" y2="300"/>
+    <line x1="160" y1="0" x2="160" y2="300"/>
+    <line x1="240" y1="0" x2="240" y2="300"/>
+    <line x1="320" y1="0" x2="320" y2="300"/>
+    <line x1="400" y1="0" x2="400" y2="300"/>
+    <line x1="480" y1="0" x2="480" y2="300"/>
+    <line x1="560" y1="0" x2="560" y2="300"/>
+    <line x1="640" y1="0" x2="640" y2="300"/>
+    <line x1="720" y1="0" x2="720" y2="300"/>
+  </g>
+  
+  <!-- Paint strokes -->
+  <polyline points="50,200 150,100 250,180 350,80" stroke="#FF6B6B" stroke-width="25" fill="none" stroke-linecap="round"/>
+  <polyline points="200,250 300,150 400,220 500,120" stroke="#4ECDC4" stroke-width="20" fill="none" stroke-linecap="round"/>
+  <polyline points="300,50 400,180 500,100 600,200" stroke="#45B7D1" stroke-width="22" fill="none" stroke-linecap="round"/>
+  
+  <!-- Paint dots -->
+  <circle cx="550" cy="165" r="15" fill="#FF6B6B"/>
+  <circle cx="590" cy="165" r="15" fill="#4ECDC4"/>
+  <circle cx="630" cy="165" r="15" fill="#45B7D1"/>
+  <circle cx="670" cy="165" r="15" fill="#FFA502"/>
+  <circle cx="710" cy="165" r="15" fill="#6C5CE7"/>
+</svg>

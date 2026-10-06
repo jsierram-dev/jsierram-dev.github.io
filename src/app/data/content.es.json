@@ -27,7 +27,7 @@
       "category": "Full-Stack",
       "date": "2026-07-27",
       "featured": true,
-      "screenshot": "/screenshot-similart.png",
+      "screenshot": "/screenshot-similart.svg",
       "liveUrl": null,
       "repoUrl": null,
       "techs": [
@@ -61,8 +61,8 @@
         }
       ],
       "problem": "Quería construir un proyecto con funcionalidades en tiempo real, procesamiento de imágenes y una mecánica de juego fácil de explicar pero interesante de construir.",
-      "role": "Diseñé y desarrollé todo el proyecto en solitario, repartido en cinco repositorios. Tres de ellos son microservicios que creé desde cero. similart-gateway es el único punto de entrada: envía las peticiones de login a jp-back-auth y las del juego (HTTP y WebSocket) a similart-back-room. similart-back-room es el motor del juego: guarda las salas en memoria, envía cada trazo al resto de jugadores en tiempo real con Socket.IO y decide quién gana comparando cada dibujo con la imagen original. jp-back-auth es mi propio servicio de autenticación (Google o invitado): genera tokens JWT RS256 y el motor del juego los valida en local con la clave pública, sin llamarlo en cada petición. También lo uso en mis otras aplicaciones. jp-similart-api contiene los tipos de TypeScript que comparten el frontend y el backend, así que si cambia el formato de los trazos, el error salta al compilar. El último repositorio es la aplicación en Angular donde se juega.",
-      "outcome": "Un juego de dibujo en tiempo real para entre 1 y 12 jugadores: todos dibujan la misma imagen a la vez y ven en directo los dibujos de los demás y su porcentaje de parecido. Tiene una fase de votación con cuenta atrás real, pincel y cubo de pintura, deshacer/rehacer sincronizado con la sala, reconexión si se cae la conexión y un panel de administración para las imágenes que saca automáticamente la paleta de colores de cada una. Cada funcionalidad se prueba con Playwright, con entre 8 y 12 jugadores a la vez en la misma sala.",
+      "role": "Arquitectura: Diseñé y desarrollé todo el proyecto en solitario, repartido en cinco repositorios. Tres de ellos son microservicios que creé desde cero.\n\nLos Tres Microservicios: similart-gateway es el único punto de entrada—envía peticiones de login a jp-back-auth y peticiones del juego (HTTP y WebSocket) a similart-back-room. similart-back-room es el motor del juego: guarda las salas en memoria, envía cada trazo en tiempo real a los demás jugadores con Socket.IO y calcula el ganador comparando dibujos con la imagen original. jp-back-auth es mi servicio de autenticación compartido entre mis aplicaciones: genera tokens JWT RS256, y cada backend los valida localmente con la clave pública sin llamar al servicio en cada petición.\n\nSeguridad de Tipos: jp-similart-api contiene los tipos TypeScript compartidos entre frontend y backend, así que si cambia el formato de los trazos, el error salta al compilar, no en producción.\n\nFrontend: La aplicación Angular donde los jugadores se unen a salas y juegan.",
+      "outcome": "Mecánica: Un juego de dibujo multijugador en tiempo real para 1–12 jugadores. Todos dibujan la misma imagen simultáneamente y ven los dibujos de otros jugadores con porcentaje de similitud en directo.\n\nFuncionalidades: Fase de votación con cuenta atrás en vivo, herramientas de pincel y cubo de pintura, deshacer/rehacer sincronizado con la sala, reconexión automática al perder conexión, y panel de administración para gestionar imágenes con extracción automática de paleta de colores.\n\nCalidad: Cada funcionalidad se prueba con Playwright ejecutando 8–12 jugadores simultáneamente en la misma sala, garantizando fiabilidad en el mundo real.",
       "cvBullet": "Juego de dibujo multijugador en tiempo real con puntuación por % de similitud, para 1 a 12 jugadores. Hecho con Angular, Express, Socket.IO y PostgreSQL."
     },
     {
@@ -71,7 +71,7 @@
       "category": "Herramientas",
       "date": "2026-08-05",
       "featured": false,
-      "screenshot": "/screenshot-portfolio.png",
+      "screenshot": "/screenshot-portfolio.svg",
       "liveUrl": null,
       "repoUrl": "https://github.com/jsierram-dev/jsierram-dev.github.io",
       "techs": [
@@ -96,7 +96,7 @@
       "category": "Full-Stack",
       "date": "2026-03-22",
       "featured": true,
-      "screenshot": "/screenshot-calismap.jpg",
+      "screenshot": "/screenshot-calismap.svg",
       "liveUrl": "https://jsierram-dev.github.io/calismap-app/",
       "repoUrl": "https://github.com/jsierram-dev/calismap-app",
       "techs": [
@@ -120,7 +120,7 @@
       "date": "2023-09-02",
       "featured": false,
       "adminOnly": true,
-      "screenshot": "/screenshot-paytowin.jpg",
+      "screenshot": "/screenshot-paytowin.svg",
       "liveUrl": "https://paytowin-wbdl.onrender.com",
       "repoUrl": "https://github.com/jsierram-dev/PayToWin",
       "techs": [

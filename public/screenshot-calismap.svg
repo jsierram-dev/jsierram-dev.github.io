@@ -1,0 +1,32 @@
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad-calis" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5F7FA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8F0F8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="300" fill="url(#grad-calis)"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Progression Levels</text>
+  
+  <!-- Bronze bar -->
+  <rect x="60" y="120" width="120" height="50" fill="#CD7F32" stroke="#333" stroke-width="2"/>
+  <text x="120" y="150" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">Bronze</text>
+  <circle cx="200" cy="145" r="12" fill="#CD7F32" stroke="#333" stroke-width="2"/>
+  
+  <!-- Silver bar -->
+  <rect x="240" y="100" width="120" height="70" fill="#C0C0C0" stroke="#333" stroke-width="2"/>
+  <text x="300" y="140" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">Silver</text>
+  <circle cx="380" cy="135" r="12" fill="#C0C0C0" stroke="#333" stroke-width="2"/>
+  
+  <!-- Gold bar -->
+  <rect x="420" y="80" width="120" height="90" fill="#FFD700" stroke="#333" stroke-width="2"/>
+  <text x="480" y="130" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">Gold</text>
+  <circle cx="560" cy="125" r="12" fill="#FFD700" stroke="#333" stroke-width="2"/>
+  
+  <!-- Diamond bar -->
+  <rect x="600" y="60" width="120" height="110" fill="#B9F2FF" stroke="#333" stroke-width="2"/>
+  <text x="660" y="120" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">Diamond</text>
+  <circle cx="740" cy="115" r="12" fill="#B9F2FF" stroke="#333" stroke-width="2"/>
+</svg>
