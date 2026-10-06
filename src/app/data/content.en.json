@@ -40,8 +40,8 @@
         { "name": "Google OAuth", "layer": "tp", "primary": true }
       ],
       "problem": "I wanted to build a project with real-time features, image processing, and a game that is easy to explain but fun to build.",
-      "role": "I designed and developed the full project alone: the three backend services, the real-time logic, and the drawing interface in Angular.",
-      "outcome": "The game works from start to end for 1 to 12 players, with reconnection, an admin panel, and a voting phase with a real countdown.",
+      "role": "I designed and built the whole project on my own, in five repos. Three of them are microservices I created from scratch. similart-gateway is the only entry point: it sends login requests to jp-back-auth and game requests (HTTP and WebSocket) to similart-back-room. similart-back-room is the game engine: it keeps the rooms in memory, sends every stroke to the other players in real time with Socket.IO, and decides the winner by comparing each drawing with the original image. jp-back-auth is my own login service (Google or guest). It creates RS256 JWT tokens, and the game engine checks them locally with the public key, without calling it on every request. I also use it in my other apps. jp-similart-api has the TypeScript types that the frontend and the backend share, so if the stroke format changes, the error appears when compiling. The last repo is the Angular app where people play.",
+      "outcome": "A real-time drawing game for 1 to 12 players: everyone draws the same image at the same time and sees the other drawings and their match percentage live. It has a voting phase with a real countdown, a brush and a paint bucket, undo/redo that stays in sync with the room, reconnection if your connection drops, and an admin panel for the images that takes the color palette from each image automatically. Every feature is tested with Playwright, with 8 to 12 players at the same time in the same room.",
       "cvBullet": "Real-time multiplayer drawing game with % similarity score, for 1 to 12 players. Built with Angular, Express, Socket.IO and PostgreSQL."
     },
     {
