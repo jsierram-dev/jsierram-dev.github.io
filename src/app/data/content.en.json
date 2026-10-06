@@ -63,6 +63,29 @@
       "cvBullet": null
     },
     {
+      "key": "calismap",
+      "title": "CalisMap",
+      "category": "Full-Stack",
+      "date": "2026-03-22",
+      "featured": false,
+      "screenshot": "/screenshot-calismap.jpg",
+      "liveUrl": "https://jsierram-dev.github.io/calismap-app/",
+      "repoUrl": "https://github.com/jsierram-dev/calismap-app",
+      "techs": [
+        { "name": "Ionic", "layer": "fe", "primary": true },
+        { "name": "Angular", "layer": "fe", "primary": true },
+        { "name": "TypeScript", "layer": "fe" },
+        { "name": "Express", "layer": "be", "primary": true },
+        { "name": "PostgreSQL", "layer": "db", "primary": true },
+        { "name": "Google OAuth", "layer": "tp", "primary": true },
+        { "name": "Render", "layer": "tp" }
+      ],
+      "problem": "Most workout apps are just a log of sets and reps. In calisthenics you don't only want more reps, you want to unlock harder skills step by step, and no app showed me that path clearly.",
+      "role": "I designed and built the whole project on my own: the mobile app with Ionic and Angular, the backend with Express and PostgreSQL, the data model and the deploy. Login uses my own auth service, shared with my other apps.",
+      "outcome": "A mobile app where every skill (Muscle Up, Planche, Handstand Push-up...) is a roadmap: each step unlocks the next one when you reach a level from Bronze to Diamond, calculated from your own marks. It works offline and without an account, syncs when you log in with Google, and can import your history from apps like Strong or Hevy.",
+      "cvBullet": null
+    },
+    {
       "key": "paytowin",
       "title": "PayToWin",
       "category": "Full-Stack",
