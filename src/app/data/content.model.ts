@@ -47,8 +47,9 @@ export interface Project {
   featured: boolean;
   /** Path/URL to a hero screenshot once one exists; null falls back to the placeholder visual. */
   screenshot: string | null;
-  liveUrl: string;
-  repoUrl: string;
+  /** null until the project is in production / the repo is public — the link is then not rendered. */
+  liveUrl: string | null;
+  repoUrl: string | null;
   techs: TechRef[];
   problem: string;
   role: string;

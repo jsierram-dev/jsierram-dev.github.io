@@ -124,16 +124,22 @@
           </dd>
         </dl>
 
-        <div class="project-detail__links">
-          <a [href]="project.liveUrl">
-            <span>{{ strings().liveDemo }}</span>
-            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          </a>
-          <a [href]="project.repoUrl">
-            <span>{{ strings().repo }}</span>
-            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          </a>
-        </div>
+        @if (project.liveUrl || project.repoUrl) {
+          <div class="project-detail__links">
+            @if (project.liveUrl) {
+              <a [href]="project.liveUrl" target="_blank" rel="noopener noreferrer">
+                <span>{{ strings().liveDemo }}</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </a>
+            }
+            @if (project.repoUrl) {
+              <a [href]="project.repoUrl" target="_blank" rel="noopener noreferrer">
+                <span>{{ strings().repo }}</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </a>
+            }
+          </div>
+        }
       </div>
     }
   </div>

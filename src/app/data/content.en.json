@@ -29,8 +29,8 @@
       "date": "2026-07-27",
       "featured": true,
       "screenshot": "/screenshot-similart.png",
-      "liveUrl": "#",
-      "repoUrl": "#",
+      "liveUrl": null,
+      "repoUrl": null,
       "techs": [
         { "name": "Angular", "layer": "fe", "primary": true },
         { "name": "TypeScript", "layer": "fe" },
@@ -51,8 +51,8 @@
       "date": "2026-08-05",
       "featured": false,
       "screenshot": "/screenshot-portfolio.png",
-      "liveUrl": "#",
-      "repoUrl": "#",
+      "liveUrl": null,
+      "repoUrl": "https://github.com/jsierram-dev/jsierram-dev.github.io",
       "techs": [
         { "name": "Angular", "layer": "fe", "primary": true },
         { "name": "TypeScript", "layer": "fe" }
