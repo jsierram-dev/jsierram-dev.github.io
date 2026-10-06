@@ -34,8 +34,13 @@
 }
 .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
 @media (prefers-reduced-motion: reduce) { .project-card { transition: none; } .project-card:hover { transform: none; } }
+/* aspect-ratio 2/1 en vez de height fijo (era 108px) — las imágenes de proyecto son 2:1
+   nativas; con height fijo el contenedor queda con una proporción distinta al ancho real de
+   la tarjeta (240-340px por el minmax de arriba), forzando letterboxing visible con
+   object-fit:contain. Con aspect-ratio el contenedor sigue la proporción de la imagen sin
+   importar el ancho, eliminando el espacio muerto sin recortar el contenido. */
 .project-card__visual {
-  height: 108px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(201, 205, 211, 0.1);
+  aspect-ratio: 2 / 1; position: relative; overflow: hidden; border-bottom: 1px solid rgba(201, 205, 211, 0.1);
   background: linear-gradient(135deg, rgba(217, 154, 78, 0.1), rgba(127, 163, 122, 0.06));
   display: flex; align-items: center; justify-content: center;
 }
@@ -44,7 +49,7 @@
   background: #7fa37a; box-shadow: 13px 0 0 #d99a4e, 26px 0 0 #4b5058; z-index: 1;
 }
 .project-card__visual span { font-family: var(--font-display); font-size: 1.9rem; color: rgba(201, 205, 211, 0.28); letter-spacing: 0.05em; }
-.project-card__visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.project-card__visual img { width: 100%; height: 100%; object-fit: contain; display: block; }
 /* flex:1 en el body (2026-08-08 en el mockup) — las tarjetas de una fila ya se estiran a la
    misma altura por defecto (CSS Grid), esto hace que el body aproveche esa altura extra en
    vez de dejarla como espacio muerto debajo de la tarjeta */
@@ -94,8 +99,13 @@
 
 /* imagen "hero" — mismo criterio que .project-card__visual: placeholder de iniciales+gradiente
    hasta que exista una captura real (proj.screenshot), listo para usarla sin tocar CSS/JS */
+/* aspect-ratio 2/1 + max-height, mismo motivo que .project-card__visual arriba: el ancho de
+   este bloque va de ~340px en mobile a >1000px en desktop (panel de 1400px), así que una
+   height fija de 260px pasaba de una proporción casi cuadrada en mobile a ~4:1 en desktop —
+   ambas muy lejos de la imagen 2:1 nativa, dejando franjas vacías grandes a los lados o
+   arriba/abajo. El max-height evita que la franja crezca demasiado en paneles muy anchos. */
 .project-detail__hero {
-  position: relative; height: 260px; overflow: hidden; border-radius: var(--radius);
+  position: relative; aspect-ratio: 2 / 1; max-height: 320px; overflow: hidden; border-radius: var(--radius);
   background: linear-gradient(135deg, rgba(217, 154, 78, 0.1), rgba(127, 163, 122, 0.06));
   border: var(--card-border); margin: 1rem 0 1.5rem; display: flex; align-items: center; justify-content: center;
 }
@@ -104,7 +114,7 @@
   background: #7fa37a; box-shadow: 17px 0 0 #d99a4e, 34px 0 0 #4b5058;
 }
 .project-detail__hero span { font-family: var(--font-display); font-size: 3.6rem; color: rgba(201, 205, 211, 0.28); letter-spacing: 0.05em; }
-.project-detail__hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.project-detail__hero img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 .project-detail__section dt { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 1.1rem 0 0.35rem; }
 .project-detail__section dt:first-child { margin-top: 0; }
