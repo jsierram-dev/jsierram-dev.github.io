@@ -116,7 +116,7 @@
    proceso es justamente el punto del rediseño (ver comentario más arriba) */
 .project-detail__outcome { margin: 1.3rem 0; padding: 1rem 1.2rem; background: var(--badge-bg); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; }
 .project-detail__outcome-label { margin: 0 0 0.35rem; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
-.project-detail__outcome-text { margin: 0; font-size: 0.94rem; font-weight: 500; line-height: 1.65; color: var(--text); max-width: 62ch; }
+.project-detail__outcome-text { margin: 0; font-size: 0.94rem; font-weight: 500; line-height: 1.65; color: var(--text); max-width: 90ch; }
 
 .project-detail__links { display: flex; gap: 0.6rem; margin-top: 1.6rem; margin-left: -0.55rem; }
 /* padding + matching negative margin on the container above: same tap-target fix as
