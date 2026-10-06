@@ -67,7 +67,7 @@
       "title": "CalisMap",
       "category": "Full-Stack",
       "date": "2026-03-22",
-      "featured": false,
+      "featured": true,
       "screenshot": "/screenshot-calismap.jpg",
       "liveUrl": "https://jsierram-dev.github.io/calismap-app/",
       "repoUrl": "https://github.com/jsierram-dev/calismap-app",
@@ -81,8 +81,8 @@
         { "name": "Render", "layer": "tp" }
       ],
       "problem": "Most workout apps are just a log of sets and reps. In calisthenics you don't only want more reps, you want to unlock harder skills step by step, and no app showed me that path clearly.",
-      "role": "I designed and built the whole project on my own: the mobile app with Ionic and Angular, the backend with Express and PostgreSQL, the data model and the deploy. Login uses my own auth service, shared with my other apps.",
-      "outcome": "A mobile app where every skill (Muscle Up, Planche, Handstand Push-up...) is a roadmap: each step unlocks the next one when you reach a level from Bronze to Diamond, calculated from your own marks. It works offline and without an account, syncs when you log in with Google, and can import your history from apps like Strong or Hevy.",
+      "role": "I designed and built the whole project on my own, split into three repositories: the mobile app (Ionic and Angular), the backend for the catalog and the sync (Express and PostgreSQL, private repo) and the login. For the login I didn't build a new one: the app uses jp-back-auth, my own authentication microservice with Google and guest login, which I share between several of my apps (CalisMap, Mudanza and Similart). It gives a JWT signed with RS256 and each backend checks it with the public key, without calling the auth service on every request. The account button comes from jp-user-kit, a small UI library I publish on GitHub Packages so I can reuse it in other apps.",
+      "outcome": "A mobile app where every skill (Muscle Up, Planche, Handstand Push-up...) is a roadmap: each step unlocks the next one when you reach a level from Bronze to Diamond, calculated from your own marks. It works offline and without an account (your data is saved on the device first), syncs when you log in with Google, and can import your history from apps like Strong or Hevy. It also has an admin panel to manage the catalog. Deployed on GitHub Pages, Render and Neon.",
       "cvBullet": null
     },
     {

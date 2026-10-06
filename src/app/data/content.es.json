@@ -95,7 +95,7 @@
       "title": "CalisMap",
       "category": "Full-Stack",
       "date": "2026-03-22",
-      "featured": false,
+      "featured": true,
       "screenshot": "/screenshot-calismap.jpg",
       "liveUrl": "https://jsierram-dev.github.io/calismap-app/",
       "repoUrl": "https://github.com/jsierram-dev/calismap-app",
@@ -109,8 +109,8 @@
         { "name": "Render", "layer": "tp" }
       ],
       "problem": "Casi todas las apps de entrenamiento son un simple registro de series y repeticiones. En calistenia no solo buscas hacer más repeticiones: quieres desbloquear habilidades más difíciles paso a paso, y ninguna app me mostraba ese camino con claridad.",
-      "role": "Diseñé y desarrollé el proyecto entero yo solo: la app móvil con Ionic y Angular, el backend con Express y PostgreSQL, el modelo de datos y el despliegue. El login usa mi propio servicio de autenticación, compartido con mis otras apps.",
-      "outcome": "Una app móvil en la que cada habilidad (Muscle Up, Planche, Handstand Push-up...) es un roadmap: cada paso desbloquea el siguiente cuando alcanzas un nivel, de Bronce a Diamante, calculado con tus propias marcas. Funciona sin conexión y sin cuenta, se sincroniza al entrar con Google y puede importar tu historial desde apps como Strong o Hevy.",
+      "role": "Diseñé y desarrollé el proyecto entero yo solo, repartido en tres repositorios: la app móvil (Ionic y Angular), el backend del catálogo y la sincronización (Express y PostgreSQL, repo privado) y el login. Para el login no hice uno nuevo: la app usa jp-back-auth, mi propio microservicio de autenticación con Google y modo invitado, que comparto entre varias de mis apps (CalisMap, Mudanza y Similart). Emite un JWT firmado con RS256 y cada backend lo valida con la clave pública, sin tener que llamar al servicio de autenticación en cada petición. El botón de cuenta sale de jp-user-kit, una pequeña librería de componentes que publico en GitHub Packages para poder reutilizarla en otras apps.",
+      "outcome": "Una app móvil en la que cada habilidad (Muscle Up, Planche, Handstand Push-up...) es un roadmap: cada paso desbloquea el siguiente cuando alcanzas un nivel, de Bronce a Diamante, calculado con tus propias marcas. Funciona sin conexión y sin cuenta (los datos se guardan primero en el dispositivo), se sincroniza al entrar con Google y puede importar tu historial desde apps como Strong o Hevy. También tiene un panel de administración para gestionar el catálogo. Desplegada en GitHub Pages, Render y Neon.",
       "cvBullet": null
     },
     {
