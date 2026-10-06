@@ -1,32 +1,24 @@
-<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#1a1c21"/>
   <defs>
-    <linearGradient id="grad-calis" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#F5F7FA;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#E8F0F8;stop-opacity:1" />
-    </linearGradient>
+    <pattern id="g2" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(201,205,211,0.12)" stroke-width="1"/>
+    </pattern>
   </defs>
-  <rect width="800" height="300" fill="url(#grad-calis)"/>
-  
-  <!-- Title -->
-  <text x="400" y="40" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Progression Levels</text>
-  
-  <!-- Bronze bar -->
-  <rect x="60" y="120" width="120" height="50" fill="#CD7F32" stroke="#333" stroke-width="2"/>
-  <text x="120" y="150" font-size="14" text-anchor="middle" fill="#fff" font-weight="bold">Bronze</text>
-  <circle cx="200" cy="145" r="12" fill="#CD7F32" stroke="#333" stroke-width="2"/>
-  
-  <!-- Silver bar -->
-  <rect x="240" y="100" width="120" height="70" fill="#C0C0C0" stroke="#333" stroke-width="2"/>
-  <text x="300" y="140" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">Silver</text>
-  <circle cx="380" cy="135" r="12" fill="#C0C0C0" stroke="#333" stroke-width="2"/>
-  
-  <!-- Gold bar -->
-  <rect x="420" y="80" width="120" height="90" fill="#FFD700" stroke="#333" stroke-width="2"/>
-  <text x="480" y="130" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">Gold</text>
-  <circle cx="560" cy="125" r="12" fill="#FFD700" stroke="#333" stroke-width="2"/>
-  
-  <!-- Diamond bar -->
-  <rect x="600" y="60" width="120" height="110" fill="#B9F2FF" stroke="#333" stroke-width="2"/>
-  <text x="660" y="120" font-size="14" text-anchor="middle" fill="#333" font-weight="bold">Diamond</text>
-  <circle cx="740" cy="115" r="12" fill="#B9F2FF" stroke="#333" stroke-width="2"/>
+  <rect width="800" height="400" fill="url(#g2)"/>
+  <line x1="140" y1="220" x2="660" y2="220" stroke="rgba(201,205,211,0.12)" stroke-width="2"/>
+  <circle cx="140" cy="220" r="10" fill="#8a92a0"/>
+  <circle cx="313" cy="220" r="10" fill="#8a92a0"/>
+  <circle cx="486" cy="220" r="10" fill="#d99a4e"/>
+  <circle cx="660" cy="220" r="14" fill="none" stroke="#7fa37a" stroke-width="3"/>
+  <circle cx="660" cy="220" r="5" fill="#7fa37a"/>
+  <text x="112" y="260" fill="#8a92a0" font-family="Cascadia Code, monospace" font-size="12">Bronze</text>
+  <text x="283" y="260" fill="#8a92a0" font-family="Cascadia Code, monospace" font-size="12">Silver</text>
+  <text x="458" y="260" fill="#c9cdd3" font-family="Cascadia Code, monospace" font-size="12">Gold</text>
+  <text x="624" y="260" fill="#c9cdd3" font-family="Cascadia Code, monospace" font-size="12">Diamond</text>
+  <text x="100" y="170" fill="#8a92a0" font-family="Cascadia Code, monospace" font-size="12">Push-up</text>
+  <text x="270" y="170" fill="#8a92a0" font-family="Cascadia Code, monospace" font-size="12">Pull-up</text>
+  <text x="440" y="170" fill="#8a92a0" font-family="Cascadia Code, monospace" font-size="12">Handstand</text>
+  <text x="615" y="170" fill="#c9cdd3" font-family="Cascadia Code, monospace" font-size="12">Planche</text>
+  <text x="40" y="40" fill="#8a92a0" font-family="Cascadia Code, monospace" font-size="14">calismap -- skill.progress()</text>
 </svg>
