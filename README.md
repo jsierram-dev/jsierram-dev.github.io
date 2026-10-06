@@ -65,7 +65,7 @@ No other services needed — this is the entire stack.
 
 `profile` / `projects` / `experience` / `education` / `certifications` / `languages` all live in `src/app/data/content.en.json` and `content.es.json` — two complete per-language files rather than one merged at runtime: some duplication (dates, links, tech names) in exchange for each file being a single, easy-to-hand-edit unit.
 
-Everything is real content: profile, projects with their screenshots, experience, education, certifications, spoken languages, and the downloadable CV PDFs. A project's `liveUrl`/`repoUrl` stays `"#"` until that project is deployed to production.
+Everything is real content: profile, projects with their screenshots, experience, education, certifications, spoken languages, and the downloadable CV PDFs. A project's `liveUrl`/`repoUrl` stays `null` until that project is deployed to production / its repo is public, and a `null` link simply isn't rendered (no dead buttons). Every link that leaves the site opens in a new tab.
 
 ---
 
@@ -130,4 +130,4 @@ No necesita ningún otro servicio corriendo — este es todo el stack.
 
 `profile` / `projects` / `experience` / `education` / `certifications` / `languages` viven todos en `src/app/data/content.en.json` y `content.es.json` — dos archivos completos por idioma en vez de uno solo fusionado en tiempo de ejecución: algo de duplicación (fechas, links, nombres de tecnologías) a cambio de que cada archivo sea una unidad simple de editar a mano.
 
-Todo el contenido es real: perfil, proyectos con sus capturas, experiencia, formación, certificaciones, idiomas y los PDFs descargables del CV. El `liveUrl`/`repoUrl` de un proyecto se queda en `"#"` hasta que ese proyecto se despliega en producción.
+Todo el contenido es real: perfil, proyectos con sus capturas, experiencia, formación, certificaciones, idiomas y los PDFs descargables del CV. El `liveUrl`/`repoUrl` de un proyecto se queda en `null` hasta que ese proyecto se despliega en producción o su repo es público, y un enlace `null` directamente no se pinta (sin botones muertos). Todo enlace que sale del sitio se abre en una pestaña nueva.
