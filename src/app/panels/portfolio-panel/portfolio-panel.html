@@ -12,7 +12,12 @@
       </nav>
       <div class="portfolio-filters">
         @for (layer of layers; track layer) {
-          <select [attr.data-empty]="!layerFilters()[layer]" (change)="onLayerChange(layer, $event)">
+          <select
+            [attr.data-empty]="!layerFilters()[layer]"
+            (mousedown)="onLayerMouseDown(layer, $event)"
+            (blur)="onLayerBlur(layer, $event)"
+            (change)="onLayerChange(layer, $event)"
+          >
             <option value="">{{ strings().layerLabels[layer] }}</option>
             @for (opt of layerOptions()[layer]; track opt) {
               <option [value]="opt" [selected]="layerFilters()[layer] === opt">{{ opt }}</option>
@@ -55,7 +60,10 @@
               <div class="stack-layers">
                 @for (layer of layers; track layer) {
                   @if (primaryTech(project, layer); as tech) {
-                    <span class="layer"><i>{{ layerShortLabels[layer] }}</i>{{ tech }}</span>
+                    <span class="layer">
+                      <app-tech-icon [name]="tech" [size]="18" />
+                      <span>{{ tech }}</span>
+                    </span>
                   }
                 }
               </div>

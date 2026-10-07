@@ -6,10 +6,6 @@ import type { Project, StackLayer } from '../../data/content.model';
 
 const LAYERS: StackLayer[] = ['fe', 'be', 'db', 'tp'];
 type SortOrder = 'featured' | 'newest' | 'oldest';
-// Siglas técnicas fijas para el prefijo de cada chip de stack en la tarjeta ("FE Angular") —
-// a propósito NO derivadas de strings().layerLabels (esas SÍ se traducen: "Databases" en
-// inglés pero "BBDD" en español, cortarlas daría iniciales distintas/incorrectas por idioma).
-const LAYER_SHORT_LABELS: Record<StackLayer, string> = { fe: 'FE', be: 'BE', db: 'DB', tp: 'TP' };
 
 @Component({
   selector: 'app-portfolio-panel',
@@ -24,7 +20,6 @@ export class PortfolioPanelComponent {
   protected readonly content = this.lang.content;
   protected readonly strings = this.lang.strings;
   protected readonly layers = LAYERS;
-  protected readonly layerShortLabels = LAYER_SHORT_LABELS;
 
   protected readonly categoryState = signal<string>('__all__');
   protected readonly layerFilters = signal<Record<StackLayer, string>>({ fe: '', be: '', db: '', tp: '' });
@@ -113,8 +108,28 @@ export class PortfolioPanelComponent {
     this.layerFilters.update((f) => ({ ...f, [layer]: value }));
   }
 
+  /** Native <select> never fires 'change' when the user re-picks the option that's already
+   *  selected (no value transition from the browser's point of view) — blanking the value
+   *  here, right before the native dropdown opens, forces a real transition on re-pick, so
+   *  onLayerChange() below can detect "picked the same tech again" and treat it as deselect
+   *  (pedido explícito 2026-10-07: click en una tech ya activa quita el filtro, en vez de
+   *  tener que elegir manualmente la opción en blanco de esa capa, ej. "Services"). */
+  onLayerMouseDown(layer: StackLayer, event: Event): void {
+    const select = event.target as HTMLSelectElement;
+    if (this.layerFilters()[layer]) select.value = '';
+  }
+
+  /** If the blanking above opened the dropdown but the user closed it without picking
+   *  anything (Escape, click outside), 'change' never fires — restore the real value so the
+   *  select doesn't visually show "no filter" while the previous filter is still applied. */
+  onLayerBlur(layer: StackLayer, event: Event): void {
+    (event.target as HTMLSelectElement).value = this.layerFilters()[layer];
+  }
+
   onLayerChange(layer: StackLayer, event: Event): void {
-    this.setLayerFilter(layer, (event.target as HTMLSelectElement).value);
+    const newValue = (event.target as HTMLSelectElement).value;
+    const current = this.layerFilters()[layer];
+    this.setLayerFilter(layer, newValue !== '' && newValue === current ? '' : newValue);
   }
 
   setSortOrder(value: SortOrder): void {

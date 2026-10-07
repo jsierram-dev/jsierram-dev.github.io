@@ -68,11 +68,12 @@
    en flex:1, empuja los tags al fondo del contenedor sin importar cuánto título/categoría
    haya antes; con tarjetas de distinta longitud en la misma fila, quedan alineados */
 .stack-layers { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: auto; }
+/* icono real + color de marca (igual a project-detail/Resume) en vez de la letra de capa
+   (FE/BE/DB/TP) que llevaba antes — más reconocible de un vistazo que la sigla. */
 .stack-layers .layer {
-  font-family: var(--font-mono); font-size: 0.66rem; color: var(--chip-text);
-  background: var(--chip-bg); border: var(--chip-border); border-radius: var(--radius); padding: 0.2rem 0.55rem;
+  display: inline-flex; align-items: center; gap: 0.3rem; font-family: var(--font-mono); font-size: 0.66rem; color: var(--chip-text);
+  background: var(--chip-bg); border: var(--chip-border); border-radius: var(--radius); padding: 0.2rem 0.55rem 0.2rem 0.3rem;
 }
-.stack-layers .layer i { font-style: normal; font-weight: 700; color: var(--accent); margin-right: 0.28rem; }
 
 /* ---- vista de detalle ---- */
 /* padding + matching negative margin: grows the real tap target to ~44px tall (was ~21px,
