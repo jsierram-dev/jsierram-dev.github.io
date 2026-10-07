@@ -10,7 +10,7 @@ interface GithubCell {
 // Not the real user's tech stack list, just the 3 highlights shown as sidebar chips — same
 // 3 the design mockup used. Deliberately not derived from profile.cv.skills: those are full
 // comma-separated lists ("Angular, HTML5, CSS3"), this is a short, curated "at a glance" set.
-const SIDEBAR_STACK_HIGHLIGHTS = ['Angular', 'Node', 'PostgreSQL'];
+const SIDEBAR_STACK_HIGHLIGHTS = ['Angular', 'Java', 'Spring Boot'];
 
 // 5 discrete levels (0 = no activity) instead of a computed opacity — matches how GitHub's
 // own contribution graph reads (a handful of clearly distinct shades, not a smooth gradient).
