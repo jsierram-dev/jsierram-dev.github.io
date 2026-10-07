@@ -40,6 +40,19 @@ export class CvPanelComponent {
       .join(' · ')
   );
 
+  protected readonly educationRange = computed(() => {
+    const education = this.content().education;
+    if (education.length === 0) return '';
+    const firstLabel = this.edYearLabel(education[0]);
+    const lastLabel = this.edYearLabel(education[education.length - 1]);
+    return firstLabel === lastLabel ? firstLabel : `${firstLabel} – ${lastLabel}`;
+  });
+
+  private edYearLabel(ed: any): string {
+    if (ed.current) return this.strings().present;
+    return ed.endYear ?? ed.year ?? '';
+  }
+
   expDate(e: ExperienceEntry): string {
     const end = e.current ? this.strings().present : `${e.endMonth ?? ''} ${e.endYear}`.trim();
     return `${e.startMonth} ${e.startYear} – ${end}`;

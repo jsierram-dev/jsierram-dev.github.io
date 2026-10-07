@@ -30,6 +30,7 @@
   color: var(--accent); border-bottom: 1px solid rgba(0, 0, 0, 0.12); padding-bottom: 0.2rem; margin: 1.2rem 0 0.5rem;
 }
 .cv-section:first-of-type { margin-top: 1.3rem; }
+.cv-section__range { text-transform: none; font-weight: 400; letter-spacing: normal; color: #777; }
 .cv-text { font-size: 0.8rem; color: #2b2b2b; margin: 0 0 0.35rem; line-height: 1.5; }
 .cv-entry-title { font-size: 0.83rem; font-weight: 700; margin: 0.55rem 0 0.1rem; color: #1a1a1a; }
 .cv-entry-date { font-size: 0.73rem; font-style: italic; color: #555; margin: 0 0 0.3rem; }

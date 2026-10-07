@@ -41,7 +41,7 @@
     }
 
     @if (content().education.length > 0) {
-      <h2 class="cv-section">{{ strings().cvSections.education }}</h2>
+      <h2 class="cv-section">{{ strings().cvSections.education }} <span class="cv-section__range">({{ educationRange() }})</span></h2>
       @for (ed of content().education; track ed.org + ed.startYear + ed.year) {
         <p class="cv-entry-title">{{ ed.title }} — {{ ed.org }}{{ ed.city ? ', ' + ed.city : '' }}</p>
         <p class="cv-entry-date">{{ edDate(ed) }}</p>
