@@ -5,12 +5,12 @@
     "timezone": "Europe/Madrid",
     "photo": "/photo.jpeg",
     "about": [
-      "Soy desarrollador full-stack y vivo en Alicante. Actualmente trabajo en NTT DATA, donde desarrollo y mantengo herramientas internas para los empleados con Angular, Spring Boot y Java, además de redactar documentación técnica de nuestros proyectos.",
+      "Soy desarrollador full-stack y vivo en Alicante. Actualmente trabajo en NTT DATA, donde desarrollo y mantengo herramientas internas para los empleados con Angular, Spring Boot y Java, además de redactar documentación técnica de nuestros proyectos. También estoy cursando un Grado en Ingeniería en Inteligencia Artificial por la UNED.",
       "Me gustan los proyectos donde el backend y el frontend se piensan juntos desde el principio, no por separado. Mi proyecto personal más reciente, similart, es un juego de dibujo multijugador en tiempo real hecho con Angular, Express y Socket.IO — el mismo stack que sostiene esta web."
     ],
     "cv": {
       "role": "Desarrollador Full Stack",
-      "summary": "Desarrollador full-stack con experiencia profesional en NTT DATA, trabajando con Angular, Spring Boot y Java. Tengo el Grado Superior en Desarrollo de Aplicaciones Web (DAW) y también desarrollo proyectos full-stack por mi cuenta, como similart, un juego multijugador en tiempo real. Me gusta trabajar tanto en el backend como en el frontend, y sigo aprendiendo tecnologías nuevas.",
+      "summary": "Desarrollador full-stack con experiencia profesional en NTT DATA, trabajando con Angular, Spring Boot y Java. Actualmente cursando un Grado en Ingeniería en Inteligencia Artificial por la UNED. Tengo el Grado Superior en Desarrollo de Aplicaciones Web (DAW) y también desarrollo proyectos full-stack por mi cuenta, como similart, un juego multijugador en tiempo real. Me gusta trabajar tanto en el backend como en el frontend, y sigo aprendiendo tecnologías nuevas.",
       "skills": {
         "languages": "TypeScript, JavaScript",
         "frontend": "Angular, HTML5, CSS3, React",
@@ -206,6 +206,17 @@
     }
   ],
   "education": [
+    {
+      "title": "Grado en Ingeniería en Inteligencia Artificial",
+      "org": "UNED (Universidad Nacional de Educación a Distancia)",
+      "city": "España",
+      "month": "Oct",
+      "year": "2026",
+      "current": true,
+      "desc": "Programa de grado integral que cubre inteligencia artificial, aprendizaje automático, aprendizaje profundo y sistemas inteligentes. Combina fundamentos teóricos con aplicaciones prácticas en desarrollo de IA.",
+      "techs": ["Inteligencia Artificial", "Machine Learning", "Deep Learning", "Python", "Data Science", "Redes Neuronales"],
+      "link": "https://www.uned.es/universidad/inicio/estudios/grados/grado-en-ingenieria-en-inteligencia-artificial.html?idContenido=1"
+    },
     {
       "title": "Grado Superior en Desarrollo de Aplicaciones Web (DAW)",
       "org": "IES Poeta Paco Mollá",

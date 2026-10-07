@@ -5,12 +5,12 @@
     "timezone": "Europe/Madrid",
     "photo": "/photo.jpeg",
     "about": [
-      "I'm a full-stack developer based in Alicante, Spain, currently working at NTT DATA. I build and maintain business tools for employees using Angular, Spring Boot and Java, and I also write technical documentation for our projects.",
+      "I'm a full-stack developer based in Alicante, Spain, currently working at NTT DATA and pursuing a Bachelor's Degree in Artificial Intelligence Engineering at UNED. I build and maintain business tools for employees using Angular, Spring Boot and Java, and I also write technical documentation for our projects.",
       "I like projects where the backend and the frontend are designed together, not separately. My most recent personal project, similart, is a real-time multiplayer drawing game built with Angular, Express and Socket.IO — the same stack that powers this site."
     ],
     "cv": {
       "role": "Full Stack Developer",
-      "summary": "Full-stack developer with professional experience at NTT DATA, working with Angular, Spring Boot and Java. I have a Higher Vocational Training Certificate in Web Application Development, and I also build personal full-stack projects like similart, a real-time multiplayer game. I enjoy working on both backend and frontend, and I am always learning new technologies.",
+      "summary": "Full-stack developer with professional experience at NTT DATA, working with Angular, Spring Boot and Java. Currently pursuing a Bachelor's Degree in Artificial Intelligence Engineering at UNED. I have a Higher Vocational Training Certificate in Web Application Development, and I also build personal full-stack projects like similart, a real-time multiplayer game. I enjoy working on both backend and frontend, and I am always learning new technologies.",
       "skills": {
         "languages": "TypeScript, JavaScript",
         "frontend": "Angular, HTML5, CSS3, React",
@@ -163,6 +163,17 @@
     }
   ],
   "education": [
+    {
+      "title": "Bachelor's Degree in Artificial Intelligence Engineering",
+      "org": "UNED (National Distance Learning University)",
+      "city": "Spain",
+      "month": "Oct",
+      "year": "2026",
+      "current": true,
+      "desc": "A comprehensive degree program covering artificial intelligence, machine learning, deep learning, and intelligent systems. Combines theoretical foundations with practical applications in AI development.",
+      "techs": ["Artificial Intelligence", "Machine Learning", "Deep Learning", "Python", "Data Science", "Neural Networks"],
+      "link": "https://www.uned.es/universidad/inicio/estudios/grados/grado-en-ingenieria-en-inteligencia-artificial.html?idContenido=1"
+    },
     {
       "title": "Higher Vocational Training Certificate in Web Application Development (DAW)",
       "org": "IES Poeta Paco Mollá",
