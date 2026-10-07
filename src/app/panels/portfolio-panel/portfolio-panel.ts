@@ -2,7 +2,6 @@ import { Component, computed, effect, inject, signal, untracked } from '@angular
 import { LanguageService } from '../../core/language.service';
 import { NavigationService } from '../../core/navigation.service';
 import { TechIconComponent } from '../../shared/tech-icon/tech-icon';
-import { ClampedTextComponent } from '../../shared/clamped-text/clamped-text';
 import type { Project, StackLayer } from '../../data/content.model';
 
 const LAYERS: StackLayer[] = ['fe', 'be', 'db', 'tp'];
@@ -14,7 +13,7 @@ const LAYER_SHORT_LABELS: Record<StackLayer, string> = { fe: 'FE', be: 'BE', db:
 
 @Component({
   selector: 'app-portfolio-panel',
-  imports: [TechIconComponent, ClampedTextComponent],
+  imports: [TechIconComponent],
   templateUrl: './portfolio-panel.html',
   styleUrl: './portfolio-panel.css',
 })

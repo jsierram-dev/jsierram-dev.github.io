@@ -41,7 +41,7 @@
       ],
       "problem": "I wanted to build a project with real-time features, image processing, and a game that is easy to explain but fun to build.",
       "role": "Architecture: I designed and built the whole project on my own, split into five repositories. Three of them are microservices I created from scratch.\n\nThe Three Microservices: similart-gateway is the only entry point—it routes login requests to jp-back-auth and game requests (HTTP and WebSocket) to similart-back-room. similart-back-room is the game engine: it keeps rooms in memory, broadcasts every stroke to other players in real time with Socket.IO, and calculates the winner by comparing drawings to the original image. jp-back-auth is my shared authentication service used across my apps: it creates RS256 JWT tokens, and each backend validates them locally with the public key, without calling the auth service on every request.\n\nType Safety: jp-similart-api contains the shared TypeScript types between frontend and backend, so if the stroke format changes, the error appears at compile time, not in production.\n\nFrontend: The Angular app where players join rooms and play.",
-      "outcome": "Gameplay: A real-time multiplayer drawing game for 1–12 players. Everyone draws the same image simultaneously and sees other players' drawings with live match percentage updates.\n\nFeatures: Voting phase with live countdown, brush and paint bucket tools, synchronized undo/redo across the room, automatic reconnection on connection drop, and an admin panel to manage images with automatic color palette extraction.\n\nQuality: Every feature is tested with Playwright running 8–12 players in the same room simultaneously, ensuring real-world reliability.",
+      "outcome": "Voting phase with a live countdown, brush and paint bucket tools, and undo/redo synced across every player in the room. If someone drops the connection, they reconnect automatically without losing the match. The admin panel manages the game's images with automatic color palette extraction. Every feature is validated with Playwright simulating 8–12 players in parallel in the same room — the same real load it would see in production.",
       "cvBullet": "Real-time multiplayer drawing game with % similarity score, for 1 to 12 players. Built with Angular, Express, Socket.IO and PostgreSQL."
     },
     {
@@ -59,7 +59,7 @@
       ],
       "problem": "I wanted a portfolio that helps me get interviews, not just a website that looks nice. Most developer portfolios are not built with that goal.",
       "role": "I planned everything before writing any code: I researched what recruiters really look at, and I wrote down every performance decision from day one.",
-      "outcome": "A 100% static website (Angular and JSON only, no backend or database), pre-rendered and hosted on GitHub Pages. It works as a technical roadmap I can share, with a clear reason behind every decision.",
+      "outcome": "100% static and pre-rendered — no backend or database, so it loads instantly and is hosted for free on GitHub Pages. Every screen (Portfolio, Resume, CV) also documents the real reasoning behind each design decision, not just the final result.",
       "cvBullet": null
     },
     {
@@ -82,7 +82,7 @@
       ],
       "problem": "Most workout apps are just a log of sets and reps. In calisthenics you don't only want more reps, you want to unlock harder skills step by step, and no app showed me that path clearly.",
       "role": "I designed and built the whole project on my own, split into three repositories: the mobile app (Ionic and Angular), the backend for the catalog and the sync (Express and PostgreSQL, private repo) and the login. For the login I didn't build a new one: the app uses jp-back-auth, my own authentication microservice with Google and guest login, which I share between several of my apps (CalisMap, Mudanza and Similart). It gives a JWT signed with RS256 and each backend checks it with the public key, without calling the auth service on every request. The account button comes from jp-user-kit, a small UI library I publish on GitHub Packages so I can reuse it in other apps.",
-      "outcome": "A mobile app where every skill (Muscle Up, Planche, Handstand Push-up...) is a roadmap: each step unlocks the next one when you reach a level from Bronze to Diamond, calculated from your own marks. It works offline and without an account (your data is saved on the device first), syncs when you log in with Google, and can import your history from apps like Strong or Hevy. It also has an admin panel to manage the catalog. Deployed on GitHub Pages, Render and Neon.",
+      "outcome": "Works offline and without an account from the first use — your marks are saved on the device and sync automatically once you sign in with Google, without losing any training already logged. If you already trained with Strong or Hevy, you can import that history instead of starting from zero. Includes an admin panel to manage the skill catalog.",
       "cvBullet": null
     },
     {
@@ -105,8 +105,8 @@
         { "name": "Render", "layer": "tp", "primary": true }
       ],
       "problem": "An academic project from my Web Application Development studies: an online video game store with users, a shopping cart, orders and invoices, built with Java and a real database.",
-      "role": "I built the whole application: the database design and scripts, the Java backend with Servlets and DAOs, and the JSP pages. Later, I fixed the security problems and deployed it with Docker.",
-      "outcome": "A working store with client and admin accounts: catalog, shopping cart, orders, invoices you can export to PDF and XML, product management with image upload, and sales statistics. Public demo on Render.",
+      "role": "I built the whole application: the database design and scripts, the Java backend with Servlets and DAOs, and the JSP pages.",
+      "outcome": "Catalog, shopping cart, orders and invoices exportable to PDF/XML, with separate customer and admin accounts (product management with image uploads, sales statistics). Reopened years later to fix the original's security flaws and deploy it with Docker — a real hardening pass, not just the class exercise.",
       "cvBullet": null
     }
   ],

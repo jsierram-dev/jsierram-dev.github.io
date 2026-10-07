@@ -62,7 +62,7 @@
       ],
       "problem": "Quería construir un proyecto con funcionalidades en tiempo real, procesamiento de imágenes y una mecánica de juego fácil de explicar pero interesante de construir.",
       "role": "Arquitectura: Diseñé y desarrollé todo el proyecto en solitario, repartido en cinco repositorios. Tres de ellos son microservicios que creé desde cero.\n\nLos Tres Microservicios: similart-gateway es el único punto de entrada—envía peticiones de login a jp-back-auth y peticiones del juego (HTTP y WebSocket) a similart-back-room. similart-back-room es el motor del juego: guarda las salas en memoria, envía cada trazo en tiempo real a los demás jugadores con Socket.IO y calcula el ganador comparando dibujos con la imagen original. jp-back-auth es mi servicio de autenticación compartido entre mis aplicaciones: genera tokens JWT RS256, y cada backend los valida localmente con la clave pública sin llamar al servicio en cada petición.\n\nSeguridad de Tipos: jp-similart-api contiene los tipos TypeScript compartidos entre frontend y backend, así que si cambia el formato de los trazos, el error salta al compilar, no en producción.\n\nFrontend: La aplicación Angular donde los jugadores se unen a salas y juegan.",
-      "outcome": "Mecánica: Un juego de dibujo multijugador en tiempo real para 1–12 jugadores. Todos dibujan la misma imagen simultáneamente y ven los dibujos de otros jugadores con porcentaje de similitud en directo.\n\nFuncionalidades: Fase de votación con cuenta atrás en vivo, herramientas de pincel y cubo de pintura, deshacer/rehacer sincronizado con la sala, reconexión automática al perder conexión, y panel de administración para gestionar imágenes con extracción automática de paleta de colores.\n\nCalidad: Cada funcionalidad se prueba con Playwright ejecutando 8–12 jugadores simultáneamente en la misma sala, garantizando fiabilidad en el mundo real.",
+      "outcome": "Fase de votación con cuenta atrás en vivo, pincel y cubo de pintura, y deshacer/rehacer sincronizado entre todos los jugadores de la sala. Si alguien pierde la conexión, se reconecta solo sin perder la partida. El panel de administración gestiona las imágenes del juego con extracción automática de paleta de colores. Cada función se valida con Playwright simulando 8–12 jugadores en paralelo en la misma sala, la misma carga real que vería en producción.",
       "cvBullet": "Juego de dibujo multijugador en tiempo real con puntuación por % de similitud, para 1 a 12 jugadores. Hecho con Angular, Express, Socket.IO y PostgreSQL."
     },
     {
@@ -87,7 +87,7 @@
       ],
       "problem": "Quería un portfolio que me ayudara a conseguir entrevistas, no solo una web bonita.",
       "role": "Planifiqué todo antes de escribir código: investigué qué mira de verdad un reclutador, y documenté cada decisión de rendimiento desde el primer día.",
-      "outcome": "Un sitio 100% estático (Angular y JSON, sin backend ni base de datos), prerenderizado y alojado en GitHub Pages. Funciona como un roadmap técnico que puedo compartir, con un motivo concreto detrás de cada decisión.",
+      "outcome": "100% estático y prerenderizado — sin backend ni base de datos, así que carga al instante y se aloja gratis en GitHub Pages. Cada pantalla (Portfolio, Resume, CV) documenta además el motivo real detrás de cada decisión de diseño, no solo el resultado final.",
       "cvBullet": null
     },
     {
@@ -110,7 +110,7 @@
       ],
       "problem": "Casi todas las apps de entrenamiento son un simple registro de series y repeticiones. En calistenia no solo buscas hacer más repeticiones: quieres desbloquear habilidades más difíciles paso a paso, y ninguna app me mostraba ese camino con claridad.",
       "role": "Diseñé y desarrollé el proyecto entero yo solo, repartido en tres repositorios: la app móvil (Ionic y Angular), el backend del catálogo y la sincronización (Express y PostgreSQL, repo privado) y el login. Para el login no hice uno nuevo: la app usa jp-back-auth, mi propio microservicio de autenticación con Google y modo invitado, que comparto entre varias de mis apps (CalisMap, Mudanza y Similart). Emite un JWT firmado con RS256 y cada backend lo valida con la clave pública, sin tener que llamar al servicio de autenticación en cada petición. El botón de cuenta sale de jp-user-kit, una pequeña librería de componentes que publico en GitHub Packages para poder reutilizarla en otras apps.",
-      "outcome": "Una app móvil en la que cada habilidad (Muscle Up, Planche, Handstand Push-up...) es un roadmap: cada paso desbloquea el siguiente cuando alcanzas un nivel, de Bronce a Diamante, calculado con tus propias marcas. Funciona sin conexión y sin cuenta (los datos se guardan primero en el dispositivo), se sincroniza al entrar con Google y puede importar tu historial desde apps como Strong o Hevy. También tiene un panel de administración para gestionar el catálogo. Desplegada en GitHub Pages, Render y Neon.",
+      "outcome": "Funciona sin conexión y sin cuenta desde el primer uso — tus marcas se guardan en el dispositivo y se sincronizan solas al iniciar sesión con Google, sin perder nada de lo ya entrenado. Si ya entrenabas con Strong o Hevy, puedes importar ese historial en vez de empezar de cero. Incluye un panel de administración para gestionar el catálogo de habilidades.",
       "cvBullet": null
     },
     {
@@ -133,8 +133,8 @@
         { "name": "Render", "layer": "tp", "primary": true }
       ],
       "problem": "Proyecto académico del ciclo de Desarrollo de Aplicaciones Web: una tienda online de videojuegos con usuarios, carrito, pedidos y facturas, hecha con Java y una base de datos real.",
-      "role": "Desarrollé la aplicación completa: el diseño y los scripts de la base de datos, el backend en Java con Servlets y DAOs, y las páginas JSP. Tiempo después corregí los fallos de seguridad y la desplegué con Docker.",
-      "outcome": "Una tienda que funciona con cuentas de cliente y de administrador: catálogo, carrito, pedidos, facturas exportables a PDF y XML, gestión de productos con subida de imágenes y estadísticas de ventas. Demo pública en Render.",
+      "role": "Desarrollé la aplicación completa: el diseño y los scripts de la base de datos, el backend en Java con Servlets y DAOs, y las páginas JSP.",
+      "outcome": "Catálogo, carrito, pedidos y facturas exportables a PDF/XML, con cuentas separadas de cliente y administrador (gestión de productos con imágenes, estadísticas de ventas). Vuelto a abrir años después para corregir los fallos de seguridad del proyecto académico original y desplegarlo con Docker — un repaso real de hardening, no solo el ejercicio de clase.",
       "cvBullet": null
     }
   ],

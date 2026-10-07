@@ -39,6 +39,17 @@ export interface Strings {
   outcome: string;
   liveDemo: string;
   repo: string;
+  /** Side panel label above the tech-icon stack list in the project detail view. */
+  stackLabel: string;
+  /** Side panel label above the repo/demo link buttons in the project detail view. */
+  linksLabel: string;
+  /** Disabled link-button text when a project has no public repo (e.g. Similart). */
+  repoPrivate: string;
+  /** Disabled link-button text when a project has no live demo. */
+  noLiveDemo: string;
+  /** Summary label for the collapsed technical/architecture detail (project.role) in the
+   *  project detail view — distinct from `role` (the dt label used when expanded). */
+  viewTechnicalDetail: string;
   projectSingular: string;
   projectPlural: string;
   scanReference: string;

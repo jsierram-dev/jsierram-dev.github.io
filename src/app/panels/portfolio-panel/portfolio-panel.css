@@ -84,18 +84,14 @@
   font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); text-decoration: underline; background: none;
   padding: 0.75rem 0.6rem; margin: -0.75rem -0.6rem 0.65rem;
 }
-.project-detail__body h3 { font-family: var(--font-display); font-size: 1.45rem; margin: 0 0 0.35rem; text-wrap: balance; }
+.project-detail__body h3 { font-family: var(--font-display); font-size: 1.45rem; margin: 0; text-wrap: balance; }
 
-/* chips con ícono real (2026-08-08 en el mockup) en vez de una línea de texto plano — mejora
-   el "ritmo visual" de la vista, mismo hallazgo que llevó a rediseñar esta sección entera
-   (ver ROADMAP-portfolio.md punto 36: llevar problema y resultado antes que proceso, y cuidar
-   el ritmo visual en vez de bloques de texto sin jerarquía) */
-.project-detail__stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.5rem; }
-.project-detail__chip {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  font-family: var(--font-mono); font-size: 0.78rem; color: var(--text);
-  background: var(--card-bg); border: var(--card-border); border-radius: var(--radius); padding: 0.3rem 0.65rem 0.3rem 0.35rem;
-}
+/* header: título + badges, reutiliza .badge/.badge--admin de project-card tal cual. */
+.project-detail__head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+
+/* 2026-10-07: 2 columnas — izquierda (objetivo/resultado/detalle plegado) para lectura
+   lineal, derecha (stack + enlaces) para consulta rápida sin leer el texto. */
+.project-detail__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem; }
 
 /* imagen "hero" — mismo criterio que .project-card__visual: placeholder de iniciales+gradiente
    hasta que exista una captura real (proj.screenshot), listo para usarla sin tocar CSS/JS */
@@ -107,7 +103,7 @@
 .project-detail__hero {
   position: relative; aspect-ratio: 2 / 1; max-height: 320px; overflow: hidden; border-radius: var(--radius);
   background: linear-gradient(135deg, rgba(217, 154, 78, 0.1), rgba(127, 163, 122, 0.06));
-  border: var(--card-border); margin: 1rem 0 1.5rem; display: flex; align-items: center; justify-content: center;
+  border: var(--card-border); margin: 0 0 1.5rem; display: flex; align-items: center; justify-content: center;
 }
 .project-detail__hero::before {
   content: ''; position: absolute; top: 14px; left: 14px; width: 8px; height: 8px; border-radius: 50%;
@@ -116,26 +112,42 @@
 .project-detail__hero span { font-family: var(--font-display); font-size: 3.6rem; color: rgba(201, 205, 211, 0.28); letter-spacing: 0.05em; }
 .project-detail__hero img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
-.project-detail__section dt { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 1.1rem 0 0.35rem; }
-.project-detail__section dt:first-child { margin-top: 0; }
-/* tipografía real (font-size/line-height/max-width) vive en app-clamped-text ahora
-   (shared/clamped-text, variant="detail") — dd solo resetea su margen de <dl> */
+.project-detail__section dt, .project-detail__side-label {
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+}
+.project-detail__section dt { margin: 0 0 0.4rem; }
 .project-detail__section dd { margin: 0; }
 
-/* Outcome destacado en su propio bloque, no un dt/dd más — llevar el resultado antes que el
-   proceso es justamente el punto del rediseño (ver comentario más arriba) */
+.project-detail__objective, .project-detail__more-text { margin: 0; line-height: 1.6; max-width: 75ch; }
+.project-detail__objective { font-size: 0.92rem; color: var(--text); }
+.project-detail__more-text { margin-top: 0.7rem; font-size: 0.86rem; color: var(--muted); white-space: pre-line; }
+
 .project-detail__outcome { margin: 1.3rem 0; padding: 1rem 1.2rem; background: var(--badge-bg); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; }
 .project-detail__outcome-label { margin: 0 0 0.35rem; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
 .project-detail__outcome-text { margin: 0; font-size: 0.94rem; font-weight: 500; line-height: 1.65; color: var(--text); max-width: 90ch; }
 
-.project-detail__links { display: flex; gap: 0.6rem; margin-top: 1.6rem; margin-left: -0.55rem; }
-/* padding + matching negative margin on the container above: same tap-target fix as
-   .project-detail__back (found during a mobile QA pass, was ~22px tall) */
-.project-detail__links a { display: inline-flex; align-items: center; gap: 0.3rem; font-family: var(--font-mono); font-size: 0.82rem; text-decoration: underline; text-underline-offset: 3px; padding: 0.55rem; }
+.project-detail__more summary { cursor: pointer; font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); }
+.project-detail__more summary:hover { text-decoration: underline; }
+
+.project-detail__side-label { margin: 1.1rem 0 0.6rem; }
+.project-detail__side-label:first-child { margin-top: 0; }
+.project-detail__techlist, .project-detail__linklist { display: flex; flex-direction: column; gap: 0.55rem; }
+
+.project-detail__tech-row, .project-detail__link-btn { display: flex; align-items: center; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text); }
+.project-detail__tech-row { gap: 0.6rem; }
+.project-detail__link-btn {
+  display: inline-flex; gap: 0.55rem; background: rgba(201, 205, 211, 0.06); border: var(--card-border);
+  border-radius: var(--radius); padding: 0.5rem 0.75rem; text-decoration: none;
+}
+a.project-detail__link-btn:hover { border-color: var(--accent); color: var(--accent); }
+.project-detail__link-btn svg { flex: none; width: 15px; height: 15px; }
+.project-detail__link-btn--disabled { opacity: 0.5; }
+.project-detail__demo-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-strong); flex: none; box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12); }
+.project-detail__demo-dot--muted { background: var(--muted); }
 
 @media (max-width: 720px) {
-  .portfolio-controls, .category-tabs, .portfolio-filters, .project-grid,
-  .project-detail__links, .project-detail__stack {
+  .portfolio-controls, .category-tabs, .portfolio-filters, .project-grid {
     justify-content: center;
   }
+  .project-detail__grid { grid-template-columns: 1fr; }
 }

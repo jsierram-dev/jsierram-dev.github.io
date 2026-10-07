@@ -76,70 +76,84 @@
 
     @if (openProject(); as project) {
       <div class="project-detail__body">
-        <h3>{{ project.title }}</h3>
-
-        <div class="project-detail__hero">
-          @if (project.screenshot) {
-            <img [src]="project.screenshot" [alt]="project.title" loading="lazy" />
-          } @else {
-            <span>{{ project.title.slice(0, 2).toUpperCase() }}</span>
+        <div class="project-detail__head">
+          <h3>{{ project.title }}</h3>
+          @if (project.featured || project.adminOnly) {
+            <div class="badges">
+              @if (project.featured) {
+                <span class="badge">{{ strings().featuredBadge }}</span>
+              }
+              @if (project.adminOnly) {
+                <span class="badge badge--admin">{{ strings().adminBadge }}</span>
+              }
+            </div>
           }
         </div>
 
-        <div class="project-detail__stack">
-          @for (tech of project.techs; track tech.name) {
-            <span class="project-detail__chip">
-              <app-tech-icon [name]="tech.name" [size]="22" />
-              <span>{{ tech.name }}</span>
-            </span>
-          }
-        </div>
+        <div class="project-detail__grid">
+          <div class="project-detail__main">
+            <div class="project-detail__hero">
+              @if (project.screenshot) {
+                <img [src]="project.screenshot" [alt]="project.title" loading="lazy" />
+              } @else {
+                <span>{{ project.title.slice(0, 2).toUpperCase() }}</span>
+              }
+            </div>
 
-        <dl class="project-detail__section">
-          <dt>{{ strings().problem }}</dt>
-          <dd>
-            <app-clamped-text
-              variant="detail"
-              [text]="project.problem"
-              [expandLabel]="strings().readMore"
-              [collapseLabel]="strings().readLess"
-            />
-          </dd>
-        </dl>
+            <dl class="project-detail__section">
+              <dt>{{ strings().problem }}</dt>
+              <dd><p class="project-detail__objective">{{ project.problem }}</p></dd>
+            </dl>
 
-        <div class="project-detail__outcome">
-          <p class="project-detail__outcome-label">{{ strings().outcome }}</p>
-          <p class="project-detail__outcome-text">{{ project.outcome }}</p>
-        </div>
+            <div class="project-detail__outcome">
+              <p class="project-detail__outcome-label">{{ strings().outcome }}</p>
+              <p class="project-detail__outcome-text">{{ project.outcome }}</p>
+            </div>
 
-        <dl class="project-detail__section">
-          <dt>{{ strings().role }}</dt>
-          <dd>
-            <app-clamped-text
-              variant="detail"
-              [text]="project.role"
-              [expandLabel]="strings().readMore"
-              [collapseLabel]="strings().readLess"
-            />
-          </dd>
-        </dl>
-
-        @if (project.liveUrl || project.repoUrl) {
-          <div class="project-detail__links">
-            @if (project.liveUrl) {
-              <a [href]="project.liveUrl" target="_blank" rel="noopener noreferrer">
-                <span>{{ strings().liveDemo }}</span>
-                <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-              </a>
-            }
-            @if (project.repoUrl) {
-              <a [href]="project.repoUrl" target="_blank" rel="noopener noreferrer">
-                <span>{{ strings().repo }}</span>
-                <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9L9 3M9 3H4.5M9 3V7.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-              </a>
-            }
+            <details class="project-detail__more">
+              <summary>{{ strings().viewTechnicalDetail }}</summary>
+              <p class="project-detail__more-text">{{ project.role }}</p>
+            </details>
           </div>
-        }
+
+          <div class="project-detail__side">
+            <p class="project-detail__side-label">{{ strings().stackLabel }}</p>
+            <div class="project-detail__techlist">
+              @for (tech of project.techs; track tech.name) {
+                <span class="project-detail__tech-row">
+                  <app-tech-icon [name]="tech.name" [size]="26" />
+                  <span>{{ tech.name }}</span>
+                </span>
+              }
+            </div>
+
+            <p class="project-detail__side-label">{{ strings().linksLabel }}</p>
+            <div class="project-detail__linklist">
+              @if (project.repoUrl) {
+                <a class="project-detail__link-btn" [href]="project.repoUrl" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+                  <span>{{ strings().repo }}</span>
+                </a>
+              } @else {
+                <span class="project-detail__link-btn project-detail__link-btn--disabled">
+                  <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+                  <span>{{ strings().repoPrivate }}</span>
+                </span>
+              }
+              @if (project.liveUrl) {
+                <a class="project-detail__link-btn" [href]="project.liveUrl" target="_blank" rel="noopener noreferrer">
+                  <span class="project-detail__demo-dot"></span>
+                  <span>{{ strings().liveDemo }}</span>
+                </a>
+              } @else {
+                <span class="project-detail__link-btn project-detail__link-btn--disabled">
+                  <span class="project-detail__demo-dot project-detail__demo-dot--muted"></span>
+                  <span>{{ strings().noLiveDemo }}</span>
+                </span>
+              }
+            </div>
+          </div>
+        </div>
       </div>
     }
   </div>
