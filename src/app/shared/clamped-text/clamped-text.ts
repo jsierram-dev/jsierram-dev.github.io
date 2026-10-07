@@ -36,7 +36,7 @@ import { Component, DestroyRef, ElementRef, afterNextRender, afterRenderEffect, 
       -webkit-line-clamp: var(--clamp-lines); overflow: hidden;
     }
     .clamped-text.is-expanded { display: block; overflow: visible; }
-    :host([data-variant='timeline']) .clamped-text { font-size: 0.85rem; color: var(--muted); line-height: 1.6; max-width: 52ch; }
+    :host([data-variant='timeline']) .clamped-text { font-size: 0.85rem; color: var(--muted); line-height: 1.6; max-width: 75ch; }
     :host([data-variant='detail']) .clamped-text { font-size: 0.92rem; color: var(--text); line-height: 1.65; max-width: 90ch; }
     /* padding + matching negative left margin: same tap-target fix used on
        .project-detail__back and .timeline__more-btn (found during a mobile QA pass, this
