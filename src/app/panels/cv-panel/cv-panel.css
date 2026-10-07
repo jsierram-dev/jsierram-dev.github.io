@@ -14,6 +14,20 @@
   text-decoration: none;
 }
 .btn-download:hover { filter: brightness(1.08); }
+/* Ancho mínimo para que el botón no "achique" al reemplazar el icono por el spinner (ambos
+   13px, mismo tamaño) — solo evita un salto si algún día el texto cambia de largo entre
+   idiomas. El spinner gira con el propio borde del botón (color #17191d, el texto normal
+   del botón) para no depender de una variable de color nueva. */
+.btn-download--loading { pointer-events: none; opacity: 0.85; }
+.btn-download__spinner {
+  width: 13px; height: 13px; border-radius: 50%; flex: none;
+  border: 2px solid rgba(23, 25, 29, 0.35); border-top-color: #17191d;
+  animation: btn-download-spin 0.7s linear infinite;
+}
+@keyframes btn-download-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .btn-download__spinner { animation: none; }
+}
 
 /* documento blanco/negro a propósito, no el chrome oscuro del resto del sitio — es literalmente
    lo que se sube a un portal de empleo o se manda por email (ver ROADMAP-portfolio.md "CV") */

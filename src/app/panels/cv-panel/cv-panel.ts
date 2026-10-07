@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { LanguageService } from '../../core/language.service';
 import type { ExperienceEntry } from '../../data/content.model';
 
@@ -33,6 +33,37 @@ export class CvPanelComponent {
 
   protected readonly cvFilename = computed(() => `cv-${this.lang.currentLang()}.pdf`);
   protected readonly cvHref = computed(() => `/${this.cvFilename()}`);
+  protected readonly downloading = signal(false);
+
+  /** El <a download> nativo no da ningún evento de progreso — por eso se intercepta el
+   *  click y se descarga el PDF manualmente vía fetch+blob, mostrando el spinner mientras
+   *  esa descarga está en curso (pedido explícito 2026-10-07; en una conexión lenta el PDF
+   *  puede tardar en llegar, y sin esto el botón no daba ninguna señal de que algo pasó). */
+  async downloadCv(event: Event): Promise<void> {
+    event.preventDefault();
+    if (this.downloading()) return;
+    this.downloading.set(true);
+    const href = this.cvHref();
+    const filename = this.cvFilename();
+    try {
+      const response = await fetch(href);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch {
+      // Fallback: deja que el navegador lo intente a su manera (nueva pestaña) si el fetch
+      // falla por algo que el <a download> normal sí podría manejar (ej. CORS raro, aunque
+      // acá es same-origin siempre).
+      window.open(href, '_blank');
+    } finally {
+      this.downloading.set(false);
+    }
+  }
 
   protected readonly educationRange = computed(() => {
     const education = this.content().education;
