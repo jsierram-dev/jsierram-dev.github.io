@@ -12,17 +12,34 @@
       </nav>
       <div class="portfolio-filters">
         @for (layer of layers; track layer) {
-          <select
-            [attr.data-empty]="!layerFilters()[layer]"
-            (mousedown)="onLayerMouseDown(layer, $event)"
-            (blur)="onLayerBlur(layer, $event)"
-            (change)="onLayerChange(layer, $event)"
-          >
-            <option value="">{{ strings().layerLabels[layer] }}</option>
-            @for (opt of layerOptions()[layer]; track opt) {
-              <option [value]="opt" [selected]="layerFilters()[layer] === opt">{{ opt }}</option>
+          <div class="layer-filter">
+            @if (layerOptions()[layer].length === 1) {
+              <!-- Una sola tecnología posible en esta capa: no hay nada que elegir, se
+                   muestra ya "puesta" y deshabilitada en vez de un selector funcional
+                   (pedido explícito 2026-10-07). -->
+              <button type="button" class="layer-filter__active layer-filter__active--locked" disabled>
+                <span>{{ layerOptions()[layer][0] }}</span>
+              </button>
+            } @else if (layerFilters()[layer]; as chosen) {
+              <button
+                type="button"
+                class="layer-filter__active"
+                [attr.aria-label]="strings().clearFilter"
+                [title]="strings().clearFilter"
+                (click)="clearLayerFilter(layer)"
+              >
+                <span>{{ chosen }}</span>
+                <span class="layer-filter__x" aria-hidden="true">×</span>
+              </button>
+            } @else {
+              <select (change)="onLayerChange(layer, $event)">
+                <option value="" disabled hidden selected>{{ strings().layerLabels[layer] }}</option>
+                @for (opt of layerOptions()[layer]; track opt) {
+                  <option [value]="opt">{{ opt }}</option>
+                }
+              </select>
             }
-          </select>
+          </div>
         }
         <span class="sep">|</span>
         <select (change)="onSortChange($event)">

@@ -108,28 +108,16 @@ export class PortfolioPanelComponent {
     this.layerFilters.update((f) => ({ ...f, [layer]: value }));
   }
 
-  /** Native <select> never fires 'change' when the user re-picks the option that's already
-   *  selected (no value transition from the browser's point of view) — blanking the value
-   *  here, right before the native dropdown opens, forces a real transition on re-pick, so
-   *  onLayerChange() below can detect "picked the same tech again" and treat it as deselect
-   *  (pedido explícito 2026-10-07: click en una tech ya activa quita el filtro, en vez de
-   *  tener que elegir manualmente la opción en blanco de esa capa, ej. "Services"). */
-  onLayerMouseDown(layer: StackLayer, event: Event): void {
-    const select = event.target as HTMLSelectElement;
-    if (this.layerFilters()[layer]) select.value = '';
+  clearLayerFilter(layer: StackLayer): void {
+    this.setLayerFilter(layer, '');
   }
 
-  /** If the blanking above opened the dropdown but the user closed it without picking
-   *  anything (Escape, click outside), 'change' never fires — restore the real value so the
-   *  select doesn't visually show "no filter" while the previous filter is still applied. */
-  onLayerBlur(layer: StackLayer, event: Event): void {
-    (event.target as HTMLSelectElement).value = this.layerFilters()[layer];
-  }
-
+  /** The <select> for a layer only renders while that layer has no filter (see template) —
+   *  once a tech is picked it's swapped for a "chosen tech + ×" button, so there's no native
+   *  re-pick/deselect edge case to handle here anymore (2026-10-07, pedido explícito:
+   *  reemplazar el selector por la "×" directamente en vez de convivir con el <select>). */
   onLayerChange(layer: StackLayer, event: Event): void {
-    const newValue = (event.target as HTMLSelectElement).value;
-    const current = this.layerFilters()[layer];
-    this.setLayerFilter(layer, newValue !== '' && newValue === current ? '' : newValue);
+    this.setLayerFilter(layer, (event.target as HTMLSelectElement).value);
   }
 
   setSortOrder(value: SortOrder): void {

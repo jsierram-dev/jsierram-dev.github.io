@@ -23,6 +23,7 @@
   "sortNewest": "Most recent",
   "sortOldest": "Oldest",
   "noMatch": "No projects match that filter.",
+  "clearFilter": "Clear filter",
   "featuredBadge": "Featured",
   "adminBadge": "Admin only",
   "problem": "Problem",

@@ -31,6 +31,10 @@ export interface Strings {
   sortNewest: string;
   sortOldest: string;
   noMatch: string;
+  /** Aria-label/title for the "x" button that clears an active layer filter — the reliable
+   *  fallback for re-picking the same option in the <select> to deselect it (see
+   *  onLayerMouseDown/onLayerChange in portfolio-panel.ts). */
+  clearFilter: string;
   featuredBadge: string;
   /** Marks an adminOnly project, which only the site owner ever sees. */
   adminBadge: string;

@@ -11,11 +11,41 @@
 .category-tabs button { font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); padding-bottom: 0.3rem; border-bottom: 2px solid transparent; }
 .category-tabs button.active { color: var(--accent); border-bottom-color: var(--accent); }
 .portfolio-filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+/* Ancho fijo (no auto) — sin esto, cada capa cambiaba de tamaño según el largo del nombre
+   de la tecnología elegida ("Java" vs "Apache Tomcat"), haciendo que el resto de filtros
+   "saltara" de posición al elegir/quitar un filtro (pedido explícito 2026-10-07). 150px
+   cubre con margen el nombre más largo de la lista actual ("Apache Tomcat", 13 caracteres);
+   el ellipsis de abajo es solo red de seguridad por si se agrega uno aún más largo. */
+.layer-filter { display: inline-flex; align-items: center; width: 150px; }
 .portfolio-filters select {
   background: var(--card-bg); border: var(--card-border); color: var(--text);
   font-family: var(--font-mono); font-size: 0.72rem; padding: 0.4rem 0.55rem; border-radius: var(--radius);
 }
-.portfolio-filters select:not([data-empty='true']) { border-color: var(--accent); color: var(--accent); }
+/* Solo los selects de capa deben llenar el ancho fijo del wrapper (arriba) — el select de
+   orden ("Featured first"/etc.) no está dentro de .layer-filter, así que sin este scope
+   heredaba el mismo width:100% y se estiraba a lo ancho de todo .portfolio-filters en vez
+   de su tamaño natural (bug real, visto 2026-10-07 al revisar en local). */
+.layer-filter select {
+  width: 100%; box-sizing: border-box; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+/* Reemplaza al <select> en cuanto hay un filtro activo para esa capa (ver template) — ya no
+   es un selector que se reabre, es directamente el estado "elegido" + su "×" para quitarlo,
+   pedido explícito 2026-10-07 para no convivir con el <select> nativo una vez hay elección. */
+.layer-filter__active {
+  display: inline-flex; align-items: center; justify-content: space-between; gap: 0.4rem;
+  width: 100%; box-sizing: border-box;
+  background: var(--card-bg); border: 1px solid var(--accent); color: var(--accent);
+  font-family: var(--font-mono); font-size: 0.72rem; padding: 0.4rem 0.55rem; border-radius: var(--radius);
+}
+.layer-filter__active span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.layer-filter__x { font-size: 0.85rem; line-height: 1; flex: none; }
+.layer-filter__active:hover { background: var(--badge-bg); }
+/* Capa con una sola tecnología posible: nada que elegir, se muestra fija y sin la "×" (no
+   hay otro valor al que "volver" si se quitara) — mismo motivo que disabled más abajo. */
+.layer-filter__active--locked {
+  border-color: var(--card-border); color: var(--muted); cursor: not-allowed; justify-content: flex-start;
+}
+.layer-filter__active--locked:hover { background: none; }
 .portfolio-filters .sep { align-self: center; color: var(--muted); font-family: var(--font-mono); font-size: 0.7rem; }
 
 /* auto-fit, no auto-fill — con pocos proyectos, auto-fill reserva columnas vacías invisibles
