@@ -34,12 +34,6 @@ export class CvPanelComponent {
   protected readonly cvFilename = computed(() => `cv-${this.lang.currentLang()}.pdf`);
   protected readonly cvHref = computed(() => `/${this.cvFilename()}`);
 
-  protected readonly languagesText = computed(() =>
-    this.content()
-      .languages.map((l) => `${l.language}: ${l.level}`)
-      .join(' · ')
-  );
-
   protected readonly educationRange = computed(() => {
     const education = this.content().education;
     if (education.length === 0) return '';

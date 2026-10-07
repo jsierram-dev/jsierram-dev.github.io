@@ -13,7 +13,7 @@
   <div class="cv-page">
     <h1 class="cv-name">Juan Pablo Sierra Amariles</h1>
     <p class="cv-role">{{ content().profile.cv.role }}</p>
-    <p class="cv-contact">{{ content().profile.location }} &nbsp;|&nbsp; juanpablosierra36&#64;gmail.com</p>
+    <p class="cv-contact">{{ content().profile.location }} &nbsp;|&nbsp; juanpablosierra36&#64;gmail.com &nbsp;|&nbsp; +34 722 868 998</p>
 
     @if (content().profile.cv.summary) {
       <h2 class="cv-section">{{ strings().cvSections.summary }}</h2>
@@ -59,7 +59,11 @@
 
     @if (content().languages.length > 0) {
       <h2 class="cv-section">{{ strings().cvSections.languages }}</h2>
-      <p class="cv-text">{{ languagesText() }}</p>
+      <p class="cv-text">
+        @for (lang of content().languages; track lang.code; let last = $last) {
+          <strong>{{ lang.language }}:</strong> {{ lang.level }}{{ last ? '' : ' · ' }}
+        }
+      </p>
     }
   </div>
 </div>
