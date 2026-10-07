@@ -42,9 +42,9 @@
 
     @if (content().education.length > 0) {
       <h2 class="cv-section">{{ strings().cvSections.education }}</h2>
-      @for (ed of content().education; track ed.org + ed.year) {
+      @for (ed of content().education; track ed.org + ed.startYear + ed.year) {
         <p class="cv-entry-title">{{ ed.title }} — {{ ed.org }}{{ ed.city ? ', ' + ed.city : '' }}</p>
-        <p class="cv-entry-date">{{ ed.year }}</p>
+        <p class="cv-entry-date">{{ edDate(ed) }}</p>
       }
     }
 

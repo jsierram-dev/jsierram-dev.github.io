@@ -44,4 +44,18 @@ export class CvPanelComponent {
     const end = e.current ? this.strings().present : `${e.endMonth ?? ''} ${e.endYear}`.trim();
     return `${e.startMonth} ${e.startYear} – ${end}`;
   }
+
+  edDate(ed: any): string {
+    // New format: startMonth/startYear to endMonth/endYear
+    if (ed.startMonth && ed.startYear) {
+      const end = ed.current ? this.strings().present : `${ed.endMonth ?? ''} ${ed.endYear}`.trim();
+      return `${ed.startMonth} ${ed.startYear} – ${end}`;
+    }
+    // Legacy format: month/year
+    if (ed.month && ed.year) {
+      return `${ed.month} ${ed.year}`;
+    }
+    // Fallback to year only
+    return ed.year ?? '';
+  }
 }

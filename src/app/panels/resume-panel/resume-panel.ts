@@ -75,7 +75,7 @@ export class ResumePanelComponent {
 
   protected readonly educationRows = computed<TimelineRow[]>(() =>
     this.content().education.map((e) => ({
-      dateText: `${e.month} ${e.year}`,
+      dateText: this.edDate(e),
       titleText: `${e.title} · ${e.org}`,
       link: null,
       desc: e.desc || null,
@@ -145,6 +145,20 @@ export class ResumePanelComponent {
     if (key === 'experience') return this.experienceRows();
     if (key === 'education') return this.educationRows();
     return this.certificationRows();
+  }
+
+  private edDate(ed: any): string {
+    // New format: startMonth/startYear to endMonth/endYear
+    if (ed.startMonth && ed.startYear) {
+      const end = ed.current ? this.strings().present : `${ed.endMonth ?? ''} ${ed.endYear}`.trim();
+      return `${ed.startMonth} ${ed.startYear} – ${end}`;
+    }
+    // Legacy format: month/year
+    if (ed.month && ed.year) {
+      return `${ed.month} ${ed.year}`;
+    }
+    // Fallback to year only
+    return ed.year ?? '';
   }
 
   goToStack(name: string, layer: StackLayer): void {

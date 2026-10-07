@@ -84,10 +84,24 @@ export interface EducationEntry {
   org: string;
   /** Shown on the CV as "Org, City"; empty string omits it instead of showing a placeholder. */
   city: string;
-  month: string;
-  year: string;
+  /** Legacy format: single end date (month/year). Use startMonth/startYear/endMonth/endYear instead. */
+  month?: string;
+  /** Legacy format: single end year. Use startMonth/startYear/endMonth/endYear instead. */
+  year?: string;
+  /** New format: start month (e.g. "Sep"). */
+  startMonth?: string;
+  /** New format: start year (e.g. "2022"). */
+  startYear?: string;
+  /** New format: end month (e.g. "Jun"). Optional if current=true. */
+  endMonth?: string;
+  /** New format: end year (e.g. "2024"). */
+  endYear?: string;
+  /** True for ongoing education — endMonth is omitted/ignored, "present" is shown instead. */
+  current?: boolean;
   desc: string;
   techs: string[];
+  /** Optional link to course/program (e.g. UNED). */
+  link?: string;
 }
 
 export interface Certification {

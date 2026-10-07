@@ -178,8 +178,10 @@
       "title": "Higher Vocational Training Certificate in Web Application Development (DAW)",
       "org": "IES Poeta Paco Mollá",
       "city": "Petrer",
-      "month": "Jun",
-      "year": "2024",
+      "startMonth": "Sep",
+      "startYear": "2022",
+      "endMonth": "Jun",
+      "endYear": "2024",
       "desc": "Covered programming, client-server development, databases, application environments, English (B2 level), and business and entrepreneurial initiative.",
       "techs": ["Java", "PHP", "JavaScript", "React", "Docker", "Oracle SQL Developer", "NoSQL", "MongoDB", "GitHub"]
     },
@@ -187,8 +189,10 @@
       "title": "Vocational Training Certificate in Microcomputer Systems and Networks (SMR)",
       "org": "IES Poeta Paco Mollá",
       "city": "Petrer",
-      "month": "Jun",
-      "year": "2021",
+      "startMonth": "Sep",
+      "startYear": "2019",
+      "endMonth": "Jun",
+      "endYear": "2021",
       "desc": "Covered computer management, computer life cycle, and terminal use for creating and managing servers, databases, and markup/styling languages.",
       "techs": ["Computer Management", "Computer solutions", "SQL Server", "HTML5", "CSS3", "CMD", "Powershell", "Linux environment", "Windows environment"]
     },
@@ -196,8 +200,10 @@
       "title": "(ESO) Compulsory Secondary Education",
       "org": "IES Azorín",
       "city": "Petrer",
-      "month": "Jun",
-      "year": "2019",
+      "startMonth": "Sep",
+      "startYear": "2015",
+      "endMonth": "Jun",
+      "endYear": "2019",
       "desc": "Education stage for students aged 12 to 16, developing academic skills and preparing for higher education.",
       "techs": ["English", "Valencian (language)", "Biology", "Technology", "Humanities", "IT", "Teamwork", "Maths"]
     }
