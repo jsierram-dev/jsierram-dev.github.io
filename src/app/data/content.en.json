@@ -15,8 +15,8 @@
         "languages": "TypeScript, JavaScript",
         "frontend": "Angular, HTML5, CSS3, React",
         "backend": "Java, Spring Boot, Express, Socket.IO",
-        "databases": "Oracle, SQLite, Spring Boot",
-        "tools": "Git, CI/CD, Agile/Scrum"
+        "databases": "Oracle, SQLite, MongoDB",
+        "tools": "Docker, AWS, Git, CI/CD, Agile/Scrum"
       }
     }
   },
@@ -115,7 +115,7 @@
     {
       "role": "Full Stack Developer",
       "company": "NTT DATA",
-      "city": "San Juan Beach Alicante",
+      "city": "Playa San Juan Alicante",
       "link": "https://es.nttdata.com/",
       "startMonth": "Jun",
       "startYear": "2024",
