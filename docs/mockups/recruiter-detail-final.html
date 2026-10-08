@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Propuesta F — Ficha técnica + copy de Resultado revisado (v2)</title>
+<style>
+  :root {
+    --bg: #1e2126; --text: #c9cdd3; --muted: #8a92a0; --accent: #d99a4e; --accent-strong: #7fa37a;
+    --font-display: "Cascadia Code", "Consolas", ui-monospace, monospace;
+    --font-mono: "Cascadia Code", "Consolas", ui-monospace, monospace;
+    --radius: 3px; --chip-bg: rgba(127, 163, 122, 0.12); --chip-border: 1px solid rgba(127, 163, 122, 0.4);
+    --chip-text: #9dc298; --card-bg: #1a1c21; --card-border: 1px solid rgba(201, 205, 211, 0.12);
+    --badge-bg: rgba(217, 154, 78, 0.16);
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: system-ui, sans-serif; margin: 0; padding: 2.5rem 1.5rem 6rem; }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  .intro { max-width: 760px; margin-bottom: 2.4rem; }
+  .intro h1 { font-family: var(--font-display); font-size: 1.5rem; margin: 0 0 0.6rem; }
+  .intro p { font-size: 0.9rem; line-height: 1.6; color: var(--muted); }
+  .intro b { color: var(--accent-strong); }
+
+  .rule-box { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-bottom: 3rem; }
+  .rule-item { background: var(--card-bg); border: var(--card-border); border-radius: var(--radius); padding: 0.9rem 1rem; }
+  .rule-item .k { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+  .rule-item .v { font-size: 0.82rem; line-height: 1.5; color: var(--text); }
+  @media (max-width: 760px) { .rule-box { grid-template-columns: 1fr; } }
+
+  .compare { margin-bottom: 3.2rem; }
+  .compare h2 { font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 0.3rem; }
+  .compare .sub { font-size: 0.82rem; color: var(--muted); margin: 0 0 1.4rem; }
+  .ab { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.6rem; }
+  .ab-block { border-radius: var(--radius); padding: 0.9rem 1.1rem; font-size: 0.82rem; line-height: 1.55; }
+  .ab-block.before { background: rgba(217, 90, 90, 0.07); border: 1px solid rgba(217, 90, 90, 0.25); color: #d3a3a3; }
+  .ab-block.after { background: rgba(127, 163, 122, 0.08); border: 1px solid rgba(127, 163, 122, 0.35); color: var(--text); }
+  .ab-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; display: block; }
+  .ab-block.before .ab-label { color: #d35f5f; }
+  .ab-block.after .ab-label { color: var(--accent-strong); }
+  .proj-name { font-family: var(--font-display); font-size: 1rem; margin: 0 0 0.6rem; color: var(--accent); }
+  @media (max-width: 760px) { .ab { grid-template-columns: 1fr; } }
+
+  .chip { font-family: var(--font-mono); font-size: 0.7rem; padding: 0.22rem 0.5rem; border-radius: var(--radius); background: var(--chip-bg); color: var(--chip-text); border: var(--chip-border); }
+  .panel { background: var(--card-bg); border: var(--card-border); border-radius: var(--radius); padding: 1.6rem 1.8rem 2rem; margin-bottom: 1.6rem; }
+  .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); text-decoration: underline; margin-bottom: 1rem; }
+  .hero { aspect-ratio: 2.6 / 1; max-height: 190px; border-radius: var(--radius); margin: 0 0 1.1rem; background: linear-gradient(135deg, rgba(217,154,78,0.12), rgba(127,163,122,0.08)); border: var(--card-border); display: flex; align-items: center; justify-content: center; }
+  .hero span { font-family: var(--font-display); font-size: 2.2rem; color: rgba(201,205,211,0.28); }
+
+  .repo-pill { font-family: var(--font-mono); font-size: 0.72rem; display: inline-flex; align-items: center; gap: 0.35rem; color: var(--text); background: rgba(201,205,211,0.06); border: var(--card-border); border-radius: var(--radius); padding: 0.4rem 0.65rem; text-decoration: none; }
+
+  .f-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 2rem; }
+  .f-head-row { display: flex; align-items: baseline; justify-content: space-between; gap: 0.8rem; margin-bottom: 0.9rem; flex-wrap: wrap; }
+  .f-head { font-family: var(--font-display); font-size: 1.4rem; margin: 0; }
+  .f-badges { display: flex; gap: 0.4rem; }
+  .f-badge { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); background: var(--badge-bg); padding: 0.15rem 0.45rem; border-radius: var(--radius); }
+  .f-block { margin-bottom: 1.2rem; }
+  .f-label { font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.35rem; }
+  .f-block p { margin: 0; font-size: 0.87rem; line-height: 1.6; }
+  .f-block.outcome { padding: 0.9rem 1.05rem; background: var(--badge-bg); border-left: 3px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; }
+  .f-block.outcome p { color: var(--text); font-weight: 500; }
+  .f-side { background: rgba(0,0,0,0.15); border-radius: var(--radius); padding: 1.1rem 1.2rem; align-self: start; }
+  .f-side .f-label { margin-top: 1rem; }
+  .f-side .f-label:first-child { margin-top: 0; }
+  .f-repos { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  /* ---- stack con icono real + color de marca (igual a app-tech-icon) ---- */
+  .f-techs { display: flex; flex-direction: column; gap: 0.55rem; }
+  .tech-row { display: flex; align-items: center; gap: 0.6rem; }
+  .tech-row .tech-icon-badge { flex: none; display: block; }
+  .tech-row .tech-name { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text); }
+
+  /* ---- repo / demo como botones con icono (GitHub real, y uno de "demo en vivo") ---- */
+  .link-row { display: flex; flex-direction: column; gap: 0.5rem; }
+  .link-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.78rem;
+    color: var(--text); background: rgba(201,205,211,0.06); border: var(--card-border); border-radius: var(--radius);
+    padding: 0.45rem 0.7rem; text-decoration: none;
+  }
+  .link-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .link-btn.disabled { opacity: 0.45; cursor: default; }
+  .link-btn.disabled:hover { border-color: var(--card-border); color: var(--text); }
+  .link-btn svg { flex: none; width: 15px; height: 15px; }
+  .link-btn .demo-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-strong); flex: none; box-shadow: 0 0 0 3px rgba(127,163,122,0.2); }
+
+  details.f-more summary { cursor: pointer; font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); }
+  details.f-more .detail-text { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-top: 0.6rem; }
+
+  @media (max-width: 720px) { .f-grid { grid-template-columns: 1fr; } }
+
+  .note { font-size: 0.78rem; color: var(--muted); margin-top: 1rem; border-top: var(--card-border); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="intro">
+    <h1>Propuesta F — v2: Resultado completo, sin cambiar el modelo de datos</h1>
+    <p>
+      Ajuste sobre la versión anterior: el <b>Resultado</b> ahora cuenta todo lo que el proyecto logra —no
+      se recorta a 1 frase—, pero sin repetir lo que ya dice <b>Objetivo</b> (el qué/por qué) ni lo que ya
+      dice el <b>detalle técnico</b> plegado (arquitectura, repos). Sigue siendo texto completo como hoy,
+      solo que ya no reexplica la mecánica del producto ni enumera features que son evidentes por los chips
+      de stack. Y sin tocar el modelo de datos: cada proyecto sigue usando un único <code>repoUrl</code> y
+      <code>liveUrl</code>, igual que ahora — los repos del detalle técnico (como los 5 de Similart) solo se
+      mencionan como texto dentro del párrafo plegado, igual que hoy en "role".
+    </p>
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-item">
+      <div class="k">Objetivo</div>
+      <div class="v">Qué es y por qué existe. 1-2 frases. No repite stack (ya está en chips) ni arquitectura (ya está abajo, plegada).</div>
+    </div>
+    <div class="rule-item">
+      <div class="k">Resultado</div>
+      <div class="v">Todo lo que se consiguió: funcionalidades clave, robustez, alcance. Completo, pero sin repetir la mecánica ya contada en Objetivo.</div>
+    </div>
+    <div class="rule-item">
+      <div class="k">Detalle técnico (plegado)</div>
+      <div class="v">Arquitectura, repos, decisiones de implementación — el texto que hoy vive en "role", sin recortar nada, solo deja de ser lo primero que se lee.</div>
+    </div>
+  </div>
+
+  <div class="compare">
+    <h2>Antes / después del texto de Resultado</h2>
+    <p class="sub">El "antes" es el campo "outcome" tal cual está hoy. El "después" cuenta lo mismo, completo, pero sin repetir el objetivo ni listar features que ya están en los chips de stack.</p>
+
+    <p class="proj-name">Similart</p>
+    <div class="ab">
+      <div class="ab-block before">
+        <span class="ab-label">Antes (outcome actual)</span>
+        "Mecánica: Un juego de dibujo multijugador en tiempo real para 1–12 jugadores. Todos dibujan la misma
+        imagen simultáneamente y ven los dibujos de otros jugadores con porcentaje de similitud en directo.
+        Funcionalidades: Fase de votación con cuenta atrás en vivo, herramientas de pincel y cubo de pintura,
+        deshacer/rehacer sincronizado, reconexión automática, panel de administración... Calidad: probado con
+        Playwright ejecutando 8–12 jugadores simultáneamente."
+      </div>
+      <div class="ab-block after">
+        <span class="ab-label">Después (resultado)</span>
+        "Fase de votación con cuenta atrás en vivo, herramientas de pincel y cubo de pintura, y
+        deshacer/rehacer sincronizado entre todos los jugadores de la sala en tiempo real. Si alguien pierde
+        la conexión, se reconecta solo sin perder la partida. El panel de administración gestiona las
+        imágenes del juego con extracción automática de paleta de colores. Cada función se valida con
+        Playwright simulando 8–12 jugadores en paralelo en la misma sala, la misma carga real que vería en
+        producción."
+      </div>
+    </div>
+
+    <p class="proj-name">CalisMap</p>
+    <div class="ab">
+      <div class="ab-block before">
+        <span class="ab-label">Antes (outcome actual)</span>
+        "Una app móvil en la que cada habilidad... es un roadmap... Funciona sin conexión y sin cuenta... se
+        sincroniza al entrar con Google y puede importar tu historial desde apps como Strong o Hevy. También
+        tiene un panel de administración... Desplegada en GitHub Pages, Render y Neon."
+      </div>
+      <div class="ab-block after">
+        <span class="ab-label">Después (resultado)</span>
+        "Funciona sin conexión y sin cuenta desde el primer uso — tus marcas se guardan en el dispositivo y
+        se sincronizan solas al iniciar sesión con Google, sin perder nada de lo ya entrenado. Si ya
+        entrenabas con Strong o Hevy, puedes importar ese historial en vez de empezar de cero. Incluye un
+        panel de administración para gestionar el catálogo de habilidades."
+      </div>
+    </div>
+
+    <p class="proj-name">Este portfolio</p>
+    <div class="ab">
+      <div class="ab-block before">
+        <span class="ab-label">Antes (outcome actual)</span>
+        "Un sitio 100% estático (Angular y JSON, sin backend ni base de datos), prerenderizado y alojado en
+        GitHub Pages. Funciona como un roadmap técnico que puedo compartir, con un motivo concreto detrás de
+        cada decisión."
+      </div>
+      <div class="ab-block after">
+        <span class="ab-label">Después (resultado)</span>
+        "100% estático y prerenderizado — sin backend ni base de datos, así que carga al instante y se aloja
+        gratis en GitHub Pages. Cada pantalla (Portfolio, Resume, CV) documenta además el motivo real detrás
+        de cada decisión de diseño, no solo el resultado final."
+      </div>
+    </div>
+
+    <p class="proj-name">PayToWin</p>
+    <div class="ab">
+      <div class="ab-block before">
+        <span class="ab-label">Antes (outcome actual)</span>
+        "Una tienda que funciona con cuentas de cliente y de administrador: catálogo, carrito, pedidos,
+        facturas exportables a PDF y XML, gestión de productos con subida de imágenes y estadísticas de
+        ventas. Demo pública en Render."
+      </div>
+      <div class="ab-block after">
+        <span class="ab-label">Después (resultado)</span>
+        "Catálogo, carrito, pedidos y facturas exportables a PDF/XML, con cuentas separadas de cliente y
+        administrador (gestión de productos con imágenes, estadísticas de ventas). Vuelto a abrir años
+        después para corregir los fallos de seguridad del proyecto académico original y desplegarlo con
+        Docker — un repaso real de hardening, no solo el ejercicio de clase."
+      </div>
+    </div>
+  </div>
+
+  <h2 style="font-family: var(--font-display); font-size: 1.15rem; margin: 0 0 1.4rem;">Ficha técnica completa — los 4 proyectos con el copy nuevo</h2>
+
+  <!-- SIMILART -->
+  <div class="panel">
+    <a class="back-link">← Volver a proyectos</a>
+    <div class="f-grid">
+      <div>
+        <div class="f-head-row">
+          <h3 class="f-head">Similart</h3>
+          <div class="f-badges"><span class="f-badge">Featured</span></div>
+        </div>
+        <div class="hero"><span>Si</span></div>
+        <div class="f-block">
+          <p class="f-label">Objetivo</p>
+          <p>Juego de dibujo multijugador en tiempo real: 1–12 jugadores compiten dibujando la misma imagen, puntuados por % de similitud en vivo.</p>
+        </div>
+        <div class="f-block outcome">
+          <p class="f-label">Resultado</p>
+          <p>Fase de votación con cuenta atrás en vivo, pincel y cubo de pintura, y deshacer/rehacer sincronizado entre todos los jugadores de la sala. Si alguien pierde la conexión, se reconecta solo sin perder la partida. El panel de administración gestiona las imágenes del juego con extracción automática de paleta de colores. Cada función se valida con Playwright simulando 8–12 jugadores en paralelo en la misma sala, la misma carga real que vería en producción.</p>
+        </div>
+        <details class="f-more">
+          <summary>Ver arquitectura y rol técnico completo</summary>
+          <p class="detail-text">
+            Diseñé y construí todo el proyecto en solitario, repartido en 5 repositorios. similart-gateway
+            enruta login a jp-back-auth y partidas (HTTP+WS) a similart-back-room, que guarda salas en
+            memoria, retransmite cada trazo en vivo y calcula el ganador comparando dibujos. jp-back-auth
+            emite JWT RS256 validados localmente por cada backend, sin llamar al servicio en cada petición.
+            jp-similart-api comparte los tipos entre frontend y backend.
+          </p>
+        </details>
+      </div>
+      <div class="f-side">
+        <p class="f-label">Stack</p>
+        <div class="f-techs">
+          <span class="tech-row">
+            <svg class="tech-icon-badge" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect width="26" height="26" rx="4" fill="#dd0031" fill-opacity="0.16"></rect>
+              <rect x="0.5" y="0.5" width="25" height="25" rx="3.5" fill="none" stroke="#dd0031" stroke-opacity="0.55"></rect>
+              <svg x="5.5" y="5.5" width="15" height="15" viewBox="0 0 24 24"><path fill="#dd0031" d="M16.712 17.711H7.288l-1.204 2.916L12 24l5.916-3.373-1.204-2.916ZM14.692 0l7.832 16.855.814-12.856L14.692 0ZM9.308 0 .662 3.999l.814 12.856L9.308 0Zm-.405 13.93h6.198L12 6.396 8.903 13.93Z"/></svg>
+            </svg>
+            <span class="tech-name">Angular</span>
+          </span>
+          <span class="tech-row">
+            <svg class="tech-icon-badge" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect width="26" height="26" rx="4" fill="#6ba46b" fill-opacity="0.16"></rect>
+              <rect x="0.5" y="0.5" width="25" height="25" rx="3.5" fill="none" stroke="#6ba46b" stroke-opacity="0.55"></rect>
+              <svg x="5.5" y="5.5" width="15" height="15" viewBox="0 0 24 24"><path fill="#6ba46b" d="M11.9362.0137a12.1694 12.1694 0 00-2.9748.378C4.2816 1.5547.5678 5.7944.0918 10.6012c-.59 4.5488 1.7079 9.2856 5.6437 11.6345 3.8608 2.4179 9.0926 2.3199 12.8734-.223 3.3969-2.206 5.5118-6.2277 5.3858-10.2845-.058-4.0159-2.31-7.9167-5.7588-9.9796C16.354.5876 14.1431.0047 11.9362.0137zm-.063 1.696c4.9448-.007 9.7886 3.8137 10.2815 8.9245.945 5.6597-3.7528 11.4125-9.4875 11.5795-5.4538.544-10.7245-4.0798-10.8795-9.5566-.407-4.4338 2.5159-8.8346 6.6977-10.2995a9.1126 9.1126 0 013.3878-.647zm5.0908 3.2248c-2.6869 2.0849-5.2598 4.3078-7.8886 6.4567 1.2029.017 2.4118.016 3.6208.01 1.41-2.165 2.8589-4.3008 4.2678-6.4667zm-5.6647 7.6536c-1.41 2.166-2.86 4.3088-4.2699 6.4737 2.693-2.0799 5.2548-4.3198 7.9017-6.4557a255.4132 255.4132 0 00-3.6318-.018z"/></svg>
+            </svg>
+            <span class="tech-name">Socket.IO</span>
+          </span>
+          <span class="tech-row">
+            <svg class="tech-icon-badge" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect width="26" height="26" rx="4" fill="#336791" fill-opacity="0.16"></rect>
+              <rect x="0.5" y="0.5" width="25" height="25" rx="3.5" fill="none" stroke="#336791" stroke-opacity="0.55"></rect>
+              <svg x="5.5" y="5.5" width="15" height="15" viewBox="0 0 24 24"><path fill="#336791" d="M23.5594 14.7228a.5269.5269 0 0 0-.0563-.1191c-.139-.2632-.4768-.3418-1.0074-.2321-1.6533.3411-2.2935.1312-2.5256-.0191 1.342-2.0482 2.445-4.522 3.0411-6.8297.2714-1.0507.7982-3.5237.1222-4.7316a1.5641 1.5641 0 0 0-.1509-.235C21.6931.9086 19.8007.0248 17.5099.0005c-1.4947-.0158-2.7705.3461-3.1161.4794a9.449 9.449 0 0 0-.5159-.0816 8.044 8.044 0 0 0-1.3114-.1278c-1.1822-.0184-2.2038.2642-3.0498.8406-.8573-.3211-4.7888-1.645-7.2219.0788C.9359 2.1526.3086 3.8733.4302 6.3043c.0409.818.5069 3.334 1.2423 5.7436.4598 1.5065.9387 2.7019 1.4334 3.582.553.9942 1.1259 1.5933 1.7143 1.7895.4474.1491 1.1327.1441 1.8581-.7279.8012-.9635 1.5903-1.8258 1.9446-2.2069.4351.2355.9064.3625 1.39.3772.0034.6431-.2472.3054-.2472.3054-.3389.4302-.4094.5197-1.5002.7443-.3102.064-1.1344.2339-1.1464.8115-.0025.1224.0329.2309.0919.3268.2269.4231.9216.6097 1.015.6331 1.3345.3335 2.5044.092 3.3714-.6787-.017 2.231.0775 4.4174.3454 5.0874.2212.5529.7618 1.9045 2.4692 1.9043.2505 0 .5263-.0291.8296-.0941 1.7819-.3821 2.5557-1.1696 2.855-2.9059.1503-.8707.4016-2.8753.5388-4.1012.0169-.0703.0357-.1207.057-.1362.0007-.0005.0697-.0471.4272.0307a.3673.3673 0 0 0 .0443.0068l.2539.0223.0149.001c.8468.0384 1.9114-.1426 2.5312-.4308.6438-.2988 1.8057-1.0323 1.5951-1.6698z"/></svg>
+            </svg>
+            <span class="tech-name">PostgreSQL</span>
+          </span>
+          <span class="tech-row">
+            <svg class="tech-icon-badge" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect width="26" height="26" rx="4" fill="#4285f4" fill-opacity="0.16"></rect>
+              <rect x="0.5" y="0.5" width="25" height="25" rx="3.5" fill="none" stroke="#4285f4" stroke-opacity="0.55"></rect>
+              <svg x="5.5" y="5.5" width="15" height="15" viewBox="0 0 24 24"><path fill="#4285f4" d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg>
+            </svg>
+            <span class="tech-name">Google OAuth</span>
+          </span>
+        </div>
+        <p class="f-label">Enlaces</p>
+        <div class="link-row">
+          <span class="link-btn disabled">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            <span>Repo privado</span>
+          </span>
+          <span class="link-btn disabled">
+            <span class="demo-dot" style="background: var(--muted); box-shadow: 0 0 0 3px rgba(138,146,160,0.2);"></span>
+            <span>Sin demo pública</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CALISMAP -->
+  <div class="panel">
+    <a class="back-link">← Volver a proyectos</a>
+    <div class="f-grid">
+      <div>
+        <div class="f-head-row">
+          <h3 class="f-head">CalisMap</h3>
+          <div class="f-badges"><span class="f-badge">Featured</span></div>
+        </div>
+        <div class="hero"><span>Ca</span></div>
+        <div class="f-block">
+          <p class="f-label">Objetivo</p>
+          <p>App de calistenia donde cada habilidad (Muscle Up, Planche, Handstand Push-up...) es un roadmap de niveles Bronce → Diamante calculado con tus propias marcas.</p>
+        </div>
+        <div class="f-block outcome">
+          <p class="f-label">Resultado</p>
+          <p>Funciona sin conexión y sin cuenta desde el primer uso — tus marcas se guardan en el dispositivo y se sincronizan solas al iniciar sesión con Google, sin perder nada de lo ya entrenado. Si ya entrenabas con Strong o Hevy, puedes importar ese historial en vez de empezar de cero. Incluye un panel de administración para gestionar el catálogo de habilidades.</p>
+        </div>
+        <details class="f-more">
+          <summary>Ver arquitectura y rol técnico completo</summary>
+          <p class="detail-text">
+            Diseñé y desarrollé el proyecto entero yo solo, repartido en 3 repositorios: la app móvil (Ionic
+            y Angular), el backend del catálogo y la sincronización (Express y PostgreSQL, privado), y el
+            login — reutilizando jp-back-auth, mi propio microservicio de autenticación con Google y modo
+            invitado, compartido entre CalisMap, Mudanza y Similart. El botón de cuenta sale de jp-user-kit,
+            una librería de componentes que publico en GitHub Packages.
+          </p>
+        </details>
+      </div>
+      <div class="f-side">
+        <p class="f-label">Stack</p>
+        <div class="f-techs">
+          <span class="tech-row">
+            <svg class="tech-icon-badge" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect width="26" height="26" rx="4" fill="#3880ff" fill-opacity="0.16"></rect>
+              <rect x="0.5" y="0.5" width="25" height="25" rx="3.5" fill="none" stroke="#3880ff" stroke-opacity="0.55"></rect>
+              <svg x="5.5" y="5.5" width="15" height="15" viewBox="0 0 24 24"><path fill="#3880ff" d="M22.922 7.027l-.103-.23-.169.188c-.408.464-.928.82-1.505 1.036l-.159.061.066.155a9.745 9.745 0 0 1 .75 3.759c0 5.405-4.397 9.806-9.806 9.806-5.409 0-9.802-4.397-9.802-9.802 0-5.405 4.402-9.806 9.806-9.806 1.467 0 2.883.319 4.2.947l.155.075.066-.155a3.767 3.767 0 0 1 1.106-1.453l.197-.159-.225-.117A11.905 11.905 0 0 0 12.001.001c-6.619 0-12 5.381-12 12s5.381 12 12 12 12-5.381 12-12c0-1.73-.361-3.403-1.078-4.973zM12 6.53A5.476 5.476 0 0 0 6.53 12 5.476 5.476 0 0 0 12 17.47 5.476 5.476 0 0 0 17.47 12 5.479 5.479 0 0 0 12 6.53zm10.345-2.007a2.494 2.494 0 1 1-4.988 0 2.494 2.494 0 0 1 4.988 0z"/></svg>
+            </svg>
+            <span class="tech-name">Ionic</span>
+          </span>
+          <span class="tech-row">
+            <svg class="tech-icon-badge" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect width="26" height="26" rx="4" fill="#dd0031" fill-opacity="0.16"></rect>
+              <rect x="0.5" y="0.5" width="25" height="25" rx="3.5" fill="none" stroke="#dd0031" stroke-opacity="0.55"></rect>
+              <svg x="5.5" y="5.5" width="15" height="15" viewBox="0 0 24 24"><path fill="#dd0031" d="M16.712 17.711H7.288l-1.204 2.916L12 24l5.916-3.373-1.204-2.916ZM14.692 0l7.832 16.855.814-12.856L14.692 0ZM9.308 0 .662 3.999l.814 12.856L9.308 0Zm-.405 13.93h6.198L12 6.396 8.903 13.93Z"/></svg>
+            </svg>
+            <span class="tech-name">Angular</span>
+          </span>
+          <span class="tech-row">
+            <svg class="tech-icon-badge" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect width="26" height="26" rx="4" fill="#8a8f98" fill-opacity="0.16"></rect>
+              <rect x="0.5" y="0.5" width="25" height="25" rx="3.5" fill="none" stroke="#8a8f98" stroke-opacity="0.55"></rect>
+              <svg x="5.5" y="5.5" width="15" height="15" viewBox="0 0 24 24"><path fill="#8a8f98" d="M12.262 16.666h1.146l6.975-9.325H19.22zm9.778 1.441v.004l-4.334-5.706-.557.74 4.873 6.682H.945V4.173h9.505l5.026 6.7.574-.772-4.374-5.928h.003l-.719-.945H0v17.544h24zM10.917 8.705a3.8 3.8 0 0 0-1.292-1.183q-.796-.45-1.916-.45c-.746 0-1.37.14-1.906.424a3.76 3.76 0 0 0-1.31 1.12 4.9 4.9 0 0 0-.75 1.581 7.17 7.17 0 0 0 0 3.696c.148.567.402 1.101.75 1.573a3.5 3.5 0 0 0 1.31 1.066q.803.39 1.906.389 1.77 0 2.739-.868.966-.867 1.328-2.457h-1.139q-.271 1.084-.977 1.734-.704.651-1.952.65-.812 0-1.392-.342a3.1 3.1 0 0 1-.957-.869 3.5 3.5 0 0 1-.551-1.182 5 5 0 0 1-.17-1.133 9 9 0 0 0-.015-.286 4.5 4.5 0 0 1 .015-.829c.047-.418.147-.83.296-1.223A3.7 3.7 0 0 1 5.54 9.05a2.9 2.9 0 0 1 .922-.742q.541-.28 1.246-.28c.47 0 .869.093 1.23.28q.541.281.922.742.379.461.587 1.057t.225 1.246H5.625l.004.957h6.182a7.3 7.3 0 0 0-.18-1.924 4.9 4.9 0 0 0-.715-1.68z"/></svg>
+            </svg>
+            <span class="tech-name">Express</span>
+          </span>
+          <span class="tech-row">
+            <svg class="tech-icon-badge" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect width="26" height="26" rx="4" fill="#336791" fill-opacity="0.16"></rect>
+              <rect x="0.5" y="0.5" width="25" height="25" rx="3.5" fill="none" stroke="#336791" stroke-opacity="0.55"></rect>
+              <svg x="5.5" y="5.5" width="15" height="15" viewBox="0 0 24 24"><path fill="#336791" d="M23.5594 14.7228a.5269.5269 0 0 0-.0563-.1191c-.139-.2632-.4768-.3418-1.0074-.2321-1.6533.3411-2.2935.1312-2.5256-.0191 1.342-2.0482 2.445-4.522 3.0411-6.8297.2714-1.0507.7982-3.5237.1222-4.7316a1.5641 1.5641 0 0 0-.1509-.235C21.6931.9086 19.8007.0248 17.5099.0005c-1.4947-.0158-2.7705.3461-3.1161.4794a9.449 9.449 0 0 0-.5159-.0816 8.044 8.044 0 0 0-1.3114-.1278c-1.1822-.0184-2.2038.2642-3.0498.8406-.8573-.3211-4.7888-1.645-7.2219.0788C.9359 2.1526.3086 3.8733.4302 6.3043c.0409.818.5069 3.334 1.2423 5.7436.4598 1.5065.9387 2.7019 1.4334 3.582.553.9942 1.1259 1.5933 1.7143 1.7895.4474.1491 1.1327.1441 1.8581-.7279.8012-.9635 1.5903-1.8258 1.9446-2.2069.4351.2355.9064.3625 1.39.3772.0034.6431-.2472.3054-.2472.3054-.3389.4302-.4094.5197-1.5002.7443-.3102.064-1.1344.2339-1.1464.8115-.0025.1224.0329.2309.0919.3268.2269.4231.9216.6097 1.015.6331 1.3345.3335 2.5044.092 3.3714-.6787-.017 2.231.0775 4.4174.3454 5.0874.2212.5529.7618 1.9045 2.4692 1.9043.2505 0 .5263-.0291.8296-.0941 1.7819-.3821 2.5557-1.1696 2.855-2.9059.1503-.8707.4016-2.8753.5388-4.1012.0169-.0703.0357-.1207.057-.1362.0007-.0005.0697-.0471.4272.0307a.3673.3673 0 0 0 .0443.0068l.2539.0223.0149.001c.8468.0384 1.9114-.1426 2.5312-.4308.6438-.2988 1.8057-1.0323 1.5951-1.6698z"/></svg>
+            </svg>
+            <span class="tech-name">PostgreSQL</span>
+          </span>
+        </div>
+        <p class="f-label">Enlaces</p>
+        <div class="link-row">
+          <a class="link-btn" href="https://github.com/jsierram-dev/calismap-app">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            <span>Ver repositorio</span>
+          </a>
+          <a class="link-btn" href="https://jsierram-dev.github.io/calismap-app/">
+            <span class="demo-dot"></span>
+            <span>Demo en vivo</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <div class="panel">
+    <a class="back-link">← Volver a proyectos</a>
+    <div class="f-grid">
+      <div>
+        <div class="f-head-row"><h3 class="f-head">Este portfolio</h3></div>
+        <div class="hero"><span>Po</span></div>
+        <div class="f-block">
+          <p class="f-label">Objetivo</p>
+          <p>Portfolio pensado para conseguir entrevistas, no solo para verse bien — investigué qué mira de verdad un reclutador antes de escribir código.</p>
+        </div>
+        <div class="f-block outcome">
+          <p class="f-label">Resultado</p>
+          <p>100% estático y prerenderizado — sin backend ni base de datos, así que carga al instante y se aloja gratis en GitHub Pages. Cada pantalla (Portfolio, Resume, CV) documenta además el motivo real detrás de cada decisión de diseño, no solo el resultado final.</p>
+        </div>
+      </div>
+      <div class="f-side">
+        <p class="f-label">Stack</p>
+        <div class="f-techs">
+          <span class="tech-row">
+            <svg class="tech-icon-badge" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect width="26" height="26" rx="4" fill="#dd0031" fill-opacity="0.16"></rect>
+              <rect x="0.5" y="0.5" width="25" height="25" rx="3.5" fill="none" stroke="#dd0031" stroke-opacity="0.55"></rect>
+              <svg x="5.5" y="5.5" width="15" height="15" viewBox="0 0 24 24"><path fill="#dd0031" d="M16.712 17.711H7.288l-1.204 2.916L12 24l5.916-3.373-1.204-2.916ZM14.692 0l7.832 16.855.814-12.856L14.692 0ZM9.308 0 .662 3.999l.814 12.856L9.308 0Zm-.405 13.93h6.198L12 6.396 8.903 13.93Z"/></svg>
+            </svg>
+            <span class="tech-name">Angular</span>
+          </span>
+          <span class="tech-row">
+            <svg class="tech-icon-badge" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect width="26" height="26" rx="4" fill="#3178c6" fill-opacity="0.16"></rect>
+              <rect x="0.5" y="0.5" width="25" height="25" rx="3.5" fill="none" stroke="#3178c6" stroke-opacity="0.55"></rect>
+              <svg x="5.5" y="5.5" width="15" height="15" viewBox="0 0 24 24"><path fill="#3178c6" d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.717-.26 5.453 5.453 0 0 0-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 0 0-.623.242c-.17.104-.3.229-.393.374a.888.888 0 0 0-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 0 1-1.012 1.085 4.38 4.38 0 0 1-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 0 1-1.84-.164 5.544 5.544 0 0 1-1.512-.493v-2.63a5.033 5.033 0 0 0 3.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 0 0-.074-1.089 2.12 2.12 0 0 0-.537-.5 5.597 5.597 0 0 0-.807-.444 27.72 27.72 0 0 0-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 0 1 1.47-.629 7.536 7.536 0 0 1 1.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"/></svg>
+            </svg>
+            <span class="tech-name">TypeScript</span>
+          </span>
+        </div>
+        <p class="f-label">Enlaces</p>
+        <div class="link-row">
+          <a class="link-btn" href="https://github.com/jsierram-dev/jsierram-dev.github.io">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            <span>Ver repositorio</span>
+          </a>
+          <span class="link-btn disabled">
+            <span class="demo-dot" style="background: var(--muted); box-shadow: 0 0 0 3px rgba(138,146,160,0.2);"></span>
+            <span>Es el sitio que estás viendo</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAYTOWIN -->
+  <div class="panel">
+    <a class="back-link">← Volver a proyectos</a>
+    <div class="f-grid">
+      <div>
+        <div class="f-head-row">
+          <h3 class="f-head">PayToWin</h3>
+          <div class="f-badges"><span class="f-badge" style="color: var(--muted); background: transparent; border: 1px dashed var(--muted);">Solo visible para el propietario</span></div>
+        </div>
+        <div class="hero"><span>Pa</span></div>
+        <div class="f-block">
+          <p class="f-label">Objetivo</p>
+          <p>Proyecto académico de DAW: tienda online de videojuegos con usuarios, carrito, pedidos y facturas sobre una base de datos real.</p>
+        </div>
+        <div class="f-block outcome">
+          <p class="f-label">Resultado</p>
+          <p>Catálogo, carrito, pedidos y facturas exportables a PDF/XML, con cuentas separadas de cliente y administrador (gestión de productos con imágenes, estadísticas de ventas). Vuelto a abrir años después para corregir los fallos de seguridad del proyecto académico original y desplegarlo con Docker — un repaso real de hardening, no solo el ejercicio de clase.</p>
+        </div>
+        <details class="f-more">
+          <summary>Ver arquitectura y rol técnico completo</summary>
+          <p class="detail-text">
+            Desarrollé la aplicación completa: diseño y scripts de la base de datos, backend en Java con
+            Servlets y DAOs, y las páginas JSP. Tiempo después corregí los fallos de seguridad y la desplegué
+            con Docker.
+          </p>
+        </details>
+      </div>
+      <div class="f-side">
+        <p class="f-label">Stack</p>
+        <div class="f-techs">
+          <span class="tech-row">
+            <svg class="tech-icon-badge" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect width="26" height="26" rx="4" fill="#e76f00" fill-opacity="0.16"></rect>
+              <rect x="0.5" y="0.5" width="25" height="25" rx="3.5" fill="none" stroke="#e76f00" stroke-opacity="0.55"></rect>
+              <svg x="5.5" y="5.5" width="15" height="15" viewBox="0 0 24 24"><path fill="#e76f00" d="M11.915 0 11.7.215C9.515 2.4 7.47 6.39 6.046 10.483c-1.064 1.024-3.633 2.81-3.711 3.551-.093.87 1.746 2.611 1.55 3.235-.198.625-1.304 1.408-1.014 1.939.1.188.823.011 1.277-.491a13.389 13.389 0 0 0-.017 2.14c.076.906.27 1.668.643 2.232.372.563.956.911 1.667.911.397 0 .727-.114 1.024-.264.298-.149.571-.33.91-.5.68-.34 1.634-.666 3.53-.604 1.903.062 2.872.39 3.559.704.687.314 1.15.664 1.925.664.767 0 1.395-.336 1.807-.9.412-.563.631-1.33.72-2.24.06-.623.055-1.32 0-2.066.454.45 1.117.604 1.213.424.29-.53-.816-1.314-1.013-1.937-.198-.624 1.642-2.366 1.549-3.236-.08-.748-2.707-2.568-3.748-3.586C16.428 6.374 14.308 2.394 12.13.215zm.175 6.038a2.95 2.95 0 0 1 2.943 2.942 2.95 2.95 0 0 1-2.943 2.943A2.95 2.95 0 0 1 9.148 8.98a2.95 2.95 0 0 1 2.942-2.942z"/></svg>
+            </svg>
+            <span class="tech-name">JSP</span>
+          </span>
+          <span class="tech-row">
+            <svg class="tech-icon-badge" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect width="26" height="26" rx="4" fill="#f89820" fill-opacity="0.16"></rect>
+              <rect x="0.5" y="0.5" width="25" height="25" rx="3.5" fill="none" stroke="#f89820" stroke-opacity="0.55"></rect>
+              <svg x="5.5" y="5.5" width="15" height="15" viewBox="0 0 24 24"><path fill="#f89820" d="M11.915 0 11.7.215C9.515 2.4 7.47 6.39 6.046 10.483c-1.064 1.024-3.633 2.81-3.711 3.551-.093.87 1.746 2.611 1.55 3.235-.198.625-1.304 1.408-1.014 1.939.1.188.823.011 1.277-.491a13.389 13.389 0 0 0-.017 2.14c.076.906.27 1.668.643 2.232.372.563.956.911 1.667.911.397 0 .727-.114 1.024-.264.298-.149.571-.33.91-.5.68-.34 1.634-.666 3.53-.604 1.903.062 2.872.39 3.559.704.687.314 1.15.664 1.925.664.767 0 1.395-.336 1.807-.9.412-.563.631-1.33.72-2.24.06-.623.055-1.32 0-2.066.454.45 1.117.604 1.213.424.29-.53-.816-1.314-1.013-1.937-.198-.624 1.642-2.366 1.549-3.236-.08-.748-2.707-2.568-3.748-3.586C16.428 6.374 14.308 2.394 12.13.215zm.175 6.038a2.95 2.95 0 0 1 2.943 2.942 2.95 2.95 0 0 1-2.943 2.943A2.95 2.95 0 0 1 9.148 8.98a2.95 2.95 0 0 1 2.942-2.942z"/></svg>
+            </svg>
+            <span class="tech-name">Java</span>
+          </span>
+          <span class="tech-row">
+            <svg class="tech-icon-badge" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect width="26" height="26" rx="4" fill="#f80000" fill-opacity="0.16"></rect>
+              <rect x="0.5" y="0.5" width="25" height="25" rx="3.5" fill="none" stroke="#f80000" stroke-opacity="0.55"></rect>
+              <svg x="5.5" y="5.5" width="15" height="15" viewBox="0 0 24 24"><path fill="#f80000" d="M7 6h10a6 6 0 0 1 0 12H7a6 6 0 0 1 0-12zM7 8.4a3.6 3.6 0 0 0 0 7.2h10a3.6 3.6 0 0 0 0-7.2z"/></svg>
+            </svg>
+            <span class="tech-name">Oracle</span>
+          </span>
+          <span class="tech-row">
+            <svg class="tech-icon-badge" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+              <rect width="26" height="26" rx="4" fill="#2496ed" fill-opacity="0.16"></rect>
+              <rect x="0.5" y="0.5" width="25" height="25" rx="3.5" fill="none" stroke="#2496ed" stroke-opacity="0.55"></rect>
+              <svg x="5.5" y="5.5" width="15" height="15" viewBox="0 0 24 24"><path fill="#2496ed" d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288z"/></svg>
+            </svg>
+            <span class="tech-name">Docker</span>
+          </span>
+        </div>
+        <p class="f-label">Enlaces</p>
+        <div class="link-row">
+          <a class="link-btn" href="https://github.com/jsierram-dev/PayToWin">
+            <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            <span>Ver repositorio</span>
+          </a>
+          <a class="link-btn" href="https://paytowin-wbdl.onrender.com">
+            <span class="demo-dot"></span>
+            <span>Demo en vivo</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="note">
+    Sin cambios al modelo de datos: cada proyecto sigue usando un único <code>repoUrl</code> y
+    <code>liveUrl</code> (igual que content.model.ts hoy). El texto nuevo de "Resultado" reemplaza al
+    "outcome" actual en el mismo campo. La parte de "outcome" que describía arquitectura (los 5 repos de
+    Similart, los 3 de CalisMap) se fusiona dentro de "role", que es el campo que ya vive plegado en el
+    detalle técnico — así no se pierde esa información, solo deja de competir por atención con el resultado.
+  </p>
+
+</div>
+</body>
+</html>
