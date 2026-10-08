@@ -15,7 +15,7 @@
         "languages": "TypeScript, JavaScript",
         "frontend": "Angular, HTML5, CSS3, React",
         "backend": "Java, Spring Boot, Express, Socket.IO",
-        "databases": "Oracle, SQLite, MongoDB",
+        "databases": "Oracle, PostgreSQL, SQLite, MongoDB",
         "tools": "Docker, AWS, Git, CI/CD, Agile/Scrum"
       }
     }
